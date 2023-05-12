@@ -17,33 +17,32 @@ public class Principal{
 		int indiceProductos = 0;
 
 		do{
-			System.out.println("++------------------------------------++");
-			System.out.println("++----   SISTEMA DE FACTURACION   ----++");
-			System.out.println("++------------------------------------++");
-			System.out.println("||                                    ||");
-			System.out.println("||                      Clientes: "+formatoIndice(indiceClientes)+"  ||");
-			System.out.println("||                    Vendedores: "+formatoIndice(indiceVendedores)+"  ||");
-			System.out.println("||                     Productos: "+formatoIndice(indiceVendedores)+"  ||");
-			System.out.println("||                      Facturas: "+formatoIndice(indiceProductos)+"  ||");
-			System.out.println("||                                    ||");
-			System.out.println("||    1. Creacion de cliente          ||");
-			System.out.println("||    2. Creacion de Vendedor         ||");
-			System.out.println("||    3. Creacion de Factura          ||");
-			System.out.println("||    4. Ver lista de Clientes        ||");
-			System.out.println("||    5. Ver lista de Vendedores      ||");
-			System.out.println("||    6. Ver lista de Facturas        ||");
-			System.out.println("||    7. Ver detalle de Factura       ||");
-			System.out.println("||    8. Salir                        ||");
-			System.out.println("||                                    ||");
-			System.out.println("++------------------------------------++");
-			System.out.println("++------------------------------------++");
-			System.out.print("++--> Ingrese una opcion: ");
+			System.out.println("┌┬────────────────────────────────────┬┐");
+			System.out.println("││       SISTEMA DE FACTURACION       ││");
+			System.out.println("├┼────────────────────────────────────┼┤");
+			System.out.println("││                                    ││");
+			System.out.println(  "││            Clientes: "+formatoIndice(indiceClientes)+"            ││");
+			System.out.println(  "││          Vendedores: "+formatoIndice(indiceVendedores)+"            ││");
+			System.out.println(  "││           Productos: "+formatoIndice(indiceVendedores)+"            ││");
+			System.out.println(  "││            Facturas: "+formatoIndice(indiceProductos)+"            ││");
+			System.out.println("││                                    ││");
+			System.out.println("││    1. Creacion de cliente          ││");
+			System.out.println("││    2. Creacion de Vendedor         ││");
+			System.out.println("││    3. Creacion de Factura          ││");
+			System.out.println("││    4. Ver lista de Clientes        ││");
+			System.out.println("││    5. Ver lista de Vendedores      ││");
+			System.out.println("││    6. Ver lista de Facturas        ││");
+			System.out.println("││    7. Ver detalle de Factura       ││");
+			System.out.println("││    8. Salir                        ││");
+			System.out.println("││                                    ││");
+			System.out.println("└┴────────────────────────────────────┴┘");
+			System.out.print("» » Ingrese una opcion: ");
 			opcion = entrada_numero.nextInt();
 
 			if(opcion==1){
-				System.out.println("++------------------------------------++");
-				System.out.println("++----       CREANDO CLIENTE      ----++");
-				System.out.println("++------------------------------------++");
+				System.out.println("┌┬────────────────────────────────────┬┐");
+				System.out.println("││         CREACION DE CLIENTE        ││");
+				System.out.println("└┴────────────────────────────────────┴┘");
 				System.out.print("++----> Documento: ");
 				int documento = entrada_numero.nextInt();
 
