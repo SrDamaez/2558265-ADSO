@@ -27,8 +27,8 @@ public class Principal{
 			System.out.println("││                                    ││");
 			System.out.println(  "││            Clientes: " + formatoIndice(indiceClientes) + "            ││");
 			System.out.println(  "││          Vendedores: " + formatoIndice(indiceVendedores) + "            ││");
-			System.out.println(  "││           Productos: " + formatoIndice(indiceVendedores) + "            ││");
-			System.out.println(  "││            Facturas: " + formatoIndice(indiceProductos) + "            ││");
+			System.out.println(  "││           Productos: " + formatoIndice(indiceProductos) + "            ││");
+			System.out.println(  "││            Facturas: " + formatoIndice(indiceFacturas) + "            ││");
 			System.out.println("││                                    ││");
 			System.out.println("││    1. Creacion de cliente          ││");
 			System.out.println("││    2. Creacion de Vendedor         ││");
@@ -72,12 +72,17 @@ public class Principal{
 					indiceClientes++;
 
 					System.out.println("\n─── Cliente ingresado correctamente ───");
+
 					System.out.println("» » Presione enter para continuar... « «");
 					continuar = entrada_numero.nextLine();
 				}else{
+
 					System.out.println("┌┬──────────────────────────────────────────────┬┐");
 					System.out.println("││       EL DOCUMENTO INGRESADO YA EXISTE       ││");
 					System.out.println("└┴──────────────────────────────────────────────┴┘\n\n");
+
+					System.out.println("» » Presione enter para continuar... « «");
+					continuar = entrada_numero.nextLine();
 				}
 
 			}else if(opcion==2){
@@ -99,6 +104,7 @@ public class Principal{
 				}
 
 				if (valido) {
+
 					System.out.print("» » » Nombres: ");
 					String nombres = entrada_texto.nextLine();
 
@@ -107,10 +113,16 @@ public class Principal{
 
 					listaVendedores[indiceVendedores]  = new Persona(documento, nombres, apellidos);
 					indiceVendedores++;
+
 				}else{
+
 					System.out.println("┌┬──────────────────────────────────────────────┬┐");
 					System.out.println("││       EL DOCUMENTO INGRESADO YA EXISTE       ││");
 					System.out.println("└┴──────────────────────────────────────────────┴┘\n\n");
+
+					System.out.println("\n» » Presione enter para continuar... « «");
+					continuar = entrada_texto.nextLine();
+
 				}
 
 			}else if(opcion==3){
@@ -119,6 +131,9 @@ public class Principal{
 				System.out.println("││       ALGORITMO PENDIENTE       ││");
 				System.out.println("└┴─────────────────────────────────┴┘\n\n");	
 
+				System.out.println("\n» » Presione enter para continuar... « «");
+				continuar = entrada_texto.nextLine();
+
 			}else if(opcion==4){
 
 				System.out.print("\033[H\033[2J");  
@@ -126,7 +141,8 @@ public class Principal{
 
 				System.out.println("┌┬───────────────────────────────┬┐");
 				System.out.println("││       LISTA DE CLIENTES       ││");
-				System.out.println("└┴───────────────────────────────┴┘\n");			
+				System.out.println("└┴───────────────────────────────┴┘\n");
+
 				for (int i=0; i<listaClientes.length; i++) {
 					if (listaClientes[i]!=null) {
 						listaClientes[i].imprimirDetalle();
@@ -134,36 +150,78 @@ public class Principal{
 						break;
 					}
 				}
+
 				System.out.println("\n» » Presione enter para continuar... « «");
 				continuar = entrada_texto.nextLine();
 
-
 			}else if(opcion==5){
+
+				System.out.print("\033[H\033[2J");  
+				System.out.flush();
+
 				System.out.println("┌┬─────────────────────────────────┬┐");
-				System.out.println("││       ALGORITMO PENDIENTE       ││");
-				System.out.println("└┴─────────────────────────────────┴┘\n\n");
+				System.out.println("││       LISTA DE VENDEDORES       ││");
+				System.out.println("└┴─────────────────────────────────┴┘\n");
+
+				for (int i=0; i<listaVendedores.length; i++) {
+					if (listaVendedores[i]!=null) {
+						listaVendedores[i].imprimirDetalle();
+					}else{
+						break;
+					}
+				}
+
+				System.out.println("\n» » Presione enter para continuar... « «");
+				continuar = entrada_texto.nextLine();
+
 			}else if(opcion==6){
+
 				System.out.println("┌┬─────────────────────────────────┬┐");
 				System.out.println("││       ALGORITMO PENDIENTE       ││");
 				System.out.println("└┴─────────────────────────────────┴┘\n\n");
+
+				System.out.println("\n» » Presione enter para continuar... « «");
+				continuar = entrada_texto.nextLine();
+
 			}else if(opcion==7){
+
 				System.out.println("┌┬─────────────────────────────────┬┐");
 				System.out.println("││       ALGORITMO PENDIENTE       ││");
 				System.out.println("└┴─────────────────────────────────┴┘\n\n");
+
+				System.out.println("\n» » Presione enter para continuar... « «");
+				continuar = entrada_texto.nextLine();
+
 			}else if(opcion==8){
+				
 				System.out.println("┌┬───────────────────────────────────────┬┐");
 				System.out.println("││       SALIENDO DE LA APLICACION       ││");
 				System.out.println("└┴───────────────────────────────────────┴┘\n\n");
+				
+				System.out.println("\n» » Presione enter para continuar... « «");
+				continuar = entrada_texto.nextLine();
+
 			}else{
+
 				System.out.println("┌┬───────────────────────────────┬┐");
 				System.out.println("││       OPCION INCORRECTA       ││");
 				System.out.println("└┴───────────────────────────────┴┘");
+
+				System.out.println("\n» » Presione enter para continuar... « «");
+				continuar = entrada_texto.nextLine();
+
 			}
 
 		}while(opcion!=8);
 
-		entrada_numero.close();
-		entrada_texto.close();
+		if (continuar == ""){
+			entrada_numero.close();
+			entrada_texto.close();
+		}else{
+			entrada_numero.close();
+			entrada_texto.close();
+		}
+		
 	}
 
 
