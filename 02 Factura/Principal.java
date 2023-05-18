@@ -4,6 +4,8 @@ public class Principal{
 	public static void main(String[] args) {
 	
 		int opcion = 0;
+		int aux_cliente = 0;
+		int aux_vendedor = 0;
 		String continuar = "";
 		Scanner entrada_numero = new Scanner(System.in);
 		Scanner entrada_texto = new Scanner(System.in);
@@ -58,7 +60,7 @@ public class Principal{
 
 				boolean valido = true;
 				for (int i=0; i<listaClientes.length; i++) {
-					if (listaClientes[i]!=null && listaClientes[i].getDocumento()==documento ) {
+					if (listaClientes[i]!=null && listaClientes[i].getDocumento() == documento ) {
 						valido = false;
 					}
 				}
@@ -70,7 +72,7 @@ public class Principal{
 					System.out.print("» » » Apellidos: ");
 					String apellidos = entrada_texto.nextLine();
 
-					listaClientes[indiceClientes]  = new Persona(documento, nombres, apellidos);
+					listaClientes[indiceClientes] = new Persona(documento, nombres, apellidos);
 					indiceClientes++;
 
 					System.out.println("");
@@ -119,7 +121,7 @@ public class Principal{
 					System.out.print("» » » Apellidos: ");
 					String apellidos = entrada_texto.nextLine();
 
-					listaVendedores[indiceVendedores]  = new Persona(documento, nombres, apellidos);
+					listaVendedores[indiceVendedores] = new Persona(documento, nombres, apellidos);
 					indiceVendedores++;
 
 					System.out.println("");
@@ -167,7 +169,7 @@ public class Principal{
 					System.out.print("» » » Precio: ");
 					double precio = entrada_numero.nextInt();
 
-					listaProductos[indiceProductos]  = new Producto(nombre.toUpperCase(), precio);
+					listaProductos[indiceProductos] = new Producto(nombre.toUpperCase(), precio);
 					indiceProductos++;
 
 					System.out.println("");
@@ -194,12 +196,84 @@ public class Principal{
 
 			}else if(opcion==4){ //Creacion de Factura
 
-				System.out.println("┌┬─────────────────────────────────┬┐");				
-				System.out.println("││       ALGORITMO PENDIENTE       ││");
-				System.out.println("└┴─────────────────────────────────┴┘");	
+				System.out.print("\033[H\033[2J");  
+				System.out.flush();
 
-				System.out.println("» » Presione enter para continuar... « «");
-				continuar = entrada_texto.nextLine();
+				System.out.println("┌┬─────────────────────────────────┬┐");
+				System.out.println("││       CREACION DE FACTURA       ││");
+				System.out.println("└┴─────────────────────────────────┴┘");
+				System.out.print("» » » Documento del vendedor: ");
+				int documento_vendedor = entrada_numero.nextInt();
+
+				boolean valido_1 = false;
+				boolean valido_2 = false;
+
+				for (int i=0; i<listaVendedores.length; i++) {
+					if (listaVendedores[i]!=null && listaVendedores[i].getDocumento() == documento_vendedor ) {
+						valido_1 = true;
+						System.out.println("» » » Vendedor: " + listaVendedores[i].getNombres() + " " + listaClientes[i].getApellidos() + " « « «");
+						aux_vendedor = i;
+						break;
+					}
+				}
+				
+				if (valido_1 == false){
+					System.out.println("");
+					System.out.println("┌┬──────────────────────────────────────────┬┐");
+					System.out.println("││       VENDEDOR INGRESADO NO EXISTE       ││");
+					System.out.println("└┴──────────────────────────────────────────┴┘");
+					System.out.println("");
+
+				}else{
+					System.out.print("» » » Documento del cliente: ");
+					int documento_cliente = entrada_numero.nextInt();
+
+					for (int i=0; i<listaClientes.length; i++) {
+						if (listaClientes[i]!=null && listaClientes[i].getDocumento() == documento_cliente ) {
+							valido_2 = true;
+							System.out.println("» » » Cliente: " + listaClientes[i].getNombres() + " " + listaClientes[i].getApellidos() + " « « «");
+							aux_cliente = i;
+							break;
+						}
+					}
+
+					if (valido_2 == false){
+						System.out.println("");
+						System.out.println("┌┬─────────────────────────────────────────┬┐");
+						System.out.println("││       CLIENTE INGRESADO NO EXISTE       ││");
+						System.out.println("└┴─────────────────────────────────────────┴┘");
+						System.out.println("");
+					}
+				}
+
+
+				if (valido_1 && valido_2) {
+					
+					System.out.print("» » » Ingrese la cantidad de productos: ");
+					int cantidad = entrada_numero.nextInt();
+
+					indiceFacturas++;
+					listaFacturas[indiceFacturas] = new Factura(indiceFacturas, listaClientes[aux_cliente], listaVendedores[aux_vendedor]);
+
+					System.out.println("");
+					System.out.println("┌───────────────────────────────────┐");
+					System.out.println("│  Factura ingresada correctamente  │");
+					System.out.println("└───────────────────────────────────┘");
+					System.out.println("");
+
+					System.out.println("» » Presione enter para continuar... « «");
+					continuar = entrada_texto.nextLine();
+				}else{
+
+					System.out.println("");
+					System.out.println("┌┬────────────────────────────────┬┐");
+					System.out.println("││       INTENTE NUEVAMENTE       ││");
+					System.out.println("└┴────────────────────────────────┴┘");
+					System.out.println("");
+
+					System.out.println("» » Presione enter para continuar... « «");
+					continuar = entrada_texto.nextLine();
+				}
 
 			}else if(opcion==5){ //Ver lista de Clientes
 
@@ -293,7 +367,7 @@ public class Principal{
 				System.out.println("» » Presione enter para continuar... « «");
 				continuar = entrada_texto.nextLine();
 
-			}else{
+			}else{ //Opcion incorrecta
 				
 				System.out.println("");
 				System.out.println("┌┬───────────────────────────────┬┐");
