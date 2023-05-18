@@ -1,0 +1,3 @@
+Profe, si lleva a ver esto, pido perdón por la falta de disposición que he tenido en las clases pasadas, han pasado muchas cosas estas últimas semanas y apenas tengo tiempo de ser persona...
+Espero entienda mi situación y estoy haciendo lo posible por estar al día.
+Le prometo que estos ejercicios van a quedar una chimba xd
