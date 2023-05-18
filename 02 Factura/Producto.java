@@ -27,4 +27,5 @@ public class Producto {
 	public void imprimirProductos(){
 		System.out.println("» » » " + this.nombre + " - $" + this.precio + " « « «");
 	}
+	
 }

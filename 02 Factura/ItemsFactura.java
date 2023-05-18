@@ -35,5 +35,4 @@ public class ItemsFactura{
 		this.subtotal = subtotal;
 	}
 
-
 }

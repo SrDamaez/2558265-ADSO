@@ -18,7 +18,7 @@ public class Principal{
 		int indiceProductos = 0;
 
 		do{
-			System.out.print("\033[H\033[2J");  
+			System.out.print("\033[H\033[2J");
 			System.out.flush();
 
 			System.out.println("┌┬────────────────────────────────────┬┐");

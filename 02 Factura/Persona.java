@@ -37,5 +37,4 @@ public class Persona{
 	public void imprimirDetalle(){
 		System.out.println("» » » " + this.documento + " - " + this.nombres + " " + this.apellidos + " « « «");
 	}
-
 }
