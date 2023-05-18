@@ -167,7 +167,7 @@ public class Principal{
 					System.out.print("» » » Precio: ");
 					double precio = entrada_numero.nextInt();
 
-					listaProductos[indiceProductos]  = new Producto(nombre, precio);
+					listaProductos[indiceProductos]  = new Producto(nombre.toUpperCase(), precio);
 					indiceProductos++;
 
 					System.out.println("");
