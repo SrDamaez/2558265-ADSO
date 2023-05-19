@@ -20,5 +20,17 @@ public class Factura{
 		ItemsFactura temporal [] = new ItemsFactura [50];
 		itemsFactura = temporal;
 	}
+	
+	public Persona getVendedor(){
+		return this.vendedor;
+	}
+
+	public Persona getCliente(){
+		return this.cliente;
+	}
+
+	public void imprimirFactura(){
+		System.out.println("» » » " + this.fecha + " - " + this.id + " - " + getVendedor().nombres + " " + getVendedor().apellidos + " - "  + getCliente().nombres + " " + getCliente().apellidos);
+	}
 
 }

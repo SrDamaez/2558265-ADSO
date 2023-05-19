@@ -4,8 +4,6 @@ public class Principal{
 	public static void main(String[] args) {
 	
 		int opcion = 0;
-		int aux_cliente = 0;
-		int aux_vendedor = 0;
 		String continuar = "";
 		Scanner entrada_numero = new Scanner(System.in);
 		Scanner entrada_texto = new Scanner(System.in);
@@ -14,11 +12,13 @@ public class Principal{
 		Persona listaClientes [] = new Persona [100];
 		Persona listaVendedores [] = new Persona [100];
 		Producto listaProductos [] = new Producto [100];
+		ItemsFactura listaItemsFactura [][] = new ItemsFactura [100][100];
 		int indiceFacturas = 0;
 		int indiceClientes = 0;
-		int indiceVendedores = 0;
 		int indiceProductos = 0;
-
+		int indiceVendedores = 0;
+		int indiceItemsFactura = 0;
+		
 		do{
 			System.out.print("\033[H\033[2J");
 			System.out.flush();
@@ -205,13 +205,15 @@ public class Principal{
 				System.out.print("» » » Documento del vendedor: ");
 				int documento_vendedor = entrada_numero.nextInt();
 
+				int aux_cliente = 0;
+				int aux_vendedor = 0;
 				boolean valido_1 = false;
 				boolean valido_2 = false;
 
 				for (int i=0; i<listaVendedores.length; i++) {
 					if (listaVendedores[i]!=null && listaVendedores[i].getDocumento() == documento_vendedor ) {
 						valido_1 = true;
-						System.out.println("» » » Vendedor: " + listaVendedores[i].getNombres() + " " + listaClientes[i].getApellidos() + " « « «");
+						System.out.println("» » » Vendedor: " + listaVendedores[i].getNombres() + " " + listaVendedores[i].getApellidos() + " « « «");
 						aux_vendedor = i;
 						break;
 					}
@@ -249,11 +251,66 @@ public class Principal{
 
 				if (valido_1 && valido_2) {
 					
-					System.out.print("» » » Ingrese la cantidad de productos: ");
-					int cantidad = entrada_numero.nextInt();
+					boolean seguir_productos = false;
+					boolean busqueda_producto = false;
+					int aux_producto = 0;
+					
+					System.out.println("» » Presione enter para continuar... « «");
+					continuar = entrada_texto.nextLine();
+					
+					do {
+						boolean valido_producto = false;
 
+						System.out.print("\033[H\033[2J");  
+						System.out.flush();
+
+						System.out.println("┌┬─────────────────────────┬┐");
+						System.out.println(  "││       Producto #" + formatoIndice(indiceItemsFactura + 1) + "      ││");
+						System.out.println("└┴─────────────────────────┴┘");
+
+						System.out.print("» » » Ingrese el nombre del producto: ");
+						String nombre_producto = entrada_texto.nextLine();
+
+						for (int i=0; i<listaProductos.length; i++) {
+							if (listaProductos[i]!=null && listaProductos[i].getNombre().equalsIgnoreCase(nombre_producto)) {
+								valido_producto = true;
+								aux_producto = i;
+								break;
+							}
+						}
+
+						if (valido_producto) {
+
+							System.out.print("» » » Ingrese la cantidad comprada: ");
+							int cantidad_producto = entrada_numero.nextInt();
+
+							listaItemsFactura[indiceFacturas][indiceItemsFactura] = new ItemsFactura(listaProductos[aux_producto], cantidad_producto, (cantidad_producto * listaProductos[aux_producto].getPrecio()));
+							indiceItemsFactura++;
+
+						}else{
+
+							System.out.println("");
+							System.out.println("┌┬──────────────────────────────────────────┬┐");
+							System.out.println("││       PRODUCTO INGRESADO NO EXISTE       ││");
+							System.out.println("└┴──────────────────────────────────────────┴┘");
+							System.out.println("");
+
+						}
+
+						System.out.println("\n» » » 1. Para ingresar otro producto ingrese - 2. Terminar factura");
+						System.out.print("» » » ");
+						int aux_seguir = entrada_numero.nextInt();
+						
+						if (aux_seguir == 1) {
+							seguir_productos = true;
+						}else {
+							seguir_productos = false;
+						}
+
+					} while (seguir_productos);
+
+					listaFacturas[indiceFacturas] = new Factura((indiceFacturas + 1), listaClientes[aux_cliente], listaVendedores[aux_vendedor]);
 					indiceFacturas++;
-					listaFacturas[indiceFacturas] = new Factura(indiceFacturas, listaClientes[aux_cliente], listaVendedores[aux_vendedor]);
 
 					System.out.println("");
 					System.out.println("┌───────────────────────────────────┐");
@@ -337,9 +394,20 @@ public class Principal{
 
 			}else if(opcion==8){ //Ver lista de Facturas
 
-				System.out.println("┌┬─────────────────────────────────┬┐");
-				System.out.println("││       ALGORITMO PENDIENTE       ││");
-				System.out.println("└┴─────────────────────────────────┴┘");
+				System.out.print("\033[H\033[2J");  
+				System.out.flush();
+
+				System.out.println("┌┬───────────────────────────────┬┐");
+				System.out.println("││       LISTA DE FACTURAS       ││");
+				System.out.println("└┴───────────────────────────────┴┘");
+
+				for (int i=0; i<listaFacturas.length; i++) {
+					if (listaFacturas[i]!=null) {
+						listaFacturas[i].imprimirFactura();
+					}else{
+						break;
+					}
+				}
 
 				System.out.println("\n» » Presione enter para continuar... « «");
 				continuar = entrada_texto.nextLine();
