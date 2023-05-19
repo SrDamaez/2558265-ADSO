@@ -5,19 +5,17 @@ public class Principal{
 	
 		int opcion = 0;
 		String continuar = "";
-		Scanner entrada_numero = new Scanner(System.in);
 		Scanner entrada_texto = new Scanner(System.in);
+		Scanner entrada_numero = new Scanner(System.in);
 
 		Factura listaFacturas [] = new Factura [100];
 		Persona listaClientes [] = new Persona [100];
 		Persona listaVendedores [] = new Persona [100];
 		Producto listaProductos [] = new Producto [100];
-		ItemsFactura listaItemsFactura [][] = new ItemsFactura [100][100];
 		int indiceFacturas = 0;
 		int indiceClientes = 0;
 		int indiceProductos = 0;
 		int indiceVendedores = 0;
-		int indiceItemsFactura = 0;
 		
 		do{
 			System.out.print("\033[H\033[2J");
@@ -47,7 +45,7 @@ public class Principal{
 			System.out.print("» » Ingrese una opcion: ");
 			opcion = entrada_numero.nextInt();
 
-			if(opcion==1){ //Creacion de cliente
+			if(opcion==1){ 			//Creacion de cliente
 
 				System.out.print("\033[H\033[2J");  
 				System.out.flush();
@@ -95,7 +93,7 @@ public class Principal{
 					continuar = entrada_texto.nextLine();
 				}
 
-			}else if(opcion==2){ //Creacion de Vendedor
+			}else if(opcion==2){ 	//Creacion de Vendedor
 
 				System.out.print("\033[H\033[2J");  
 				System.out.flush();
@@ -146,7 +144,7 @@ public class Principal{
 
 				}
 
-			}else if(opcion==3){ //Creacion de Productos
+			}else if(opcion==3){ 	//Creacion de Productos
 
 				System.out.print("\033[H\033[2J");  
 				System.out.flush();
@@ -194,7 +192,7 @@ public class Principal{
 
 				}
 
-			}else if(opcion==4){ //Creacion de Factura
+			}else if(opcion==4){ 	//Creacion de Factura
 
 				System.out.print("\033[H\033[2J");  
 				System.out.flush();
@@ -219,7 +217,7 @@ public class Principal{
 					}
 				}
 				
-				if (valido_1 == false){
+				if (!valido_1){
 					System.out.println("");
 					System.out.println("┌┬──────────────────────────────────────────┬┐");
 					System.out.println("││       VENDEDOR INGRESADO NO EXISTE       ││");
@@ -239,7 +237,7 @@ public class Principal{
 						}
 					}
 
-					if (valido_2 == false){
+					if (!valido_2){
 						System.out.println("");
 						System.out.println("┌┬─────────────────────────────────────────┬┐");
 						System.out.println("││       CLIENTE INGRESADO NO EXISTE       ││");
@@ -251,65 +249,10 @@ public class Principal{
 
 				if (valido_1 && valido_2) {
 					
-					boolean seguir_productos = false;
-					boolean busqueda_producto = false;
-					int aux_producto = 0;
-					
-					System.out.println("» » Presione enter para continuar... « «");
-					continuar = entrada_texto.nextLine();
-					
-					do {
-						boolean valido_producto = false;
+					Factura factura = new Factura((indiceFacturas + 1), listaClientes[aux_cliente], listaVendedores[aux_vendedor]);
+					factura.agregarFactura(listaProductos);
 
-						System.out.print("\033[H\033[2J");  
-						System.out.flush();
-
-						System.out.println("┌┬─────────────────────────┬┐");
-						System.out.println(  "││       Producto #" + formatoIndice(indiceItemsFactura + 1) + "      ││");
-						System.out.println("└┴─────────────────────────┴┘");
-
-						System.out.print("» » » Ingrese el nombre del producto: ");
-						String nombre_producto = entrada_texto.nextLine();
-
-						for (int i=0; i<listaProductos.length; i++) {
-							if (listaProductos[i]!=null && listaProductos[i].getNombre().equalsIgnoreCase(nombre_producto)) {
-								valido_producto = true;
-								aux_producto = i;
-								break;
-							}
-						}
-
-						if (valido_producto) {
-
-							System.out.print("» » » Ingrese la cantidad comprada: ");
-							int cantidad_producto = entrada_numero.nextInt();
-
-							listaItemsFactura[indiceFacturas][indiceItemsFactura] = new ItemsFactura(listaProductos[aux_producto], cantidad_producto, (cantidad_producto * listaProductos[aux_producto].getPrecio()));
-							indiceItemsFactura++;
-
-						}else{
-
-							System.out.println("");
-							System.out.println("┌┬──────────────────────────────────────────┬┐");
-							System.out.println("││       PRODUCTO INGRESADO NO EXISTE       ││");
-							System.out.println("└┴──────────────────────────────────────────┴┘");
-							System.out.println("");
-
-						}
-
-						System.out.println("\n» » » 1. Para ingresar otro producto ingrese - 2. Terminar factura");
-						System.out.print("» » » ");
-						int aux_seguir = entrada_numero.nextInt();
-						
-						if (aux_seguir == 1) {
-							seguir_productos = true;
-						}else {
-							seguir_productos = false;
-						}
-
-					} while (seguir_productos);
-
-					listaFacturas[indiceFacturas] = new Factura((indiceFacturas + 1), listaClientes[aux_cliente], listaVendedores[aux_vendedor]);
+					listaFacturas[indiceFacturas] = factura;
 					indiceFacturas++;
 
 					System.out.println("");
@@ -332,7 +275,7 @@ public class Principal{
 					continuar = entrada_texto.nextLine();
 				}
 
-			}else if(opcion==5){ //Ver lista de Clientes
+			}else if(opcion==5){ 	//Ver lista de Clientes
 
 				System.out.print("\033[H\033[2J");  
 				System.out.flush();
@@ -352,7 +295,7 @@ public class Principal{
 				System.out.println("\n» » Presione enter para continuar... « «");
 				continuar = entrada_texto.nextLine();
 
-			}else if(opcion==6){ //Ver lista de Vendedores
+			}else if(opcion==6){ 	//Ver lista de Vendedores
 
 				System.out.print("\033[H\033[2J");  
 				System.out.flush();
@@ -372,7 +315,7 @@ public class Principal{
 				System.out.println("\n» » Presione enter para continuar... « «");
 				continuar = entrada_texto.nextLine();
 
-			}else if(opcion==7){ //Ver lista de Productos
+			}else if(opcion==7){ 	//Ver lista de Productos
 
 				System.out.print("\033[H\033[2J");  
 				System.out.flush();
@@ -392,10 +335,37 @@ public class Principal{
 				System.out.println("\n» » Presione enter para continuar... « «");
 				continuar = entrada_texto.nextLine();
 
-			}else if(opcion==8){ //Ver lista de Facturas
+			}else if(opcion==8){ 	//Ver lista de Facturas
 
 				System.out.print("\033[H\033[2J");  
 				System.out.flush();
+
+				System.out.println("┌┬───────────────────────────────┬┐");
+				System.out.println("││       LISTA DE FACTURAS       ││");
+				System.out.println("└┴───────────────────────────────┴┘");
+
+				System.out.println("» » » Fecha - Id - Nombres y apeliidos vendedor - Nombres y apellidos Cliente - total");
+
+
+				for (int i=0; i<listaFacturas.length; i++) {
+					if (listaFacturas[i]!=null) {
+						listaFacturas[i].imprimirFactura();
+					}else{
+						break;
+					}
+				}
+
+				System.out.println("\n» » Presione enter para continuar... « «");
+				continuar = entrada_texto.nextLine();
+
+			}else if(opcion==9){	//Ver detalle de Factura
+
+				System.out.print("\033[H\033[2J");  
+				System.out.flush();
+
+				System.out.println("┌┬───────────────────────────────────────────┬┐");
+				System.out.println("││       LISTA DE DETALLES DE FACTURAS       ││");
+				System.out.println("└┴───────────────────────────────────────────┴┘");
 
 				System.out.println("┌┬───────────────────────────────┬┐");
 				System.out.println("││       LISTA DE FACTURAS       ││");
@@ -409,19 +379,16 @@ public class Principal{
 					}
 				}
 
-				System.out.println("\n» » Presione enter para continuar... « «");
-				continuar = entrada_texto.nextLine();
+				System.out.print("» » » Ingrese el Id de la factura: ");
+				int id_imprimir = entrada_numero.nextInt();
 
-			}else if(opcion==9){ //Ver detalle de Factura
+				System.out.println("┌─────────────────────────┐");
+				System.out.println(  "│       FACTURA #" + formatoIndice(id_imprimir) + "       │");
+				System.out.println("└─────────────────────────┘");
 
-				System.out.println("┌┬─────────────────────────────────┬┐");
-				System.out.println("││       ALGORITMO PENDIENTE       ││");
-				System.out.println("└┴─────────────────────────────────┴┘");
+				listaFacturas[(id_imprimir - 1)].imprimirDetalle();
 
-				System.out.println("\n» » Presione enter para continuar... « «");
-				continuar = entrada_texto.nextLine();
-
-			}else if(opcion==0){ //Salir
+			}else if(opcion==0){ 	//Salir
 
 				System.out.print("\033[H\033[2J");  
 				System.out.flush();
@@ -435,7 +402,7 @@ public class Principal{
 				System.out.println("» » Presione enter para continuar... « «");
 				continuar = entrada_texto.nextLine();
 
-			}else{ //Opcion incorrecta
+			}else{ 					//Opcion incorrecta
 				
 				System.out.println("");
 				System.out.println("┌┬───────────────────────────────┬┐");

@@ -1,4 +1,3 @@
-
 public class ItemsFactura{
 
 	Producto producto;
@@ -33,6 +32,10 @@ public class ItemsFactura{
 
 	public void setSubtotal(double subtotal){
 		this.subtotal = subtotal;
+	}
+
+	public String mostrarProductosVendidos(){
+		return "» » » " + producto.getNombre() + " - " + cantidad + " - " + subtotal + " « « «";
 	}
 
 }
