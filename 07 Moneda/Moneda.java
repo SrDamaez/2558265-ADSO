@@ -1,0 +1,75 @@
+import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.plaf.basic.BasicBorders;
+import java.util.Locale;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Moneda{
+	public static void main(String[] args) {
+
+		JFrame ventana = new JFrame();
+		ventana.setTitle("Formato Moneda");
+		ventana.setSize(750, 500);
+		ventana.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		ventana.setLocationRelativeTo(null);
+		ventana.setResizable(false);
+
+		JPanel contenedor = new JPanel();
+		contenedor.setLayout( new BoxLayout(contenedor, BoxLayout.Y_AXIS) );
+		contenedor.setBorder( new EmptyBorder(15,15,15,15) );
+
+        GridBagLayout gbl = new GridBagLayout();
+        contenedor.setLayout(gbl);
+
+        GridBagConstraints gcon = new GridBagConstraints();
+        gcon.weightx = 1;
+        gcon.weighty = 1;
+        gcon.fill = GridBagConstraints.BOTH;
+
+        JLabel cantidad = new JLabel("CANTIDAD: ");
+        gcon.gridy = 0;
+        gcon.gridx = 0;
+        gcon.gridwidth = 1;
+        gcon.weightx = 15;
+        gcon.weighty = 5;
+        gbl.setConstraints(cantidad, gcon);
+
+		JTextField campo_moneda = new JTextField();
+        gcon.insets = new Insets(5, 0, 5, 15);
+        gcon.gridy = 0;
+        gcon.gridx = 1;
+        gcon.gridwidth = 1;
+        gcon.weightx = 70;
+        gcon.weighty = 5;
+        gbl.setConstraints(campo_moneda, gcon);
+
+        JButton ejecutar = new JButton("EJECUTAR");
+        gcon.insets = new Insets(5, 5, 5, 5);
+        gcon.gridy = 0;
+        gcon.gridx = 2;
+        gcon.gridwidth = 1;
+        gcon.weightx = 15;
+        gcon.weighty = 5;
+        gbl.setConstraints(ejecutar, gcon);
+
+		JLabel etq_texto = new JLabel(" ------------------- ");
+        gcon.gridx = 0;
+        gcon.gridy = 1;
+        gcon.gridwidth = 3;
+        gcon.weightx = 100;
+        gcon.weighty = 95;
+        gcon.fill = GridBagConstraints.CENTER;
+        etq_texto.setFont(new Font("Arial", Font.BOLD, 18));
+        gbl.setConstraints(etq_texto, gcon);
+        
+        contenedor.add(cantidad);
+        contenedor.add(campo_moneda);
+        contenedor.add(ejecutar);
+        contenedor.add(etq_texto);
+
+        ventana.add(contenedor);
+		ventana.setVisible(true);
+		
+	}
+}
