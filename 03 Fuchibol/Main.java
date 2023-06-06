@@ -36,7 +36,6 @@ public class Main {
                 for (int i=0;i<regisJugador.length;i++){
                     if(regisJugador[i] != null  && regisJugador[i].getDocumento() == documento){
                         valid = false;
-                        //System.out.println(valid);
                     }
                 }
                 if(valid){
