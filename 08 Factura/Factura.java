@@ -1,18 +1,13 @@
 import javax.swing.*;
 import javax.swing.border.*;
-import javax.swing.plaf.basic.BasicBorders;
-import javax.swing.text.AbstractDocument.Content;
-
-import java.util.Locale;
 import java.awt.*;
-import java.awt.event.*;
 
 public class Factura{
 	public static void main(String[] args) {
 
         JFrame ventana = new JFrame();
 		ventana.setTitle("Formato Moneda");
-		ventana.setSize(500, 750);
+		ventana.setSize(700, 970);
 		ventana.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		ventana.setLocationRelativeTo(null);
 		ventana.setResizable(false);
@@ -49,7 +44,7 @@ public class Factura{
         gbl.setConstraints(cedula_cliente, gcon);
 
 		JTextField campo_cedula_cliente = new JTextField();
-        gcon.insets = new Insets(0, 0, 5, 5);
+        gcon.insets = new Insets(5, 0, 5, 5);
 		campo_cedula_cliente.setBorder( new EmptyBorder(1,1,1,1) );
         gcon.gridy = 1;
         gcon.gridx = 1;
@@ -177,34 +172,87 @@ public class Factura{
         gcon.gridy = 8;
         gcon.gridx = 0;
         gcon.gridwidth = 1;
-        gcon.weightx = 25;
+        gcon.weightx = 15;
         gcon.weighty = 5;
+        id.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(id, gcon);
 
 		JLabel nombre = new JLabel("NOMBRE");
         gcon.gridy = 8;
         gcon.gridx = 1;
         gcon.gridwidth = 1;
-        gcon.weightx = 25;
+        gcon.weightx = 55;
         gcon.weighty = 5;
+        nombre.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(nombre, gcon);
 
         JLabel cantidad = new JLabel("CANTIDAD");
         gcon.gridy = 8;
         gcon.gridx = 2;
         gcon.gridwidth = 1;
-        gcon.weightx = 25;
+        gcon.weightx = 15;
         gcon.weighty = 5;
+        cantidad.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(cantidad, gcon);
 
         JLabel espacio = new JLabel("");
         gcon.gridy = 8;
         gcon.gridx = 3;
         gcon.gridwidth = 1;
-        gcon.weightx = 25;
+        gcon.weightx = 15;
         gcon.weighty = 5;
         gbl.setConstraints(espacio, gcon);
 
+        //------------------DECIMA FILA
+        JTextField campo_id = new JTextField();
+        gcon.insets = new Insets(5, 0, 5, 5);
+		campo_id.setBorder( new EmptyBorder(1,0,1,0) );
+        gcon.gridy = 9;
+        gcon.gridx = 0;
+        gcon.gridwidth = 1;
+        gcon.weightx = 15;
+        gcon.weighty = 5;
+        gbl.setConstraints(campo_id, gcon);
+
+        JTextField campo_nombre = new JTextField();
+        gcon.insets = new Insets(5, 0, 5, 5);
+		campo_nombre.setBorder( new EmptyBorder(1,0,1,0) );
+        gcon.gridy = 9;
+        gcon.gridx = 1;
+        gcon.gridwidth = 1;
+        gcon.weightx = 55;
+        gcon.weighty = 5;
+        gbl.setConstraints(campo_nombre, gcon);
+
+        JTextField campo_cantidad = new JTextField();
+        gcon.insets = new Insets(5, 0, 5, 5);
+		campo_cantidad.setBorder( new EmptyBorder(1,0,1,0) );
+        gcon.gridy = 9;
+        gcon.gridx = 2;
+        gcon.gridwidth = 1;
+        gcon.weightx = 15;
+        gcon.weighty = 5;
+        gbl.setConstraints(campo_cantidad, gcon);
+
+        JButton agregar = new JButton("AGREGAR");
+        gcon.insets = new Insets(5, 5, 5, 5);
+        gcon.gridy = 9;
+        gcon.gridx = 3;
+        gcon.gridwidth = 1;
+        gcon.weightx = 15;
+        gcon.weighty = 5;
+        gbl.setConstraints(agregar, gcon);
+
+        //------------------DECIMOPRIMERA FILA
+        JTextField campote = new JTextField();
+        gcon.insets = new Insets(5, 0, 5, 5);
+		campote.setBorder( new EmptyBorder(1,0,1,0) );
+        gcon.gridy = 10;
+        gcon.gridx = 0;
+        gcon.gridwidth = 4;
+        gcon.weightx = 100;
+        gcon.weighty = 150;
+        gbl.setConstraints(campote, gcon);
 
 
         //------------------PRIMERA FILA
@@ -235,10 +283,13 @@ public class Factura{
         contenedor.add(nombre);
         contenedor.add(cantidad);
         contenedor.add(espacio);
-
-
-
-
+        //------------------NOVENA FILA
+        contenedor.add(campo_id);
+        contenedor.add(campo_nombre);
+        contenedor.add(campo_cantidad);
+        contenedor.add(agregar);
+        //------------------DECIMOPRIMERA FILA
+        contenedor.add(campote);
 
 
 
