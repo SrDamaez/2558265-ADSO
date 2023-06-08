@@ -205,33 +205,36 @@ public class Factura{
 
         //------------------DECIMA FILA
         JTextField campo_id = new JTextField();
-        gcon.insets = new Insets(5, 0, 5, 5);
+        gcon.insets = new Insets(5, 0, 5, 0);
 		campo_id.setBorder( new EmptyBorder(1,0,1,0) );
         gcon.gridy = 9;
         gcon.gridx = 0;
         gcon.gridwidth = 1;
         gcon.weightx = 15;
         gcon.weighty = 5;
+        campo_id.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(campo_id, gcon);
 
         JTextField campo_nombre = new JTextField();
-        gcon.insets = new Insets(5, 0, 5, 5);
+        gcon.insets = new Insets(5, 0, 5, 0);
 		campo_nombre.setBorder( new EmptyBorder(1,0,1,0) );
         gcon.gridy = 9;
         gcon.gridx = 1;
         gcon.gridwidth = 1;
         gcon.weightx = 55;
         gcon.weighty = 5;
+        campo_nombre.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(campo_nombre, gcon);
 
         JTextField campo_cantidad = new JTextField();
-        gcon.insets = new Insets(5, 0, 5, 5);
+        gcon.insets = new Insets(5, 0, 5, 0);
 		campo_cantidad.setBorder( new EmptyBorder(1,0,1,0) );
         gcon.gridy = 9;
         gcon.gridx = 2;
         gcon.gridwidth = 1;
         gcon.weightx = 15;
         gcon.weighty = 5;
+        campo_cantidad.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(campo_cantidad, gcon);
 
         JButton agregar = new JButton("AGREGAR");
