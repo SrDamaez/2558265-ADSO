@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.ActionListener;
 
 public class Factura extends JFrame{
 
@@ -87,6 +89,8 @@ public class Factura extends JFrame{
         gbl.setConstraints(nombres_cliente, gcon);
 
 		campo_nombres_cliente = new JTextField();
+        campo_nombres_cliente.setEnabled(false);
+        campo_nombres_cliente.setOpaque(false);
         gcon.insets = new Insets(5, 0, 5, 5);
 		campo_nombres_cliente.setBorder( new EmptyBorder(1,1,1,1) );
         gcon.gridy = 2;
@@ -106,6 +110,8 @@ public class Factura extends JFrame{
         gbl.setConstraints(direccion, gcon);
 
 		campo_direccion = new JTextField();
+        campo_direccion.setEnabled(false);
+        campo_direccion.setOpaque(false);
         gcon.insets = new Insets(5, 0, 5, 5);
 		campo_direccion.setBorder( new EmptyBorder(1,1,1,1) );
         gcon.gridy = 3;
@@ -163,6 +169,8 @@ public class Factura extends JFrame{
         gbl.setConstraints(nombres_vendedor, gcon);
 
 		campo_nombres_vendedor = new JTextField();
+        campo_nombres_vendedor.setEnabled(false);
+        campo_nombres_vendedor.setOpaque(false);
         gcon.insets = new Insets(5, 0, 5, 5);
 		campo_nombres_vendedor.setBorder( new EmptyBorder(1,1,1,1) );
         gcon.gridy = 6;
@@ -220,8 +228,9 @@ public class Factura extends JFrame{
 
         //------------------DECIMA FILA
         campo_id = new JTextField();
+        campo_id.setEnabled(false);
+        campo_id.setOpaque(false);
         gcon.insets = new Insets(5, 0, 5, 0);
-		campo_id.setBorder( new EmptyBorder(1,0,1,0) );
         gcon.gridy = 9;
         gcon.gridx = 0;
         gcon.gridwidth = 1;
@@ -231,8 +240,9 @@ public class Factura extends JFrame{
         gbl.setConstraints(campo_id, gcon);
 
         campo_nombre = new JTextField();
+        campo_nombre.setEnabled(false);
+        campo_nombre.setOpaque(false);
         gcon.insets = new Insets(5, 0, 5, 0);
-		campo_nombre.setBorder( new EmptyBorder(1,0,1,0) );
         gcon.gridy = 9;
         gcon.gridx = 1;
         gcon.gridwidth = 1;
@@ -242,8 +252,9 @@ public class Factura extends JFrame{
         gbl.setConstraints(campo_nombre, gcon);
 
         campo_cantidad = new JTextField();
+        campo_cantidad.setEnabled(false);
+        campo_cantidad.setOpaque(false);
         gcon.insets = new Insets(5, 0, 5, 0);
-		campo_cantidad.setBorder( new EmptyBorder(1,0,1,0) );
         gcon.gridy = 9;
         gcon.gridx = 2;
         gcon.gridwidth = 1;
@@ -312,27 +323,133 @@ public class Factura extends JFrame{
 
         add(contenedor);
 		setVisible(true);
+
+        ActionListener buscarCliente = new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                buscarCliente();
+            }
+        };
+        buscar_cliente.addActionListener(buscarCliente);
+
+        campo_cedula_cliente.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e){
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    buscarCliente();
+                    System.out.println("Viva el perico");
+                }
+            }
+        });
+
+        ActionListener buscarVendedor = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                buscarVendedor();
+            }
+        };
+        buscar_vendedor.addActionListener(buscarVendedor);
+
+        campo_cedula_vendedor.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e){
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    buscarVendedor();
+                }
+            }
+        });
+
+        campo_cedula_vendedor.addKeyListener(new KeyListener() {
+            public void keyPressed(KeyEvent e){
+            }
+            public void keyReleased(KeyEvent e){
+                deshabilitarInputs();
+            }
+            public void keyTyped(KeyEvent e){
+            }
+        });
+
+        KeyListener eventoKey = new KeyListener(){
+            public void keyPressed(KeyEvent e){
+            }
+            public void keyReleased(KeyEvent e){
+                buscarProducto();
+            }
+            public void keyTyped(KeyEvent e){
+            }
+        };
+        id.addKeyListener(eventoKey);
+
     }
 
     public void deshabilitarInputs(){
-        id.setEnabled(false);
-        id.setOpaque(false);
-        id.setText("");
-        cantidad.setEnabled(false);
-        cantidad.setOpaque(false);
-        cantidad.setText("");
+        campo_id.setEnabled(false);
+        campo_id.setOpaque(false);
+        campo_id.setText("");
+        campo_cantidad.setEnabled(false);
+        campo_cantidad.setOpaque(false);
+        campo_cantidad.setText("");
         campo_nombres_vendedor.setText(null);
-        nombre.setText("");
+        campo_nombre.setText("");
     }
 
     public void habilitarInputs(){
-        id.setEnabled(true);
-        id.setOpaque(true);
-        id.setText("");
-        id.requestFocus();
-        cantidad.setEnabled(true);
-        cantidad.setOpaque(true);
-        cantidad.setText("");
-        nombre.setText("");
+        campo_id.setEnabled(true);
+        campo_id.setOpaque(true);
+        campo_id.setText("");
+        campo_id.requestFocus();
+        campo_cantidad.setEnabled(true);
+        campo_cantidad.setOpaque(true);
+        campo_cantidad.setText("");
+        campo_nombre.setText("");
+    }
+
+    public void buscarCliente(){
+        int documento = Integer.parseInt(campo_cedula_cliente.getText());
+        int auxpersona=0;
+        boolean existec = false;
+        for (int i = 0; i < clientes.length; i++) {
+            if (clientes[i] != null && clientes[i].getDocumento() == documento) {
+                auxpersona = i;
+                existec = true;
+                this.campo_nombres_cliente.setText(clientes[i].getNombres());
+                this.campo_direccion.setText(clientes[i].getDireccion());
+                this.campo_cedula_vendedor.requestFocus();
+                break;
+            }
+        }
+    }
+
+    public void buscarVendedor(){
+        System.out.println("si me llamo");
+        int documento = Integer.parseInt(campo_cedula_vendedor.getText());
+        int auxpersona=0;
+        boolean existec = false;
+        for (int i = 0; i < vendedores.length; i++) {
+            if (vendedores[i] != null && vendedores[i].getDocumento() == documento) {
+                auxpersona = i;
+                existec = true;
+                this.campo_nombres_vendedor.setText(vendedores[i].getNombres());      
+                break;
+            }
+        }
+        if(existec){
+            habilitarInputs();
+        }else{
+            deshabilitarInputs();
+        }
+    }
+
+    public void buscarProducto(){
+        int id_2 = Integer.parseInt(id.getText());
+        boolean existec = false;
+        for (int i = 0; i < productos.length; i++) {
+            if (productos[i] != null && productos[i].getId() == id_2) {
+                existec = true;
+                nombre.setText(productos[i].getNombre());
+                id.setEnabled(true);
+                cantidad.requestFocus();
+                break;
+            }
+        }
+        if(!existec){
+            nombre.setText(null);
+        }
     }
 }
