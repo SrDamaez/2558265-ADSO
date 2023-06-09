@@ -308,7 +308,7 @@ public class Factura extends JFrame{
         contenedor.add(agregar);
         //------------------DECIMOPRIMERA FILA
         contenedor.add(campote);
-        
+
 
         add(contenedor);
 		setVisible(true);
@@ -316,22 +316,22 @@ public class Factura extends JFrame{
 
     public void deshabilitarInputs(){
         id.setEnabled(false);
-        cantidad.setEnabled(false);
         id.setOpaque(false);
-        cantidad.setOpaque(false);
-        campo_nombres_vendedor.setText(null);
         id.setText("");
+        cantidad.setEnabled(false);
+        cantidad.setOpaque(false);
         cantidad.setText("");
+        campo_nombres_vendedor.setText(null);
         nombre.setText("");
     }
 
     public void habilitarInputs(){
         id.setEnabled(true);
-        cantidad.setEnabled(true);
         id.setOpaque(true);
-        cantidad.setOpaque(true);
         id.setText("");
         id.requestFocus();
+        cantidad.setEnabled(true);
+        cantidad.setOpaque(true);
         cantidad.setText("");
         nombre.setText("");
     }
