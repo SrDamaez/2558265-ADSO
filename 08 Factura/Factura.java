@@ -335,7 +335,6 @@ public class Factura extends JFrame{
             public void keyPressed(KeyEvent e){
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     buscarCliente();
-                    System.out.println("Viva el perico");
                 }
             }
         });
@@ -374,7 +373,7 @@ public class Factura extends JFrame{
             public void keyTyped(KeyEvent e){
             }
         };
-        id.addKeyListener(eventoKey);
+        campo_id.addKeyListener(eventoKey);
 
     }
 
@@ -417,7 +416,6 @@ public class Factura extends JFrame{
     }
 
     public void buscarVendedor(){
-        System.out.println("si me llamo");
         int documento = Integer.parseInt(campo_cedula_vendedor.getText());
         int auxpersona=0;
         boolean existec = false;
@@ -437,19 +435,19 @@ public class Factura extends JFrame{
     }
 
     public void buscarProducto(){
-        int id_2 = Integer.parseInt(id.getText());
+        int id_2 = Integer.parseInt(campo_id.getText());
         boolean existec = false;
         for (int i = 0; i < productos.length; i++) {
             if (productos[i] != null && productos[i].getId() == id_2) {
                 existec = true;
-                nombre.setText(productos[i].getNombre());
-                id.setEnabled(true);
-                cantidad.requestFocus();
+                campo_nombre.setText(productos[i].getNombre());
+                campo_id.setEnabled(true);
+                campo_cantidad.requestFocus();
                 break;
             }
         }
         if(!existec){
-            nombre.setText(null);
+            campo_nombre.setText(null);
         }
     }
 }
