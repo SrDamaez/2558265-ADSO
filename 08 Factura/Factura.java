@@ -2,17 +2,32 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 
-public class Factura{
-	public static void main(String[] args) {
+public class Factura extends JFrame{
 
-        JFrame ventana = new JFrame();
-		ventana.setTitle("Formato Moneda");
-		ventana.setSize(700, 970);
-		ventana.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		ventana.setLocationRelativeTo(null);
-		ventana.setResizable(false);
+    Persona clientes[];
+    Persona vendedores[];
+    Productos productos[];
+    JPanel contenedor;
+    JTextField campo_cedula_cliente, campo_nombres_cliente, campo_direccion, campo_cedula_vendedor, campo_nombres_vendedor, campo_id, campo_nombre, campo_cantidad, campote;
+    JLabel txt_datoscliente, cedula_cliente, nombres_cliente, direccion, txt_datosvendedor, cedula_vendedor, nombres_vendedor, txt_lista_pro_fac, id, nombre, cantidad, espacio;
+    JButton buscar_cliente, buscar_vendedor, agregar;
 
-        JPanel contenedor = new JPanel();
+    public Factura( Persona clientes[], Persona vendedores[], Productos productos[] ){
+        this.clientes = clientes;
+        this.vendedores = vendedores;
+        this.productos = productos;
+        componentes();
+    }
+
+	public void componentes() {
+
+        setTitle("Formato Moneda");
+		setSize(700, 970);
+		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		setLocationRelativeTo(null);
+		setResizable(false);
+
+        contenedor = new JPanel();
 		contenedor.setLayout( new BoxLayout(contenedor, BoxLayout.Y_AXIS) );
 		contenedor.setBorder( new EmptyBorder(15,15,15,15) );
 
@@ -25,7 +40,7 @@ public class Factura{
         gcon.fill = GridBagConstraints.BOTH;
 
         //------------------PRIMERA FILA
-        JLabel txt_datoscliente = new JLabel("DATOS CLIENTE: ");
+        txt_datoscliente = new JLabel("DATOS CLIENTE: ");
         gcon.gridy = 0;
         gcon.gridx = 0;
         gcon.gridwidth = 4;
@@ -35,7 +50,7 @@ public class Factura{
         gbl.setConstraints(txt_datoscliente, gcon);
 
         //------------------SEGUNDA FILA
-        JLabel cedula_cliente = new JLabel("CEDULA: ");
+        cedula_cliente = new JLabel("CEDULA: ");
         gcon.gridy = 1;
         gcon.gridx = 0;
         gcon.gridwidth = 1;
@@ -43,7 +58,7 @@ public class Factura{
         gcon.weighty = 5;
         gbl.setConstraints(cedula_cliente, gcon);
 
-		JTextField campo_cedula_cliente = new JTextField();
+		campo_cedula_cliente = new JTextField();
         gcon.insets = new Insets(5, 0, 5, 5);
 		campo_cedula_cliente.setBorder( new EmptyBorder(1,1,1,1) );
         gcon.gridy = 1;
@@ -53,7 +68,7 @@ public class Factura{
         gcon.weighty = 5;
         gbl.setConstraints(campo_cedula_cliente, gcon);
 
-        JButton buscar_cliente = new JButton("BUSCAR");
+        buscar_cliente = new JButton("BUSCAR");
         gcon.insets = new Insets(5, 5, 5, 5);
         gcon.gridy = 1;
         gcon.gridx = 3;
@@ -63,7 +78,7 @@ public class Factura{
         gbl.setConstraints(buscar_cliente, gcon);
 
         //------------------TERCERA FILA
-        JLabel nombres_cliente = new JLabel("NOMBRES: ");
+        nombres_cliente = new JLabel("NOMBRES: ");
         gcon.gridy = 2;
         gcon.gridx = 0;
         gcon.gridwidth = 1;
@@ -71,7 +86,7 @@ public class Factura{
         gcon.weighty = 5;
         gbl.setConstraints(nombres_cliente, gcon);
 
-		JTextField campo_nombres_cliente = new JTextField();
+		campo_nombres_cliente = new JTextField();
         gcon.insets = new Insets(5, 0, 5, 5);
 		campo_nombres_cliente.setBorder( new EmptyBorder(1,1,1,1) );
         gcon.gridy = 2;
@@ -82,7 +97,7 @@ public class Factura{
         gbl.setConstraints(campo_nombres_cliente, gcon);
 
         //------------------CUARTA FILA
-        JLabel direccion = new JLabel("DIRECCION: ");
+        direccion = new JLabel("DIRECCION: ");
         gcon.gridy = 3;
         gcon.gridx = 0;
         gcon.gridwidth = 1;
@@ -90,7 +105,7 @@ public class Factura{
         gcon.weighty = 5;
         gbl.setConstraints(direccion, gcon);
 
-		JTextField campo_direccion = new JTextField();
+		campo_direccion = new JTextField();
         gcon.insets = new Insets(5, 0, 5, 5);
 		campo_direccion.setBorder( new EmptyBorder(1,1,1,1) );
         gcon.gridy = 3;
@@ -101,7 +116,7 @@ public class Factura{
         gbl.setConstraints(campo_direccion, gcon);
 
         //------------------QUINTA FILA
-        JLabel txt_datosvendedor = new JLabel("DATOS VENDEDOR: ");
+        txt_datosvendedor = new JLabel("DATOS VENDEDOR: ");
         gcon.gridy = 4;
         gcon.gridx = 0;
         gcon.gridwidth = 4;
@@ -111,7 +126,7 @@ public class Factura{
         gbl.setConstraints(txt_datosvendedor, gcon);
 
         //------------------SEXTA FILA
-        JLabel cedula_vendedor = new JLabel("CEDULA: ");
+        cedula_vendedor = new JLabel("CEDULA: ");
         gcon.gridy = 5;
         gcon.gridx = 0;
         gcon.gridwidth = 1;
@@ -119,7 +134,7 @@ public class Factura{
         gcon.weighty = 5;
         gbl.setConstraints(cedula_vendedor, gcon);
 
-		JTextField campo_cedula_vendedor = new JTextField();
+		campo_cedula_vendedor = new JTextField();
         gcon.insets = new Insets(5, 0, 5, 5);
 		campo_cedula_vendedor.setBorder( new EmptyBorder(1,1,1,1) );
         gcon.gridy = 5;
@@ -129,7 +144,7 @@ public class Factura{
         gcon.weighty = 5;
         gbl.setConstraints(campo_cedula_vendedor, gcon);
 
-        JButton buscar_vendedor = new JButton("BUSCAR");
+        buscar_vendedor = new JButton("BUSCAR");
         gcon.insets = new Insets(5, 5, 5, 5);
         gcon.gridy = 5;
         gcon.gridx = 3;
@@ -139,7 +154,7 @@ public class Factura{
         gbl.setConstraints(buscar_vendedor, gcon);
 
         //------------------SEPTIMA FILA
-        JLabel nombres_vendedor = new JLabel("NOMBRES: ");
+        nombres_vendedor = new JLabel("NOMBRES: ");
         gcon.gridy = 6;
         gcon.gridx = 0;
         gcon.gridwidth = 1;
@@ -147,7 +162,7 @@ public class Factura{
         gcon.weighty = 5;
         gbl.setConstraints(nombres_vendedor, gcon);
 
-		JTextField campo_nombres_vendedor = new JTextField();
+		campo_nombres_vendedor = new JTextField();
         gcon.insets = new Insets(5, 0, 5, 5);
 		campo_nombres_vendedor.setBorder( new EmptyBorder(1,1,1,1) );
         gcon.gridy = 6;
@@ -158,7 +173,7 @@ public class Factura{
         gbl.setConstraints(campo_nombres_vendedor, gcon);
 
         //------------------OCTAVA FILA
-        JLabel txt_lista_pro_fac = new JLabel("LISTA PRODUCTOS FACTURADOS: ");
+        txt_lista_pro_fac = new JLabel("LISTA PRODUCTOS FACTURADOS: ");
         gcon.gridy = 7;
         gcon.gridx = 0;
         gcon.gridwidth = 4;
@@ -168,7 +183,7 @@ public class Factura{
         gbl.setConstraints(txt_lista_pro_fac, gcon);
 
         //------------------NOVENA FILA
-        JLabel id = new JLabel("ID");
+        id = new JLabel("ID");
         gcon.gridy = 8;
         gcon.gridx = 0;
         gcon.gridwidth = 1;
@@ -177,7 +192,7 @@ public class Factura{
         id.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(id, gcon);
 
-		JLabel nombre = new JLabel("NOMBRE");
+		nombre = new JLabel("NOMBRE");
         gcon.gridy = 8;
         gcon.gridx = 1;
         gcon.gridwidth = 1;
@@ -186,7 +201,7 @@ public class Factura{
         nombre.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(nombre, gcon);
 
-        JLabel cantidad = new JLabel("CANTIDAD");
+        cantidad = new JLabel("CANTIDAD");
         gcon.gridy = 8;
         gcon.gridx = 2;
         gcon.gridwidth = 1;
@@ -195,7 +210,7 @@ public class Factura{
         cantidad.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(cantidad, gcon);
 
-        JLabel espacio = new JLabel("");
+        espacio = new JLabel("");
         gcon.gridy = 8;
         gcon.gridx = 3;
         gcon.gridwidth = 1;
@@ -204,7 +219,7 @@ public class Factura{
         gbl.setConstraints(espacio, gcon);
 
         //------------------DECIMA FILA
-        JTextField campo_id = new JTextField();
+        campo_id = new JTextField();
         gcon.insets = new Insets(5, 0, 5, 0);
 		campo_id.setBorder( new EmptyBorder(1,0,1,0) );
         gcon.gridy = 9;
@@ -215,7 +230,7 @@ public class Factura{
         campo_id.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(campo_id, gcon);
 
-        JTextField campo_nombre = new JTextField();
+        campo_nombre = new JTextField();
         gcon.insets = new Insets(5, 0, 5, 0);
 		campo_nombre.setBorder( new EmptyBorder(1,0,1,0) );
         gcon.gridy = 9;
@@ -226,7 +241,7 @@ public class Factura{
         campo_nombre.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(campo_nombre, gcon);
 
-        JTextField campo_cantidad = new JTextField();
+        campo_cantidad = new JTextField();
         gcon.insets = new Insets(5, 0, 5, 0);
 		campo_cantidad.setBorder( new EmptyBorder(1,0,1,0) );
         gcon.gridy = 9;
@@ -237,7 +252,7 @@ public class Factura{
         campo_cantidad.setHorizontalAlignment(SwingConstants.CENTER);
         gbl.setConstraints(campo_cantidad, gcon);
 
-        JButton agregar = new JButton("AGREGAR");
+        agregar = new JButton("AGREGAR");
         gcon.insets = new Insets(5, 5, 5, 5);
         gcon.gridy = 9;
         gcon.gridx = 3;
@@ -247,7 +262,7 @@ public class Factura{
         gbl.setConstraints(agregar, gcon);
 
         //------------------DECIMOPRIMERA FILA
-        JTextField campote = new JTextField();
+        campote = new JTextField();
         gcon.insets = new Insets(5, 0, 5, 5);
 		campote.setBorder( new EmptyBorder(1,0,1,0) );
         gcon.gridy = 10;
@@ -293,11 +308,31 @@ public class Factura{
         contenedor.add(agregar);
         //------------------DECIMOPRIMERA FILA
         contenedor.add(campote);
+        
 
+        add(contenedor);
+		setVisible(true);
+    }
 
+    public void deshabilitarInputs(){
+        id.setEnabled(false);
+        cantidad.setEnabled(false);
+        id.setOpaque(false);
+        cantidad.setOpaque(false);
+        campo_nombres_vendedor.setText(null);
+        id.setText("");
+        cantidad.setText("");
+        nombre.setText("");
+    }
 
-
-        ventana.add(contenedor);
-		ventana.setVisible(true);
+    public void habilitarInputs(){
+        id.setEnabled(true);
+        cantidad.setEnabled(true);
+        id.setOpaque(true);
+        cantidad.setOpaque(true);
+        id.setText("");
+        id.requestFocus();
+        cantidad.setText("");
+        nombre.setText("");
     }
 }
