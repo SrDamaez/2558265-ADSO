@@ -10,7 +10,7 @@ public class Factura extends JFrame{
     Persona vendedores[];
     Productos productos[];
     JPanel contenedor;
-    JTextField campo_cedula_cliente, campo_nombres_cliente, campo_direccion, campo_cedula_vendedor, campo_nombres_vendedor, campo_id, campo_nombre, campo_cantidad, campote;
+    JTextField campo_cedula_cliente, campo_nombres_cliente, campo_direccion, campo_cedula_vendedor, campo_nombres_vendedor, campo_id, campo_nombre, campo_cantidad, campote, campote_2;
     JLabel txt_datoscliente, cedula_cliente, nombres_cliente, direccion, txt_datosvendedor, cedula_vendedor, nombres_vendedor, txt_lista_pro_fac, id, nombre, cantidad, espacio;
     JButton buscar_cliente, buscar_vendedor, agregar;
 
@@ -274,7 +274,7 @@ public class Factura extends JFrame{
 
         //------------------DECIMOPRIMERA FILA
         campote = new JTextField();
-        gcon.insets = new Insets(5, 0, 5, 5);
+        gcon.insets = new Insets(5, 0, 0, 5);
 		campote.setBorder( new EmptyBorder(1,0,1,0) );
         gcon.gridy = 10;
         gcon.gridx = 0;
@@ -283,6 +283,20 @@ public class Factura extends JFrame{
         gcon.weighty = 150;
         gbl.setConstraints(campote, gcon);
 
+        campote_2 = new JTextField("Total: $    ");
+        campote_2.setHorizontalAlignment(SwingConstants.RIGHT);
+        gcon.insets = new Insets(0, 0, 5, 5);
+		campote_2.setBorder( new EmptyBorder(1,0,1,0) );
+        gcon.gridy = 11;
+        gcon.gridx = 0;
+        gcon.gridwidth = 4;
+        gcon.weightx = 100;
+        gcon.weighty = 10;
+        gbl.setConstraints(campote_2, gcon);
+
+        Font font = campote_2.getFont();
+        Font newFont = font.deriveFont(font.getSize() + 5f).deriveFont(Font.BOLD);
+        campote_2.setFont(newFont);
 
         //------------------PRIMERA FILA
         contenedor.add(txt_datoscliente);
@@ -319,6 +333,7 @@ public class Factura extends JFrame{
         contenedor.add(agregar);
         //------------------DECIMOPRIMERA FILA
         contenedor.add(campote);
+        contenedor.add(campote_2);
 
 
         add(contenedor);
