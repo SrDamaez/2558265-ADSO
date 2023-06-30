@@ -183,8 +183,6 @@ public class BuscaMinas extends JFrame {
                         } else {
                             int bombasAlrededor = contarBombasAlrededor(fila, columna);
                             boton.setText(String.valueOf(bombasAlrededor));
-                            System.out.println("El botón en la posición [" + fila + "][" + columna + "] tiene " + bombasAlrededor + " bombas alrededor.");
-
                             if (bombasAlrededor == 0) {
                                 mostrarEspaciosCercanos(fila, columna);
                             }
