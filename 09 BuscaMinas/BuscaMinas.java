@@ -15,6 +15,7 @@ public class BuscaMinas extends JFrame {
     private static final int BOMBAS = 20;
 
     private boolean[][] bombas;
+    private boolean[][] mostrados;
 
     public BuscaMinas() {
         componentes();
@@ -101,6 +102,7 @@ public class BuscaMinas extends JFrame {
         gbl.setConstraints(f2_campo, gcon);
 
         botones = new JButton[FILAS][COLUMNAS];
+        mostrados = new boolean[FILAS][COLUMNAS];
         for (int i = 0; i < FILAS; i++) {
             for (int j = 0; j < COLUMNAS; j++) {
                 JButton boton = new JButton();
@@ -141,7 +143,7 @@ public class BuscaMinas extends JFrame {
         for (int i = 0; i < FILAS; i++) {
             for (int j = 0; j < COLUMNAS; j++) {
                 if (bombas[i][j]) {
-                    System.out.print("9 ");
+                    System.out.print("X ");
                 } else {
                     System.out.print(contarBombasAlrededor(i, j) + " ");
                 }
@@ -171,14 +173,56 @@ public class BuscaMinas extends JFrame {
                 boton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        boton.setEnabled(false);
+                        mostrados[fila][columna] = true;
+
                         if (bombas[fila][columna]) {
+                            mostrarTableroCompleto();
+                            f1_imagen.setText("D:");
                             System.out.println("¡Has perdido! Has encontrado una bomba en la posición [" + fila + "][" + columna + "]");
                         } else {
                             int bombasAlrededor = contarBombasAlrededor(fila, columna);
+                            boton.setText(String.valueOf(bombasAlrededor));
                             System.out.println("El botón en la posición [" + fila + "][" + columna + "] tiene " + bombasAlrededor + " bombas alrededor.");
+
+                            if (bombasAlrededor == 0) {
+                                mostrarEspaciosCercanos(fila, columna);
+                            }
                         }
                     }
                 });
+            }
+        }
+    }
+
+    private void mostrarTableroCompleto() {
+        for (int i = 0; i < FILAS; i++) {
+            for (int j = 0; j < COLUMNAS; j++) {
+                if (bombas[i][j]) {
+                    botones[i][j].setText("X");
+                } else {
+                    int bombasAlrededor = contarBombasAlrededor(i, j);
+                    botones[i][j].setText(String.valueOf(bombasAlrededor));
+                }
+                botones[i][j].setEnabled(false);
+            }
+        }
+    }
+
+    private void mostrarEspaciosCercanos(int fila, int columna) {
+        for (int i = fila - 1; i <= fila + 1; i++) {
+            for (int j = columna - 1; j <= columna + 1; j++) {
+                if (i >= 0 && i < FILAS && j >= 0 && j < COLUMNAS && !mostrados[i][j]) {
+                    mostrados[i][j] = true;
+
+                    int bombasAlrededor = contarBombasAlrededor(i, j);
+                    botones[i][j].setText(String.valueOf(bombasAlrededor));
+                    botones[i][j].setEnabled(false);
+
+                    if (bombasAlrededor == 0) {
+                        mostrarEspaciosCercanos(i, j);
+                    }
+                }
             }
         }
     }
