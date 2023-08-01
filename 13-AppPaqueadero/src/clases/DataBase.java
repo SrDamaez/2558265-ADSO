@@ -45,6 +45,35 @@ public class DataBase {
         return respuesta;        
     }
     
+    
+    public boolean actualizarPersona(String cedula, String nombres, String apellidos, String telefono, String direccion, String email) {
+        boolean respuesta = false;
+        try {
+            String consulta = "UPDATE personas SET nombres = '" + nombres + "', apellidos = '" + apellidos + "', telefono = '" + telefono + "', direccion = '" + direccion + "', email = '" + email + "' WHERE cedula = '" + cedula + "'";
+            int resultado = this.manipularDB.executeUpdate(consulta);
+            respuesta = (resultado == 1);
+        } catch (SQLException ex) {
+            System.out.print("Error al actualizar persona: " + ex.getMessage());
+        }
+    return respuesta;
+    }
+
+    public ResultSet buscarPersonaPorCedula(int cedula) {
+        ResultSet persona = null;
+        try {
+            String consulta = "SELECT * FROM personas WHERE cedula = " + cedula + "";
+            persona = this.manipularDB.executeQuery(consulta);
+            if (persona.next()){
+                return persona;
+            }else{
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.print("Error al buscar persona: " + ex.getMessage());
+        }
+        return persona;
+    }
+    
     public ResultSet listaPersonas(){
         
         ResultSet listado = null;

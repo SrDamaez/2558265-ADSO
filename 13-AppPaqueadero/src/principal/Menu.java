@@ -62,6 +62,11 @@ public class Menu extends javax.swing.JFrame {
         btn_editar.setForeground(new java.awt.Color(255, 255, 255));
         btn_editar.setText("EDITAR");
         btn_editar.setFocusable(false);
+        btn_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarActionPerformed(evt);
+            }
+        });
 
         btn_eliminar.setBackground(new java.awt.Color(0, 51, 255));
         btn_eliminar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -171,7 +176,7 @@ public class Menu extends javax.swing.JFrame {
         repaint();
         revalidate();
     }//GEN-LAST:event_btn_listarActionPerformed
-
+   
     private void btn_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearActionPerformed
         contentPrincipal.removeAll();
         
@@ -182,6 +187,17 @@ public class Menu extends javax.swing.JFrame {
         repaint();
         revalidate();
     }//GEN-LAST:event_btn_crearActionPerformed
+
+    private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
+        contentPrincipal.removeAll();
+        
+        PanelEditar contentTemporal = new PanelEditar(basedatos);
+        contentTemporal.setSize(contentPrincipal.getSize() );
+        contentPrincipal.add( contentTemporal );
+        
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_btn_editarActionPerformed
 
     public void initComponentAltern(){
         setVisible(true);
