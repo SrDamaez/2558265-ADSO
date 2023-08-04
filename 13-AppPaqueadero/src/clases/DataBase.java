@@ -57,6 +57,19 @@ public class DataBase {
         }
     return respuesta;
     }
+    
+    public boolean eliminarPersona(String cedula) {
+    boolean respuesta = false;
+    try {
+        String consulta = "DELETE FROM personas WHERE cedula = '" + cedula + "'";
+        int resultado = this.manipularDB.executeUpdate(consulta);
+        respuesta = (resultado == 1);
+    } catch (SQLException ex) {
+        System.out.print("Error al eliminar persona: " + ex.getMessage());
+    }
+    return respuesta;
+}
+
 
     public ResultSet buscarPersonaPorCedula(int cedula) {
         ResultSet persona = null;

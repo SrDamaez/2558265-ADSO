@@ -73,6 +73,11 @@ public class Menu extends javax.swing.JFrame {
         btn_eliminar.setForeground(new java.awt.Color(255, 255, 255));
         btn_eliminar.setText("ELIMINAR");
         btn_eliminar.setFocusable(false);
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
 
         btn_salir.setBackground(new java.awt.Color(153, 0, 0));
         btn_salir.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -198,6 +203,17 @@ public class Menu extends javax.swing.JFrame {
         repaint();
         revalidate();
     }//GEN-LAST:event_btn_editarActionPerformed
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        contentPrincipal.removeAll();
+        
+        PanelEliminar contentTemporal = new PanelEliminar(basedatos);
+        contentTemporal.setSize(contentPrincipal.getSize() );
+        contentPrincipal.add( contentTemporal );
+        
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_btn_eliminarActionPerformed
 
     public void initComponentAltern(){
         setVisible(true);
