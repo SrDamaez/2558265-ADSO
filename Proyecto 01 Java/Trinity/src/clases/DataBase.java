@@ -11,7 +11,7 @@ public class DataBase {
     public DataBase (){
         String hostname = "localhost";
         String user_name = "root";
-        String database_name = "trinity";
+        String database_name = "trinity_bd";
         String puerto = "3306";
         String password = "";
         
