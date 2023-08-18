@@ -32,6 +32,7 @@ public class contentItems extends javax.swing.JPanel {
         btn_añadir = new javax.swing.JButton();
         etq_precio = new javax.swing.JLabel();
 
+        
         setMinimumSize(new java.awt.Dimension(350, 80));
 
         img_item.setText("img_item");
