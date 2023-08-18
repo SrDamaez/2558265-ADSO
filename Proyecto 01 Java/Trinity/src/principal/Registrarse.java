@@ -11,7 +11,8 @@ public class Registrarse extends javax.swing.JFrame {
     public Registrarse() {
         this.basedatos = new DataBase();
         initComponents();
-        initComponents2();
+        initComponents2();      
+
     }
 
     @SuppressWarnings("unchecked")
@@ -27,12 +28,11 @@ public class Registrarse extends javax.swing.JFrame {
         etq_contrasena = new javax.swing.JLabel();
         campo_contrasena = new javax.swing.JTextField();
         etq_rol = new javax.swing.JLabel();
-        campo_rol = new javax.swing.JTextField();
+        campo_rol = new javax.swing.JComboBox<>();
         btn_registrarse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(414, 598));
-        setPreferredSize(new java.awt.Dimension(414, 598));
         setResizable(false);
 
         etq_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -49,14 +49,14 @@ public class Registrarse extends javax.swing.JFrame {
 
         campo_cedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_cedula.setText("1001");
-        campo_cedula.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_cedulavalidateEmail(evt);
-            }
-        });
         campo_cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campo_cedulaActionPerformed(evt);
+            }
+        });
+        campo_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campo_cedulaKeyReleased(evt);
             }
         });
 
@@ -65,7 +65,7 @@ public class Registrarse extends javax.swing.JFrame {
         etq_nombre.setText("NOMBRE");
 
         campo_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campo_nombre.setText("1001");
+        campo_nombre.setText("Pepito");
         campo_nombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campo_nombrevalidateEmail(evt);
@@ -76,13 +76,18 @@ public class Registrarse extends javax.swing.JFrame {
                 campo_nombreActionPerformed(evt);
             }
         });
+        campo_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campo_nombreKeyReleased(evt);
+            }
+        });
 
         etq_contrasena.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         etq_contrasena.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etq_contrasena.setText("CONTRASEÑA");
 
         campo_contrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campo_contrasena.setText("1001");
+        campo_contrasena.setText("Sisas");
         campo_contrasena.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campo_contrasenavalidateEmail(evt);
@@ -93,18 +98,17 @@ public class Registrarse extends javax.swing.JFrame {
                 campo_contrasenaActionPerformed(evt);
             }
         });
+        campo_contrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                campo_contrasenaKeyReleased(evt);
+            }
+        });
 
         etq_rol.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         etq_rol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etq_rol.setText("ROL");
 
-        campo_rol.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campo_rol.setText("1001");
-        campo_rol.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_rolvalidateEmail(evt);
-            }
-        });
+        campo_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Vendedor", "Usuario" }));
         campo_rol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campo_rolActionPerformed(evt);
@@ -127,32 +131,32 @@ public class Registrarse extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btn_registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(etq_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etq_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                     .addComponent(etq_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campo_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etq_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(etq_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campo_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campo_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(etq_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campo_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etq_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(72, Short.MAX_VALUE))
+                    .addComponent(campo_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etq_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(etq_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etq_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(etq_cedula)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campo_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(etq_rol)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campo_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etq_nombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -162,20 +166,16 @@ public class Registrarse extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campo_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(etq_rol)
+                .addComponent(etq_cedula)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campo_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(campo_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btn_registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void campo_cedulavalidateEmail(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_cedulavalidateEmail
-        
-    }//GEN-LAST:event_campo_cedulavalidateEmail
 
     private void campo_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_cedulaActionPerformed
         // TODO add your handling code here:
@@ -197,24 +197,44 @@ public class Registrarse extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campo_contrasenaActionPerformed
 
-    private void campo_rolvalidateEmail(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_rolvalidateEmail
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_rolvalidateEmail
-
-    private void campo_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_rolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_rolActionPerformed
-
     private void btn_registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarseActionPerformed
+        Login ventana = new Login();
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_registrarseActionPerformed
 
+    private void campo_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_rolActionPerformed
+        habilitarRegistrarse();
+    }//GEN-LAST:event_campo_rolActionPerformed
+
+    private void campo_cedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campo_cedulaKeyReleased
+        habilitarRegistrarse();
+    }//GEN-LAST:event_campo_cedulaKeyReleased
+
+    private void campo_nombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campo_nombreKeyReleased
+        habilitarRegistrarse();
+    }//GEN-LAST:event_campo_nombreKeyReleased
+
+    private void campo_contrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campo_contrasenaKeyReleased
+        habilitarRegistrarse();
+    }//GEN-LAST:event_campo_contrasenaKeyReleased
+
+    public void habilitarRegistrarse() {
+        String elemento = campo_rol.getSelectedItem().toString();
+        System.out.println(elemento);
+        if (!campo_nombre.getText().isEmpty() && !elemento.equals("Seleccione...") && !campo_cedula.getText().isEmpty() && !campo_contrasena.getText().isEmpty()) {
+            btn_registrarse.setEnabled(true);
+        } else {
+            btn_registrarse.setEnabled(false);
+        }
+    }
+    
     public void initComponents2(){
         setVisible(true);
         setLocationRelativeTo(null);
         setTitle("Registrarse");
         setIconImage( getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda2.png")) );
+        btn_registrarse.setEnabled(false);
         
         Image img_zelda = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda.png"));
         img_zelda = img_zelda.getScaledInstance(200, 150, Image.SCALE_SMOOTH);
@@ -226,7 +246,7 @@ public class Registrarse extends javax.swing.JFrame {
     private javax.swing.JTextField campo_cedula;
     private javax.swing.JTextField campo_contrasena;
     private javax.swing.JTextField campo_nombre;
-    private javax.swing.JTextField campo_rol;
+    private javax.swing.JComboBox<String> campo_rol;
     private javax.swing.JLabel etq_cedula;
     private javax.swing.JLabel etq_contrasena;
     private javax.swing.JLabel etq_logo;

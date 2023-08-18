@@ -19,17 +19,17 @@ public class Info_usuario extends javax.swing.JFrame {
     private void initComponents() {
 
         etq_img_user = new javax.swing.JLabel();
-        btn_editar = new javax.swing.JButton();
-        btn_volver = new javax.swing.JButton();
         etq_titulo = new javax.swing.JLabel();
-        campo_contrasena = new javax.swing.JTextField();
-        etq_rol = new javax.swing.JLabel();
-        campo_rol = new javax.swing.JTextField();
         etq_cedula = new javax.swing.JLabel();
         campo_cedula = new javax.swing.JTextField();
         etq_nombre = new javax.swing.JLabel();
         campo_nombre = new javax.swing.JTextField();
         etq_contrasena = new javax.swing.JLabel();
+        campo_contrasena = new javax.swing.JTextField();
+        etq_rol = new javax.swing.JLabel();
+        campo_rol = new javax.swing.JTextField();
+        btn_volver = new javax.swing.JButton();
+        btn_editar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Usuario");
@@ -38,63 +38,11 @@ public class Info_usuario extends javax.swing.JFrame {
 
         etq_img_user.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        btn_editar.setBackground(java.awt.Color.orange);
-        btn_editar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_editar.setText("EDITAR");
-        btn_editar.setFocusable(false);
-        btn_editar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_editarActionPerformed(evt);
-            }
-        });
-
-        btn_volver.setBackground(java.awt.Color.orange);
-        btn_volver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_volver.setForeground(new java.awt.Color(255, 255, 255));
-        btn_volver.setText("VOLVER");
-        btn_volver.setFocusable(false);
-        btn_volver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_volverActionPerformed(evt);
-            }
-        });
-
         etq_titulo.setBackground(new java.awt.Color(0, 0, 0));
         etq_titulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         etq_titulo.setForeground(java.awt.Color.orange);
         etq_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etq_titulo.setText("INFORMACIÒN");
-
-        campo_contrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campo_contrasena.setText("MiContraseña*****");
-        campo_contrasena.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_contrasenavalidateEmail(evt);
-            }
-        });
-        campo_contrasena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_contrasenaActionPerformed(evt);
-            }
-        });
-
-        etq_rol.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        etq_rol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etq_rol.setText("ROL");
-
-        campo_rol.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campo_rol.setText("Super_Damaez");
-        campo_rol.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_rolvalidateEmail(evt);
-            }
-        });
-        campo_rol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_rolActionPerformed(evt);
-            }
-        });
+        etq_titulo.setText("INFORMACIÓN");
 
         etq_cedula.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         etq_cedula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -134,6 +82,58 @@ public class Info_usuario extends javax.swing.JFrame {
         etq_contrasena.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etq_contrasena.setText("CONTRASEÑA");
 
+        campo_contrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campo_contrasena.setText("MiContraseña*****");
+        campo_contrasena.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_contrasenavalidateEmail(evt);
+            }
+        });
+        campo_contrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_contrasenaActionPerformed(evt);
+            }
+        });
+
+        etq_rol.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        etq_rol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etq_rol.setText("ROL");
+
+        campo_rol.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campo_rol.setText("Super_Damaez");
+        campo_rol.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_rolvalidateEmail(evt);
+            }
+        });
+        campo_rol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_rolActionPerformed(evt);
+            }
+        });
+
+        btn_volver.setBackground(java.awt.Color.orange);
+        btn_volver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_volver.setForeground(new java.awt.Color(255, 255, 255));
+        btn_volver.setText("VOLVER");
+        btn_volver.setFocusable(false);
+        btn_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_volverActionPerformed(evt);
+            }
+        });
+
+        btn_editar.setBackground(java.awt.Color.orange);
+        btn_editar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_editar.setText("EDITAR");
+        btn_editar.setFocusable(false);
+        btn_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,15 +147,14 @@ public class Info_usuario extends javax.swing.JFrame {
                         .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(etq_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                     .addComponent(etq_img_user, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(etq_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campo_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(etq_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campo_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campo_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(etq_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campo_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(etq_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(etq_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etq_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etq_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etq_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
