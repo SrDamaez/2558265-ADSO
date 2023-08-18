@@ -2,10 +2,14 @@ package principal;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import clases.DataBase;
 
 public class Registrarse extends javax.swing.JFrame {
-
+    
+    DataBase basedatos;
+    
     public Registrarse() {
+        this.basedatos = new DataBase();
         initComponents();
         initComponents2();
     }
@@ -202,6 +206,7 @@ public class Registrarse extends javax.swing.JFrame {
     }//GEN-LAST:event_campo_rolActionPerformed
 
     private void btn_registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarseActionPerformed
+        dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_registrarseActionPerformed
 

@@ -32,6 +32,11 @@ public class Menu extends javax.swing.JFrame {
         etq_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         etq_usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etq_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etq_usuarioMouseClicked(evt);
+            }
+        });
 
         contentPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -39,7 +44,7 @@ public class Menu extends javax.swing.JFrame {
         contentPrincipal.setLayout(contentPrincipalLayout);
         contentPrincipalLayout.setHorizontalGroup(
             contentPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 331, Short.MAX_VALUE)
         );
         contentPrincipalLayout.setVerticalGroup(
             contentPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,6 +86,12 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void etq_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etq_usuarioMouseClicked
+        Info_usuario ventana = new Info_usuario(basedatos);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_etq_usuarioMouseClicked
 
     
     public void initComponentAltern(){
