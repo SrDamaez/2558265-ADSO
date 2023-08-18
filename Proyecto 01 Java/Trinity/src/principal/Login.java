@@ -52,11 +52,6 @@ public class Login extends javax.swing.JFrame {
 
         campo_cedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_cedula.setText("1001");
-        campo_cedula.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_cedulavalidateEmail(evt);
-            }
-        });
         campo_cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campo_cedulaActionPerformed(evt);
@@ -69,11 +64,6 @@ public class Login extends javax.swing.JFrame {
 
         campo_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_password.setText("12345");
-        campo_password.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                campo_passwordpruebaKey(evt);
-            }
-        });
 
         btn_ingresar.setBackground(java.awt.Color.orange);
         btn_ingresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -140,10 +130,12 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
-        String email = campo_cedula.getText();
-        String password = campo_password.getText();
-
-        if (email.equalsIgnoreCase("1001") && password.equalsIgnoreCase("12345")) {
+        String cedula = campo_cedula.getText();
+        String contrasena = campo_password.getText();
+        
+        boolean respuesta = this.basedatos.iniciarSesion(cedula,contrasena);
+        
+        if (respuesta) {
             Menu ventana = new Menu(basedatos);
             dispose();
         }else{
@@ -151,53 +143,9 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
-    private void campo_passwordpruebaKey(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campo_passwordpruebaKey
-        JTextField temporal = (JTextField) evt.getSource();
-
-        if (evt.getKeyCode()<48 || evt.getKeyCode()>57) {
-            String texto = temporal.getText();
-            String tecla = String.valueOf(evt.getKeyChar());
-            temporal.setText( texto.replaceAll(tecla, "") );
-        }
-
-        System.out.println("Tecla presionada: "+evt.getKeyChar());
-        System.out.println("Texto en input: "+temporal.getText());
-        System.out.println("Codigo: "+evt.getKeyCode());
-    }//GEN-LAST:event_campo_passwordpruebaKey
-
     private void campo_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_cedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campo_cedulaActionPerformed
-
-    private void campo_cedulavalidateEmail(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_cedulavalidateEmail
-        JTextField temporal = (JTextField) evt.getSource();
-        String texto = temporal.getText();
-
-        int cont = 0;
-        int contPuntos = 0;
-        for (int i=0; i<texto.length(); i++) {
-            if (texto.charAt(i)=='@') {
-                cont++;
-            }
-            if (cont==1 && texto.charAt(i)=='.') {
-                contPuntos++;
-            }
-        }
-
-        if (cont==1 && contPuntos==2) {
-            System.out.println("Correo valido.");
-
-            JTextField referencia = new JTextField();
-            temporal.setBorder( referencia.getBorder() );
-        }else{
-            System.out.println("Correo in-valido.");
-
-            Border borderColor = new LineBorder(Color.RED, 1, true);
-            Border borderPadding = new EmptyBorder(2,5,2,5);
-            Border borderRojo = new CompoundBorder(borderColor, borderPadding);
-            temporal.setBorder(borderRojo);
-        }
-    }//GEN-LAST:event_campo_cedulavalidateEmail
 
     private void btn_registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarseActionPerformed
         Registrarse ventana = new Registrarse();

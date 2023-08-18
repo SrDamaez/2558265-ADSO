@@ -198,6 +198,13 @@ public class Registrarse extends javax.swing.JFrame {
     }//GEN-LAST:event_campo_contrasenaActionPerformed
 
     private void btn_registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarseActionPerformed
+        String cedula = campo_cedula.getText();
+        String nombre = campo_nombre.getText();
+        String contrasena = campo_contrasena.getText();
+        String rol = campo_rol.getSelectedItem().toString();
+        
+        boolean respuesta = this.basedatos.insertarUsuario(cedula, nombre, contrasena, rol);
+        
         Login ventana = new Login();
         dispose();
         // TODO add your handling code here:
@@ -221,7 +228,6 @@ public class Registrarse extends javax.swing.JFrame {
 
     public void habilitarRegistrarse() {
         String elemento = campo_rol.getSelectedItem().toString();
-        System.out.println(elemento);
         if (!campo_nombre.getText().isEmpty() && !elemento.equals("Seleccione...") && !campo_cedula.getText().isEmpty() && !campo_contrasena.getText().isEmpty()) {
             btn_registrarse.setEnabled(true);
         } else {

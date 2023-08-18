@@ -25,4 +25,37 @@ public class DataBase {
             System.out.print("Error en conexion a base de datos: " + ex.getMessage());
         }
     }
+    
+    public boolean insertarUsuario(String cedula, String nombre, String contrasena, String rol){
+        
+        boolean respuesta = false;
+        
+        try {
+            String consulta = "INSERT INTO usuarios (Cedula, Nombre, Contrasena, Rol) VALUES('"+cedula+"','"+nombre+"','"+contrasena+"','"+rol+"')";
+            int resultado = this.manipularDB.executeUpdate(consulta);
+            if (resultado==1){
+                respuesta = true;
+            }
+        } catch (SQLException ex) {
+            System.out.print("Error al insertar: " + ex.getMessage());
+        }   
+        
+        return respuesta;        
+    }
+    
+    public boolean iniciarSesion(String cedula, String contrasena) {
+        boolean respuesta = false;
+        try {
+            String consulta = "SELECT * FROM usuarios WHERE cedula = " + cedula + " and contrasena "+ contrasena +"";
+            int resultado = this.manipularDB.executeUpdate(consulta);
+            if (resultado==1){
+                respuesta = true;
+            }
+        } catch (SQLException ex) {
+            System.out.print("Error al iniciar sesion: " + ex.getMessage());
+        }
+        return respuesta;
+
+    }
+    
 }
