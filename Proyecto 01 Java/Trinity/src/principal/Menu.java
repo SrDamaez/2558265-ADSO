@@ -1,8 +1,11 @@
 package principal;
 
 import clases.DataBase;
+import clases.Productos;
 import java.awt.Image;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 public class Menu extends javax.swing.JFrame {
 
@@ -12,6 +15,7 @@ public class Menu extends javax.swing.JFrame {
         this.basedatos = basedatos;
         initComponents();
         initComponentAltern();
+                
     }
 
     
@@ -23,7 +27,8 @@ public class Menu extends javax.swing.JFrame {
         etq_carrito = new javax.swing.JLabel();
         etq_logo = new javax.swing.JLabel();
         etq_usuario = new javax.swing.JLabel();
-        contentPrincipal = new javax.swing.JPanel();
+        contentPrincipal = new javax.swing.JScrollPane();
+        panelPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,18 +43,18 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        contentPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 362, Short.MAX_VALUE)
+        );
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
 
-        javax.swing.GroupLayout contentPrincipalLayout = new javax.swing.GroupLayout(contentPrincipal);
-        contentPrincipal.setLayout(contentPrincipalLayout);
-        contentPrincipalLayout.setHorizontalGroup(
-            contentPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 331, Short.MAX_VALUE)
-        );
-        contentPrincipalLayout.setVerticalGroup(
-            contentPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 482, Short.MAX_VALUE)
-        );
+        contentPrincipal.setViewportView(panelPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,16 +63,15 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(etq_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(etq_carrito, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(etq_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(contentPrincipal)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(etq_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(etq_carrito, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(etq_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(contentPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,7 +84,7 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contentPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contentPrincipal)
                 .addContainerGap())
         );
 
@@ -94,11 +98,42 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_etq_usuarioMouseClicked
 
     
-    public void initComponentAltern(){
+    public void initComponentAltern(){      
         setVisible(true);
         setLocationRelativeTo(null);
         setTitle("Menú");
         setIconImage( getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda2.png")) );
+        
+        panelPrincipal.removeAll();
+        
+        JPanel contentVertical = new JPanel();
+        contentVertical.setSize( panelPrincipal.getSize() );
+        //contentVertical.setLayout( new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS) );
+        
+        
+        Productos arregloProductos[] = new Productos[5];
+        arregloProductos[0] = new Productos("1", "Mouse", "Producto 01", "3500", "10", "imagen.png");
+        arregloProductos[1] = new Productos("2", "Teclado", "Producto 02", "3500", "10", "imagen.png");
+        arregloProductos[2] = new Productos("3", "Monitor", "Producto 03", "3500", "10", "imagen.png");
+        arregloProductos[3] = new Productos("4", "Parlante", "Producto 04", "3500", "10", "imagen.png");
+        arregloProductos[4] = new Productos("5", "PadMouse", "Producto 05", "3500", "10", "imagen.png");
+        
+        
+        contentItems contentTemporal01 = new contentItems( arregloProductos[0], basedatos );
+        contentItems contentTemporal02 = new contentItems( arregloProductos[1], basedatos );
+        contentItems contentTemporal03 = new contentItems( arregloProductos[2], basedatos );
+        contentItems contentTemporal04 = new contentItems( arregloProductos[3], basedatos );
+        contentItems contentTemporal05 = new contentItems( arregloProductos[4], basedatos );
+        
+        contentVertical.add( contentTemporal01 );
+        contentVertical.add( contentTemporal02 );
+        contentVertical.add( contentTemporal03 );
+        contentVertical.add( contentTemporal04 );
+        contentVertical.add( contentTemporal05 );
+        
+        panelPrincipal.add( contentVertical );
+        repaint();
+        revalidate();
         
         Image img_zelda2 = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda2.png"));
         img_zelda2 = img_zelda2.getScaledInstance(50, 46, Image.SCALE_SMOOTH);
@@ -111,13 +146,15 @@ public class Menu extends javax.swing.JFrame {
         Image img_usuario = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/usuario.png"));
         img_usuario = img_usuario.getScaledInstance(50, 46, Image.SCALE_SMOOTH);
         etq_usuario.setIcon(new ImageIcon(img_usuario));
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel contentPrincipal;
+    private javax.swing.JScrollPane contentPrincipal;
     private javax.swing.JLabel etq_carrito;
     private javax.swing.JLabel etq_logo;
     private javax.swing.JLabel etq_usuario;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables
 }
