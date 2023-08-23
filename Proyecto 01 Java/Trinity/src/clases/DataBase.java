@@ -43,19 +43,17 @@ public class DataBase {
         return respuesta;        
     }
     
-    public boolean iniciarSesion(String cedula, String contrasena) {
-        boolean respuesta = false;
+    public ResultSet iniciarSesion(String cedula, String contrasena) {
+        ResultSet persona = null;
         try {
-            String consulta = "SELECT * FROM usuarios WHERE cedula = " + cedula + " and contrasena "+ contrasena +"";
-            int resultado = this.manipularDB.executeUpdate(consulta);
-            if (resultado==1){
-                respuesta = true;
-            }
+            String consulta = "SELECT * FROM usuarios WHERE cedula = " + cedula + " AND contrasena = '" + contrasena + "'";
+            persona = this.manipularDB.executeQuery(consulta);
         } catch (SQLException ex) {
             System.out.print("Error al iniciar sesion: " + ex.getMessage());
         }
-        return respuesta;
-
+        return persona;
     }
+
+
     
 }

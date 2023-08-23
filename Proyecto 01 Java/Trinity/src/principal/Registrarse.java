@@ -3,6 +3,7 @@ package principal;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import clases.DataBase;
+import javax.swing.JTextField;
 
 public class Registrarse extends javax.swing.JFrame {
     
@@ -26,7 +27,7 @@ public class Registrarse extends javax.swing.JFrame {
         etq_nombre = new javax.swing.JLabel();
         campo_nombre = new javax.swing.JTextField();
         etq_contrasena = new javax.swing.JLabel();
-        campo_contrasena = new javax.swing.JTextField();
+        campo_contrasena = new javax.swing.JPasswordField();
         etq_rol = new javax.swing.JLabel();
         campo_rol = new javax.swing.JComboBox<>();
         btn_registrarse = new javax.swing.JButton();
@@ -49,11 +50,6 @@ public class Registrarse extends javax.swing.JFrame {
 
         campo_cedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_cedula.setText("1001");
-        campo_cedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_cedulaActionPerformed(evt);
-            }
-        });
         campo_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campo_cedulaKeyReleased(evt);
@@ -66,16 +62,6 @@ public class Registrarse extends javax.swing.JFrame {
 
         campo_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_nombre.setText("Pepito");
-        campo_nombre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_nombrevalidateEmail(evt);
-            }
-        });
-        campo_nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_nombreActionPerformed(evt);
-            }
-        });
         campo_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campo_nombreKeyReleased(evt);
@@ -88,19 +74,10 @@ public class Registrarse extends javax.swing.JFrame {
 
         campo_contrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_contrasena.setText("Sisas");
-        campo_contrasena.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_contrasenavalidateEmail(evt);
-            }
-        });
-        campo_contrasena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_contrasenaActionPerformed(evt);
-            }
-        });
         campo_contrasena.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campo_contrasenaKeyReleased(evt);
+                campo_contrasenaPruebaKey(evt);
             }
         });
 
@@ -177,37 +154,18 @@ public class Registrarse extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campo_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_cedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_cedulaActionPerformed
-
-    private void campo_nombrevalidateEmail(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_nombrevalidateEmail
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_nombrevalidateEmail
-
-    private void campo_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_nombreActionPerformed
-
-    private void campo_contrasenavalidateEmail(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_contrasenavalidateEmail
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_contrasenavalidateEmail
-
-    private void campo_contrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_contrasenaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_contrasenaActionPerformed
-
     private void btn_registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarseActionPerformed
+        String rol = campo_rol.getSelectedItem().toString();
         String cedula = campo_cedula.getText();
         String nombre = campo_nombre.getText();
         String contrasena = campo_contrasena.getText();
-        String rol = campo_rol.getSelectedItem().toString();
         
         boolean respuesta = this.basedatos.insertarUsuario(cedula, nombre, contrasena, rol);
         
+        System.out.println("Registro exitoso!");
+        
         Login ventana = new Login();
         dispose();
-        // TODO add your handling code here:
     }//GEN-LAST:event_btn_registrarseActionPerformed
 
     private void campo_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_rolActionPerformed
@@ -225,6 +183,14 @@ public class Registrarse extends javax.swing.JFrame {
     private void campo_contrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campo_contrasenaKeyReleased
         habilitarRegistrarse();
     }//GEN-LAST:event_campo_contrasenaKeyReleased
+
+    private void campo_contrasenaPruebaKey(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campo_contrasenaPruebaKey
+        JTextField temporal = (JTextField) evt.getSource();
+
+        System.out.println("Tecla presionada: "+evt.getKeyChar());
+        System.out.println("Texto en input: "+temporal.getText());
+        System.out.println("Codigo: "+evt.getKeyCode());
+    }//GEN-LAST:event_campo_contrasenaPruebaKey
 
     public void habilitarRegistrarse() {
         String elemento = campo_rol.getSelectedItem().toString();

@@ -3,6 +3,8 @@ package principal;
 import clases.DataBase;
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -52,16 +54,6 @@ public class Login extends javax.swing.JFrame {
 
         campo_cedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_cedula.setText("1001");
-        campo_cedula.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_cedulavalidateEmail(evt);
-            }
-        });
-        campo_cedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_cedulaActionPerformed(evt);
-            }
-        });
 
         etq_password.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         etq_password.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -141,15 +133,26 @@ public class Login extends javax.swing.JFrame {
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
         
-        
-        String email = campo_cedula.getText();
-        String password = campo_password.getText();
+        String cedula = campo_cedula.getText();
+        String contrasena = campo_password.getText();
 
-        if (email.equalsIgnoreCase("1001") && password.equalsIgnoreCase("12345")) {
-            Menu ventana = new Menu(basedatos);
-            dispose();
-        }else{
-            System.out.println("DATOS INVALIDOS");
+        ResultSet respuesta = this.basedatos.iniciarSesion(cedula, contrasena);
+
+        try {
+            if (respuesta.next()) {
+                System.out.println("DATOS VÁLIDOS");
+
+                // Aquí podrías hacer lo que necesitas con los datos de la persona encontrada
+
+                Menu ventana = new Menu(basedatos);
+                dispose();
+            } else {
+                System.out.println("DATOS INVÁLIDOS");
+                campo_cedula.setText("");
+                campo_password.setText("");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al procesar el resultado: " + ex.getMessage());
         }
         
     }//GEN-LAST:event_btn_ingresarActionPerformed
@@ -157,50 +160,10 @@ public class Login extends javax.swing.JFrame {
     private void campo_passwordpruebaKey(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campo_passwordpruebaKey
         JTextField temporal = (JTextField) evt.getSource();
 
-        if (evt.getKeyCode()<48 || evt.getKeyCode()>57) {
-            String texto = temporal.getText();
-            String tecla = String.valueOf(evt.getKeyChar());
-            temporal.setText( texto.replaceAll(tecla, "") );
-        }
-
         System.out.println("Tecla presionada: "+evt.getKeyChar());
         System.out.println("Texto en input: "+temporal.getText());
         System.out.println("Codigo: "+evt.getKeyCode());
     }//GEN-LAST:event_campo_passwordpruebaKey
-
-    private void campo_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_cedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_cedulaActionPerformed
-
-    private void campo_cedulavalidateEmail(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_cedulavalidateEmail
-        JTextField temporal = (JTextField) evt.getSource();
-        String texto = temporal.getText();
-
-        int cont = 0;
-        int contPuntos = 0;
-        for (int i=0; i<texto.length(); i++) {
-            if (texto.charAt(i)=='@') {
-                cont++;
-            }
-            if (cont==1 && texto.charAt(i)=='.') {
-                contPuntos++;
-            }
-        }
-
-        if (cont==1 && contPuntos==2) {
-            System.out.println("Correo valido.");
-
-            JTextField referencia = new JTextField();
-            temporal.setBorder( referencia.getBorder() );
-        }else{
-            System.out.println("Correo in-valido.");
-
-            Border borderColor = new LineBorder(Color.RED, 1, true);
-            Border borderPadding = new EmptyBorder(2,5,2,5);
-            Border borderRojo = new CompoundBorder(borderColor, borderPadding);
-            temporal.setBorder(borderRojo);
-        }
-    }//GEN-LAST:event_campo_cedulavalidateEmail
 
     private void btn_registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarseActionPerformed
         Registrarse ventana = new Registrarse();

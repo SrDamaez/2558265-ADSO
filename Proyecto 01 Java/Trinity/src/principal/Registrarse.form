@@ -114,7 +114,6 @@
         <Property name="text" type="java.lang.String" value="1001"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_cedulaActionPerformed"/>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campo_cedulaKeyReleased"/>
       </Events>
     </Component>
@@ -135,8 +134,6 @@
         <Property name="text" type="java.lang.String" value="Pepito"/>
       </Properties>
       <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_nombrevalidateEmail"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_nombreActionPerformed"/>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campo_nombreKeyReleased"/>
       </Events>
     </Component>
@@ -157,10 +154,11 @@
         <Property name="text" type="java.lang.String" value="Sisas"/>
       </Properties>
       <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_contrasenavalidateEmail"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_contrasenaActionPerformed"/>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campo_contrasenaKeyReleased"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campo_contrasenaKeyReleased,campo_contrasenaPruebaKey"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPasswordField()"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="etq_rol">
       <Properties>

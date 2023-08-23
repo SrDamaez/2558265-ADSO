@@ -18,7 +18,7 @@ public class Menu extends javax.swing.JFrame {
                 
     }
 
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -111,7 +111,7 @@ public class Menu extends javax.swing.JFrame {
         //contentVertical.setLayout( new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS) );
         
         
-        Productos arregloProductos[] = new Productos[5];
+        /*Productos arregloProductos[] = new Productos[5];
         arregloProductos[0] = new Productos("1", "Mouse", "Producto 01", "3500", "10", "imagen.png");
         arregloProductos[1] = new Productos("2", "Teclado", "Producto 02", "3500", "10", "imagen.png");
         arregloProductos[2] = new Productos("3", "Monitor", "Producto 03", "3500", "10", "imagen.png");
@@ -133,7 +133,7 @@ public class Menu extends javax.swing.JFrame {
         
         panelPrincipal.add( contentVertical );
         repaint();
-        revalidate();
+        revalidate();*/
         
         Image img_zelda2 = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda2.png"));
         img_zelda2 = img_zelda2.getScaledInstance(50, 46, Image.SCALE_SMOOTH);

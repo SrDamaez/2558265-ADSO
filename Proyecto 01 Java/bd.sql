@@ -1,13 +1,15 @@
+CREATE DATABASE IF NOT EXISTS trinity_bd;
+USE trinity_bd;
+
 CREATE TABLE Usuarios (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Cedula VARCHAR(10) PRIMARY KEY,
     Nombre VARCHAR(100),
-    CorreoElectronico VARCHAR(255) UNIQUE,
     Contrasena VARCHAR(255),
     Rol VARCHAR(20)
 );
 
 CREATE TABLE Productos (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Id_Producto INT PRIMARY KEY AUTO_INCREMENT,
     Nombre VARCHAR(200),
     Descripcion TEXT,
     Precio DECIMAL(10, 2),
@@ -15,27 +17,27 @@ CREATE TABLE Productos (
 );
 
 CREATE TABLE CarritoCompras (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
-    IDUsuario INT,
+    Id_carrito INT PRIMARY KEY AUTO_INCREMENT,
+    Id_Usuario VARCHAR(10),
     FechaCreacion DATETIME,
-    FOREIGN KEY (IDUsuario) REFERENCES Usuarios(ID)
+    FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Cedula)
 );
 
 CREATE TABLE DetalleCarrito (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
-    IDCarrito INT,
-    IDProducto INT,
+    Id_Detalle INT PRIMARY KEY AUTO_INCREMENT,
+    Id_Carrito INT,
+    Id_Producto INT,
     Cantidad INT,
-    FOREIGN KEY (IDCarrito) REFERENCES CarritoCompras(ID),
-    FOREIGN KEY (IDProducto) REFERENCES Productos(ID)
+    FOREIGN KEY (Id_Carrito) REFERENCES CarritoCompras(Id_carrito),
+    FOREIGN KEY (Id_Producto) REFERENCES Productos(Id_Producto)
 );
 
 CREATE TABLE Facturas (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
-    IDUsuario INT,
-    IDCarrito INT,
+    Id_factura INT PRIMARY KEY AUTO_INCREMENT,
+    Id_Usuario VARCHAR(10),
+    Id_Carrito INT,
     FechaCompra DATETIME,
     Total DECIMAL(10, 2),
-    FOREIGN KEY (IDUsuario) REFERENCES Usuarios(ID),
-    FOREIGN KEY (IDCarrito) REFERENCES CarritoCompras(ID)
+    FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Cedula),
+    FOREIGN KEY (Id_Carrito) REFERENCES CarritoCompras(Id_carrito)
 );
