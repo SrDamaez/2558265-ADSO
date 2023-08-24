@@ -5,13 +5,16 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Info_usuario extends javax.swing.JFrame {
-
+    
+    private String cedula;
     DataBase basedatos;
     
-    public Info_usuario( DataBase basedatos) {
+    public Info_usuario( DataBase basedatos, String cedula) {
+        this.cedula = cedula;
         this.basedatos = basedatos;
         initComponents();
         initComponents2();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -25,7 +28,7 @@ public class Info_usuario extends javax.swing.JFrame {
         etq_nombre = new javax.swing.JLabel();
         campo_nombre = new javax.swing.JTextField();
         etq_contrasena = new javax.swing.JLabel();
-        campo_contrasena = new javax.swing.JTextField();
+        campo_contrasena = new javax.swing.JPasswordField();
         etq_rol = new javax.swing.JLabel();
         campo_rol = new javax.swing.JTextField();
         btn_volver = new javax.swing.JButton();
@@ -50,16 +53,6 @@ public class Info_usuario extends javax.swing.JFrame {
 
         campo_cedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_cedula.setText("1001");
-        campo_cedula.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_cedulavalidateEmail(evt);
-            }
-        });
-        campo_cedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_cedulaActionPerformed(evt);
-            }
-        });
 
         etq_nombre.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         etq_nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -67,16 +60,6 @@ public class Info_usuario extends javax.swing.JFrame {
 
         campo_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_nombre.setText("Pablito ");
-        campo_nombre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_nombrevalidateEmail(evt);
-            }
-        });
-        campo_nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_nombreActionPerformed(evt);
-            }
-        });
 
         etq_contrasena.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         etq_contrasena.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -84,16 +67,6 @@ public class Info_usuario extends javax.swing.JFrame {
 
         campo_contrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_contrasena.setText("MiContraseña*****");
-        campo_contrasena.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_contrasenavalidateEmail(evt);
-            }
-        });
-        campo_contrasena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_contrasenaActionPerformed(evt);
-            }
-        });
 
         etq_rol.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         etq_rol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -101,16 +74,6 @@ public class Info_usuario extends javax.swing.JFrame {
 
         campo_rol.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_rol.setText("Super_Damaez");
-        campo_rol.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campo_rolvalidateEmail(evt);
-            }
-        });
-        campo_rol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_rolActionPerformed(evt);
-            }
-        });
 
         btn_volver.setBackground(java.awt.Color.orange);
         btn_volver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -195,43 +158,11 @@ public class Info_usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_editarActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
-        Menu ventana = new Menu(basedatos);
+        Menu ventana = new Menu(basedatos, cedula);
         dispose();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_volverActionPerformed
-
-    private void campo_contrasenavalidateEmail(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_contrasenavalidateEmail
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_contrasenavalidateEmail
-
-    private void campo_contrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_contrasenaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_contrasenaActionPerformed
-
-    private void campo_rolvalidateEmail(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_rolvalidateEmail
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_rolvalidateEmail
-
-    private void campo_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_rolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_rolActionPerformed
-
-    private void campo_cedulavalidateEmail(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_cedulavalidateEmail
-
-    }//GEN-LAST:event_campo_cedulavalidateEmail
-
-    private void campo_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_cedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_cedulaActionPerformed
-
-    private void campo_nombrevalidateEmail(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_nombrevalidateEmail
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_nombrevalidateEmail
-
-    private void campo_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campo_nombreActionPerformed
     
     public void initComponents2(){
         setVisible(true);

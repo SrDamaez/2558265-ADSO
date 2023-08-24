@@ -121,10 +121,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="1001"/>
       </Properties>
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_cedulavalidateEmail"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_cedulaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="etq_nombre">
       <Properties>
@@ -142,10 +138,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Pablito "/>
       </Properties>
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_nombrevalidateEmail"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_nombreActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="etq_contrasena">
       <Properties>
@@ -163,10 +155,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="MiContrase&#xf1;a*****"/>
       </Properties>
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_contrasenavalidateEmail"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_contrasenaActionPerformed"/>
-      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPasswordField()"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="etq_rol">
       <Properties>
@@ -184,10 +175,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Super_Damaez"/>
       </Properties>
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_rolvalidateEmail"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_rolActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_volver">
       <Properties>

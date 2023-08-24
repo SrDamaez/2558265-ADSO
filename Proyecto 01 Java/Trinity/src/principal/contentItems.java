@@ -1,4 +1,4 @@
-/*package principal;
+package principal;
 
 import clases.DataBase;
 import clases.Productos;
@@ -96,4 +96,4 @@ public class contentItems extends javax.swing.JPanel {
     private javax.swing.JLabel etq_precio;
     private javax.swing.JLabel img_item;
     // End of variables declaration//GEN-END:variables
-}*/
+}

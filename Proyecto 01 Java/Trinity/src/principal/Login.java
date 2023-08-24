@@ -15,7 +15,6 @@ import javax.swing.border.LineBorder;
 public class Login extends javax.swing.JFrame {
 
     DataBase basedatos;
-    
     public Login() {
         this.basedatos = new DataBase();
         initComponents();
@@ -60,7 +59,7 @@ public class Login extends javax.swing.JFrame {
         etq_password.setText("CONTRASEÑA");
 
         campo_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campo_password.setText("12345");
+        campo_password.setText("Sisas");
         campo_password.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 campo_passwordpruebaKey(evt);
@@ -139,12 +138,12 @@ public class Login extends javax.swing.JFrame {
         ResultSet respuesta = this.basedatos.iniciarSesion(cedula, contrasena);
 
         try {
+            
+            
             if (respuesta.next()) {
                 System.out.println("DATOS VÁLIDOS");
 
-                // Aquí podrías hacer lo que necesitas con los datos de la persona encontrada
-
-                Menu ventana = new Menu(basedatos);
+                Menu ventana = new Menu(basedatos, cedula);
                 dispose();
             } else {
                 System.out.println("DATOS INVÁLIDOS");

@@ -8,14 +8,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Menu extends javax.swing.JFrame {
-
+    private String cedula;
     DataBase basedatos;
     
-    public Menu( DataBase basedatos) {
+    public Menu( DataBase basedatos, String cedula) {
+        this.cedula = cedula;
         this.basedatos = basedatos;
         initComponents();
         initComponentAltern();
-                
     }
 
 
@@ -92,7 +92,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void etq_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etq_usuarioMouseClicked
-        Info_usuario ventana = new Info_usuario(basedatos);
+        Info_usuario ventana = new Info_usuario(basedatos, cedula);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_etq_usuarioMouseClicked
@@ -108,15 +108,16 @@ public class Menu extends javax.swing.JFrame {
         
         JPanel contentVertical = new JPanel();
         contentVertical.setSize( panelPrincipal.getSize() );
-        //contentVertical.setLayout( new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS) );
+         
         
-        
-        /*Productos arregloProductos[] = new Productos[5];
+        Productos arregloProductos[] = new Productos[6];
         arregloProductos[0] = new Productos("1", "Mouse", "Producto 01", "3500", "10", "imagen.png");
         arregloProductos[1] = new Productos("2", "Teclado", "Producto 02", "3500", "10", "imagen.png");
         arregloProductos[2] = new Productos("3", "Monitor", "Producto 03", "3500", "10", "imagen.png");
         arregloProductos[3] = new Productos("4", "Parlante", "Producto 04", "3500", "10", "imagen.png");
         arregloProductos[4] = new Productos("5", "PadMouse", "Producto 05", "3500", "10", "imagen.png");
+        arregloProductos[5] = new Productos("6", "PadMouse", "Producto 06", "3500", "10", "imagen.png");
+
         
         
         contentItems contentTemporal01 = new contentItems( arregloProductos[0], basedatos );
@@ -124,16 +125,20 @@ public class Menu extends javax.swing.JFrame {
         contentItems contentTemporal03 = new contentItems( arregloProductos[2], basedatos );
         contentItems contentTemporal04 = new contentItems( arregloProductos[3], basedatos );
         contentItems contentTemporal05 = new contentItems( arregloProductos[4], basedatos );
+        contentItems contentTemporal06 = new contentItems( arregloProductos[5], basedatos );
+
         
         contentVertical.add( contentTemporal01 );
         contentVertical.add( contentTemporal02 );
         contentVertical.add( contentTemporal03 );
         contentVertical.add( contentTemporal04 );
         contentVertical.add( contentTemporal05 );
+        contentVertical.add( contentTemporal06 );
+
         
         panelPrincipal.add( contentVertical );
         repaint();
-        revalidate();*/
+        revalidate();
         
         Image img_zelda2 = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda2.png"));
         img_zelda2 = img_zelda2.getScaledInstance(50, 46, Image.SCALE_SMOOTH);
