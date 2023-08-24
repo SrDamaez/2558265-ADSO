@@ -61,12 +61,12 @@
   <SubComponents>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
-    <Component class="javax.swing.JLabel" name="etq_carrito">
+    <Component class="javax.swing.JLabel" name="etq_logo">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="etq_logo">
+    <Component class="javax.swing.JLabel" name="etq_carrito">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>

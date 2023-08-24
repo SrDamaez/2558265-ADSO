@@ -7,11 +7,11 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class Menu extends javax.swing.JFrame {
+public class Menu_vendedor extends javax.swing.JFrame {
     private String cedula;
     DataBase basedatos;
     
-    public Menu( DataBase basedatos, String cedula) {
+    public Menu_vendedor( DataBase basedatos, String cedula) {
         this.cedula = cedula;
         this.basedatos = basedatos;
         initComponents();
@@ -24,17 +24,20 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jSeparator1 = new javax.swing.JSeparator();
-        etq_carrito = new javax.swing.JLabel();
         etq_logo = new javax.swing.JLabel();
+        etq_subir = new javax.swing.JLabel();
+        etq_carrito = new javax.swing.JLabel();
         etq_usuario = new javax.swing.JLabel();
         contentPrincipal = new javax.swing.JScrollPane();
         panelPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        etq_carrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         etq_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        etq_subir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        etq_carrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         etq_usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etq_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -68,6 +71,8 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(etq_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(etq_subir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(etq_carrito, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(etq_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -80,7 +85,8 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(etq_logo, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                     .addComponent(etq_carrito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etq_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(etq_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etq_subir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -92,9 +98,8 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void etq_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etq_usuarioMouseClicked
-        Info_usuario ventana = new Info_usuario(basedatos, cedula);
+        Info_vendedor ventana = new Info_vendedor(basedatos, cedula);
         dispose();
-        // TODO add your handling code here:
     }//GEN-LAST:event_etq_usuarioMouseClicked
 
     
@@ -148,6 +153,10 @@ public class Menu extends javax.swing.JFrame {
         img_carrito = img_carrito.getScaledInstance(50, 46, Image.SCALE_SMOOTH);
         etq_carrito.setIcon(new ImageIcon(img_carrito));
         
+        Image img_subir = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/mas.png"));
+        img_subir = img_subir.getScaledInstance(50, 46, Image.SCALE_SMOOTH);
+        etq_subir.setIcon(new ImageIcon(img_subir));
+        
         Image img_usuario = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/usuario.png"));
         img_usuario = img_usuario.getScaledInstance(50, 46, Image.SCALE_SMOOTH);
         etq_usuario.setIcon(new ImageIcon(img_usuario));
@@ -158,6 +167,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane contentPrincipal;
     private javax.swing.JLabel etq_carrito;
     private javax.swing.JLabel etq_logo;
+    private javax.swing.JLabel etq_subir;
     private javax.swing.JLabel etq_usuario;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel panelPrincipal;

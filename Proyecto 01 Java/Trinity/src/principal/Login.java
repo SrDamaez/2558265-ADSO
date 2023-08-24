@@ -134,6 +134,7 @@ public class Login extends javax.swing.JFrame {
         
         String cedula = campo_cedula.getText();
         String contrasena = campo_password.getText();
+        String rol = "";
 
         ResultSet respuesta = this.basedatos.iniciarSesion(cedula, contrasena);
 
@@ -142,9 +143,16 @@ public class Login extends javax.swing.JFrame {
             
             if (respuesta.next()) {
                 System.out.println("DATOS VÁLIDOS");
-
-                Menu ventana = new Menu(basedatos, cedula);
-                dispose();
+                rol = (respuesta.getString("rol"));
+                
+                if (rol.equalsIgnoreCase("Usuario")) {
+                    Menu_usuario ventana = new Menu_usuario(basedatos, cedula);
+                    dispose();
+                }else{
+                    Menu_vendedor ventana = new Menu_vendedor(basedatos, cedula);
+                    dispose();
+                }
+                
             } else {
                 System.out.println("DATOS INVÁLIDOS");
                 campo_cedula.setText("");

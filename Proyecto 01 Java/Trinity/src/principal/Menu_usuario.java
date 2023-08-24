@@ -7,11 +7,11 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class Menu extends javax.swing.JFrame {
+public class Menu_usuario extends javax.swing.JFrame {
     private String cedula;
     DataBase basedatos;
     
-    public Menu( DataBase basedatos, String cedula) {
+    public Menu_usuario( DataBase basedatos, String cedula) {
         this.cedula = cedula;
         this.basedatos = basedatos;
         initComponents();
@@ -24,17 +24,17 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jSeparator1 = new javax.swing.JSeparator();
-        etq_carrito = new javax.swing.JLabel();
         etq_logo = new javax.swing.JLabel();
+        etq_carrito = new javax.swing.JLabel();
         etq_usuario = new javax.swing.JLabel();
         contentPrincipal = new javax.swing.JScrollPane();
         panelPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        etq_carrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         etq_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        etq_carrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         etq_usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etq_usuario.addMouseListener(new java.awt.event.MouseAdapter() {

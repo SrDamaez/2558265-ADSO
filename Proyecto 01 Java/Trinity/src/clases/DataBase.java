@@ -53,6 +53,34 @@ public class DataBase {
         }
         return persona;
     }
+    
+    public ResultSet buscarUsuario(String cedula) {
+        ResultSet persona = null;
+        try {
+            String consulta = "SELECT * FROM usuarios WHERE cedula = " + cedula + "";
+            persona = this.manipularDB.executeQuery(consulta);
+            if (persona.next()){
+                return persona;
+            }else{
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.print("Error al buscar usuario: " + ex.getMessage());
+        }
+        return persona;
+    }
+    
+    public boolean actualizarUsuarios(String cedula, String nombre, String contrasena, String rol) {
+        boolean respuesta = false;
+        try {
+            String consulta = "UPDATE usuarios SET nombre = '" + nombre + "', contrasena = '" + contrasena + "', rol = '" + rol + "' WHERE cedula = '" + cedula + "'";
+            int resultado = this.manipularDB.executeUpdate(consulta);
+            respuesta = (resultado == 1);
+        } catch (SQLException ex) {
+            System.out.print("Error al actualizar persona: " + ex.getMessage());
+        }
+    return respuesta;
+    }
 
 
     
