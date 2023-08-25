@@ -11,7 +11,7 @@ public class Menu_usuario extends javax.swing.JFrame {
     private String cedula;
     DataBase basedatos;
     
-    public Menu_usuario( DataBase basedatos, String cedula) {
+    public Menu_usuario(DataBase basedatos, String cedula) {
         this.cedula = cedula;
         this.basedatos = basedatos;
         initComponents();
@@ -89,7 +89,8 @@ public class Menu_usuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(contentPrincipal))
+                .addComponent(contentPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -102,7 +103,7 @@ public class Menu_usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_etq_usuarioMouseClicked
 
     private void etq_carritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etq_carritoMouseClicked
-        Menu_carrito ventana = new Menu_carrito(basedatos);
+        Carrito ventana = new Carrito(basedatos, cedula);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_etq_carritoMouseClicked

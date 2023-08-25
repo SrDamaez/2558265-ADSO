@@ -28,7 +28,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="72" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="etq_password" alignment="2" max="32767" attributes="0"/>
                   <Component id="campo_password" alignment="2" min="-2" pref="272" max="-2" attributes="0"/>
@@ -39,14 +39,14 @@
                   <Component id="etq_cedula" alignment="2" min="-2" pref="248" max="-2" attributes="0"/>
                   <Component id="campo_cedula" alignment="2" min="-2" pref="270" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="52" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Component id="etq_logo" min="-2" pref="156" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="etq_titulo" min="-2" pref="52" max="-2" attributes="0"/>
@@ -62,7 +62,7 @@
               <Component id="btn_ingresar" min="-2" pref="42" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btn_registrarse" min="-2" pref="42" max="-2" attributes="0"/>
-              <EmptySpace pref="78" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

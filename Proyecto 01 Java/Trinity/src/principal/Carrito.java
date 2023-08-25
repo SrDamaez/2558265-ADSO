@@ -3,17 +3,19 @@ package principal;
 import clases.DataBase;
 import clases.Productos;
 import java.awt.Image;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 
-public class Menu_carrito extends javax.swing.JFrame {
+public class Carrito extends javax.swing.JFrame {
     
     DataBase basedatos;
     private String cedula;
     
-    public Menu_carrito(DataBase basedatos) {
+    public Carrito(DataBase basedatos, String cedula) {
         this.cedula = cedula;
         this.basedatos = basedatos;
         initComponents();
@@ -36,7 +38,7 @@ public class Menu_carrito extends javax.swing.JFrame {
         etq_valortotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(380, 560));
+        setPreferredSize(new java.awt.Dimension(389, 562));
         setResizable(false);
 
         etq_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -80,7 +82,7 @@ public class Menu_carrito extends javax.swing.JFrame {
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
+            .addGap(0, 347, Short.MAX_VALUE)
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,17 +102,16 @@ public class Menu_carrito extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(contentPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                        .addComponent(jSeparator1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(etq_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(etq_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                        .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contentPrincipal, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                        .addComponent(etq_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(etq_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(etq_total, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -136,7 +137,7 @@ public class Menu_carrito extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
         );
 
         pack();
@@ -149,14 +150,49 @@ public class Menu_carrito extends javax.swing.JFrame {
     }//GEN-LAST:event_etq_usuarioMouseClicked
 
     private void btn_pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pagarActionPerformed
-        Menu_vendedor ventana = new Menu_vendedor(basedatos, cedula);
-        dispose();
+        String rol = "";
+        
+        ResultSet respuesta = this.basedatos.buscarUsuario(cedula);
+        System.out.println(respuesta);
+        
+        try {
+            System.out.println("DATOS VÁLIDOS");
+            rol = (respuesta.getString("rol"));
+            System.out.println(rol);
 
-        // TODO add your handling code here:
+            if (rol.equalsIgnoreCase("Usuario")) {
+                Menu_usuario ventana = new Menu_usuario(basedatos, cedula);
+                dispose();
+            }else{
+                Menu_vendedor ventana = new Menu_vendedor(basedatos, cedula);
+                dispose();  
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al procesar el resultado: " + ex.getMessage());
+        }
+
     }//GEN-LAST:event_btn_pagarActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
-        // TODO add your handling code here:
+        String rol = "";
+        
+        ResultSet respuesta = this.basedatos.buscarUsuario(cedula);
+        
+        try {
+            System.out.println("DATOS VÁLIDOS");
+            rol = (respuesta.getString("rol"));
+            System.out.println(rol);
+
+            if (rol.equalsIgnoreCase("Usuario")) {
+                Menu_usuario ventana = new Menu_usuario(basedatos, cedula);
+                dispose();
+            }else{
+                Menu_vendedor ventana = new Menu_vendedor(basedatos, cedula);
+                dispose();  
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al procesar el resultado: " + ex.getMessage());
+        }
     }//GEN-LAST:event_btn_volverActionPerformed
 
     public void initComponentAltern(){

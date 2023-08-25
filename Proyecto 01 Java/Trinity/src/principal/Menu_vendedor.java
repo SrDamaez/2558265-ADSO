@@ -109,7 +109,7 @@ public class Menu_vendedor extends javax.swing.JFrame {
 
     private void etq_carritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etq_carritoMouseClicked
         // TODO add your handling code here:
-        Menu_carrito ventana = new Menu_carrito(basedatos);
+        Carrito ventana = new Carrito(basedatos, cedula);
         dispose();
     }//GEN-LAST:event_etq_carritoMouseClicked
 
