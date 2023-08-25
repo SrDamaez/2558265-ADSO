@@ -35,6 +35,11 @@ public class Menu_usuario extends javax.swing.JFrame {
         etq_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         etq_carrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etq_carrito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etq_carritoMouseClicked(evt);
+            }
+        });
 
         etq_usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etq_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -83,9 +88,8 @@ public class Menu_usuario extends javax.swing.JFrame {
                     .addComponent(etq_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contentPrincipal)
-                .addContainerGap())
+                .addGap(12, 12, 12)
+                .addComponent(contentPrincipal))
         );
 
         pack();
@@ -96,6 +100,12 @@ public class Menu_usuario extends javax.swing.JFrame {
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_etq_usuarioMouseClicked
+
+    private void etq_carritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etq_carritoMouseClicked
+        Menu_carrito ventana = new Menu_carrito(basedatos);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_etq_carritoMouseClicked
 
     
     public void initComponentAltern(){      

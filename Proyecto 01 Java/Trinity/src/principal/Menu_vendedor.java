@@ -38,6 +38,11 @@ public class Menu_vendedor extends javax.swing.JFrame {
         etq_subir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         etq_carrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etq_carrito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                etq_carritoMouseClicked(evt);
+            }
+        });
 
         etq_usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etq_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -102,7 +107,12 @@ public class Menu_vendedor extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_etq_usuarioMouseClicked
 
-    
+    private void etq_carritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etq_carritoMouseClicked
+        // TODO add your handling code here:
+        Menu_carrito ventana = new Menu_carrito(basedatos);
+        dispose();
+    }//GEN-LAST:event_etq_carritoMouseClicked
+
     public void initComponentAltern(){      
         setVisible(true);
         setLocationRelativeTo(null);

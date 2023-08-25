@@ -85,7 +85,6 @@ public class Info_vendedor extends javax.swing.JFrame {
         etq_cedula.setText("CÉDULA");
 
         campo_cedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campo_cedula.setEnabled(false);
 
         btn_volver.setBackground(java.awt.Color.orange);
         btn_volver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -186,13 +185,13 @@ public class Info_vendedor extends javax.swing.JFrame {
         
         boolean respuesta = basedatos.actualizarUsuarios(cedula, nombre, contrasena, rol);
         if (respuesta){
-            Menu_usuario ventana = new Menu_usuario(basedatos, cedula);
+            Menu_vendedor ventana = new Menu_vendedor(basedatos, cedula);
             dispose();
         }
     }//GEN-LAST:event_btn_editarActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
-        Menu_usuario ventana = new Menu_usuario(basedatos, cedula);
+        Menu_vendedor ventana = new Menu_vendedor(basedatos, cedula);
         dispose();
         
         // TODO add your handling code here:
