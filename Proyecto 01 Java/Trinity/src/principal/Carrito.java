@@ -150,27 +150,8 @@ public class Carrito extends javax.swing.JFrame {
     }//GEN-LAST:event_etq_usuarioMouseClicked
 
     private void btn_pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pagarActionPerformed
-        String rol = "";
-        
-        ResultSet respuesta = this.basedatos.buscarUsuario(cedula);
-        System.out.println(respuesta);
-        
-        try {
-            System.out.println("DATOS VÁLIDOS");
-            rol = (respuesta.getString("rol"));
-            System.out.println(rol);
-
-            if (rol.equalsIgnoreCase("Usuario")) {
-                Menu_usuario ventana = new Menu_usuario(basedatos, cedula);
-                dispose();
-            }else{
-                Menu_vendedor ventana = new Menu_vendedor(basedatos, cedula);
-                dispose();  
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error al procesar el resultado: " + ex.getMessage());
-        }
-
+        Factura ventana = new Factura(basedatos, cedula);
+        dispose();  
     }//GEN-LAST:event_btn_pagarActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
