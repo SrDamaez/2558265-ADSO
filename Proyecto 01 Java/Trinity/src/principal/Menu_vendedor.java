@@ -3,6 +3,8 @@ package principal;
 import clases.DataBase;
 import clases.Productos;
 import java.awt.Image;
+import java.util.ArrayList;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -33,7 +35,7 @@ public class Menu_vendedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(414, 598));
-        setPreferredSize(new java.awt.Dimension(414, 598));
+        setResizable(false);
 
         etq_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -57,11 +59,11 @@ public class Menu_vendedor extends javax.swing.JFrame {
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 397, Short.MAX_VALUE)
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 523, Short.MAX_VALUE)
+            .addGap(0, 546, Short.MAX_VALUE)
         );
 
         contentPrincipal.setViewportView(panelPrincipal);
@@ -74,7 +76,6 @@ public class Menu_vendedor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contentPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(etq_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -82,7 +83,9 @@ public class Menu_vendedor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(etq_carrito, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(etq_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(etq_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contentPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +99,7 @@ public class Menu_vendedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contentPrincipal))
+                .addComponent(contentPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,38 +123,16 @@ public class Menu_vendedor extends javax.swing.JFrame {
         setIconImage( getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda2.png")) );
         
         panelPrincipal.removeAll();
-        
-        JPanel contentVertical = new JPanel();
-        contentVertical.setSize( panelPrincipal.getSize() );
+        panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
          
+        ArrayList<Productos> productosList = basedatos.obtenerProductos();
         
-        Productos arregloProductos[] = new Productos[6];
-        arregloProductos[0] = new Productos("1", "Mouse", "Producto 01", "3500", "10", "imagen.png");
-        arregloProductos[1] = new Productos("2", "Teclado", "Producto 02", "3500", "10", "imagen.png");
-        arregloProductos[2] = new Productos("3", "Monitor", "Producto 03", "3500", "10", "imagen.png");
-        arregloProductos[3] = new Productos("4", "Parlante", "Producto 04", "3500", "10", "imagen.png");
-        arregloProductos[4] = new Productos("5", "PadMouse", "Producto 05", "3500", "10", "imagen.png");
-        arregloProductos[5] = new Productos("6", "PadMouse", "Producto 06", "3500", "10", "imagen.png");
+        for (Productos producto : productosList) {
+            contentItems contentTemporal = new contentItems(producto, basedatos);
+            panelPrincipal.add(contentTemporal);
+            panelPrincipal.add(Box.createVerticalStrut(0));
+        }
 
-        
-        
-        contentItems contentTemporal01 = new contentItems( arregloProductos[0], basedatos );
-        contentItems contentTemporal02 = new contentItems( arregloProductos[1], basedatos );
-        contentItems contentTemporal03 = new contentItems( arregloProductos[2], basedatos );
-        contentItems contentTemporal04 = new contentItems( arregloProductos[3], basedatos );
-        contentItems contentTemporal05 = new contentItems( arregloProductos[4], basedatos );
-        contentItems contentTemporal06 = new contentItems( arregloProductos[5], basedatos );
-
-        
-        contentVertical.add( contentTemporal01 );
-        contentVertical.add( contentTemporal02 );
-        contentVertical.add( contentTemporal03 );
-        contentVertical.add( contentTemporal04 );
-        contentVertical.add( contentTemporal05 );
-        contentVertical.add( contentTemporal06 );
-
-        
-        panelPrincipal.add( contentVertical );
         repaint();
         revalidate();
         

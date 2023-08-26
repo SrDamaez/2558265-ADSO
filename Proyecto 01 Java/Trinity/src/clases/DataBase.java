@@ -1,6 +1,7 @@
 package clases;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 
 public class DataBase {
@@ -82,6 +83,29 @@ public class DataBase {
     return respuesta;
     }
 
+    public ArrayList<Productos> obtenerProductos() {
+        ArrayList<Productos> productosList = new ArrayList<>();
+        String consultaProductos = "SELECT * FROM Productos";
 
+        try {
+            ResultSet productosResult = manipularDB.executeQuery(consultaProductos);
+            while (productosResult.next()) {
+                Productos producto = new Productos(
+                    productosResult.getString("Id_Producto"),
+                    productosResult.getString("Nombre"),
+                    productosResult.getString("Descripcion"),
+                    productosResult.getString("Precio"),
+                    productosResult.getString("CantidadStock"),
+                    productosResult.getString("Url_img") 
+                );
+
+                productosList.add(producto);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al cargar los productos: " + ex.getMessage());
+        }
+
+        return productosList;
+    }
     
 }
