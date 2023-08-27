@@ -14,30 +14,14 @@ CREATE TABLE Productos (
     Descripcion TEXT,
     Precio DECIMAL(10, 2),
     CantidadStock INT
+    Url_img VARCHAR(255)
 );
 
-CREATE TABLE CarritoCompras (
-    Id_carrito INT PRIMARY KEY AUTO_INCREMENT,
-    Id_Usuario VARCHAR(10),
-    FechaCreacion DATETIME,
-    FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Cedula)
-);
-
-CREATE TABLE DetalleCarrito (
-    Id_Detalle INT PRIMARY KEY AUTO_INCREMENT,
-    Id_Carrito INT,
-    Id_Producto INT,
-    Cantidad INT,
-    FOREIGN KEY (Id_Carrito) REFERENCES CarritoCompras(Id_carrito),
-    FOREIGN KEY (Id_Producto) REFERENCES Productos(Id_Producto)
-);
-
-CREATE TABLE Facturas (
-    Id_factura INT PRIMARY KEY AUTO_INCREMENT,
-    Id_Usuario VARCHAR(10),
-    Id_Carrito INT,
-    FechaCompra DATETIME,
-    Total DECIMAL(10, 2),
-    FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Cedula),
-    FOREIGN KEY (Id_Carrito) REFERENCES CarritoCompras(Id_carrito)
+CREATE TABLE Carrito (
+    Id_Carrito INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(200),
+    Descripcion TEXT,
+    Precio DECIMAL(10, 2),
+    CantidadStock INT
+    Url_img VARCHAR(255)
 );
