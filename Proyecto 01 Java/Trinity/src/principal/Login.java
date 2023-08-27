@@ -1,16 +1,11 @@
 package principal;
 
 import clases.DataBase;
-import java.awt.Color;
 import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 public class Login extends javax.swing.JFrame {
 
@@ -140,15 +135,16 @@ public class Login extends javax.swing.JFrame {
 
         try {
             if (respuesta.next()) {
-                System.out.println("DATOS VÁLIDOS");
                 rol = (respuesta.getString("rol"));
                 
                 if (rol.equalsIgnoreCase("Usuario")) {
                     Menu_usuario ventana = new Menu_usuario(basedatos, cedula);
                     dispose();
+                    this.basedatos.borrarDatosCarrito();
                 }else{
                     Menu_vendedor ventana = new Menu_vendedor(basedatos, cedula);
                     dispose();
+                    this.basedatos.borrarDatosCarrito();
                 }
                 
             } else {

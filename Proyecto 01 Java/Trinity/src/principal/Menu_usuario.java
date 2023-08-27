@@ -4,7 +4,6 @@ import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 import clases.DataBase;
 import clases.Productos;
 import javax.swing.Box;
@@ -17,7 +16,7 @@ public class Menu_usuario extends javax.swing.JFrame {
         this.cedula = cedula;
         this.basedatos = basedatos;
         initComponents();
-        initComponentAltern();
+        initComponentAltern(); 
     }
 
 
@@ -34,7 +33,6 @@ public class Menu_usuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(414, 598));
-        setPreferredSize(new java.awt.Dimension(414, 598));
         setResizable(false);
 
         etq_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -106,7 +104,7 @@ public class Menu_usuario extends javax.swing.JFrame {
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_etq_usuarioMouseClicked
-
+    
     private void etq_carritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etq_carritoMouseClicked
         Carrito ventana = new Carrito(basedatos, cedula);
         dispose();
@@ -126,7 +124,7 @@ public class Menu_usuario extends javax.swing.JFrame {
         ArrayList<Productos> productosList = basedatos.obtenerProductos();
         
         for (Productos producto : productosList) {
-            contentItems contentTemporal = new contentItems(producto, basedatos);
+            contentItems contentTemporal = new contentItems(producto, basedatos, cedula);
             panelPrincipal.add(contentTemporal);
             panelPrincipal.add(Box.createVerticalStrut(0));
         }
@@ -146,6 +144,7 @@ public class Menu_usuario extends javax.swing.JFrame {
         img_usuario = img_usuario.getScaledInstance(50, 46, Image.SCALE_SMOOTH);
         etq_usuario.setIcon(new ImageIcon(img_usuario));
         
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -156,4 +155,5 @@ public class Menu_usuario extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables
+
 }

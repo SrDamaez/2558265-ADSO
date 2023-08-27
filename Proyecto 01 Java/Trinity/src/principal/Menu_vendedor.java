@@ -128,7 +128,7 @@ public class Menu_vendedor extends javax.swing.JFrame {
         ArrayList<Productos> productosList = basedatos.obtenerProductos();
         
         for (Productos producto : productosList) {
-            contentItems contentTemporal = new contentItems(producto, basedatos);
+            contentItems contentTemporal = new contentItems(producto, basedatos, cedula);
             panelPrincipal.add(contentTemporal);
             panelPrincipal.add(Box.createVerticalStrut(0));
         }

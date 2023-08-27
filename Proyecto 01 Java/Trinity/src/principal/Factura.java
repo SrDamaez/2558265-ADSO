@@ -1,13 +1,10 @@
 
 package principal;
 import clases.DataBase;
-import clases.Productos;
 import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 
 public class Factura extends javax.swing.JFrame {
@@ -177,13 +174,13 @@ public class Factura extends javax.swing.JFrame {
 
     private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
         String rol = "";
-
+        this.basedatos.borrarDatosCarrito();
         ResultSet respuesta = this.basedatos.buscarUsuario(cedula);
-
+        
         try {
-            System.out.println("DATOS VÁLIDOS");
             rol = (respuesta.getString("rol"));
             System.out.println(rol);
+            System.out.println(cedula);
 
             if (rol.equalsIgnoreCase("Usuario")) {
                 Menu_usuario ventana = new Menu_usuario(basedatos, cedula);
@@ -200,7 +197,7 @@ public class Factura extends javax.swing.JFrame {
     public void initComponentAltern(){
         setVisible(true);
         setLocationRelativeTo(null);
-        setTitle("Carrito");
+        setTitle("Factura");
         setIconImage( getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda2.png")) );
         
        

@@ -1,24 +1,42 @@
 package principal;
 
+import principal.Carrito;
 import clases.DataBase;
 import clases.Productos;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class contentItems extends javax.swing.JPanel {
     
     Productos producto;
+    DataBase basedatos;
+    String cedula;
     
     public contentItems() {
         initComponents();
     }
 
-    public contentItems(Productos producto, DataBase basedatos) {
+    public contentItems(Productos producto, DataBase basedatos, String cedula) {
+        this.basedatos = basedatos;
         this.producto = producto;
+        this.cedula = cedula;
         initComponents();
         initAlternComponents();
+        
+        btn_añadir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                agregarAlCarrito();
+            }
+        });
+    }
+    
+    private void agregarAlCarrito() {
+        basedatos.agregarAlCarrito(producto);
+        
     }
     
     public void initAlternComponents(){
-        // Carga la imagen desde la URL y configúrala en el JLabel
         String nombreImagen = producto.getUrl_img();
         ClassLoader classLoader = getClass().getClassLoader();
         java.net.URL imgURL = classLoader.getResource("imagenes/" + nombreImagen);
@@ -99,7 +117,18 @@ public class contentItems extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_añadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadirActionPerformed
-        // TODO add your handling code here:
+        // Encuentra el JFrame contenedor de este JPanel
+        java.awt.Container container = this;
+        while (!(container instanceof javax.swing.JFrame) && container.getParent() != null) {
+            container = container.getParent();
+        }
+
+        if (container instanceof javax.swing.JFrame) {
+            javax.swing.JFrame frame = (javax.swing.JFrame) container;
+            frame.dispose(); // Cierra el JFrame
+        }
+
+        Carrito ventana = new Carrito(basedatos, cedula);
     }//GEN-LAST:event_btn_añadirActionPerformed
 
 

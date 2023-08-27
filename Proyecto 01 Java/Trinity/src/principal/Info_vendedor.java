@@ -198,6 +198,7 @@ public class Info_vendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_volverActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+        this.basedatos.borrarDatosCarrito();
         Login ventana = new Login();
         dispose();
     }//GEN-LAST:event_btn_salirActionPerformed

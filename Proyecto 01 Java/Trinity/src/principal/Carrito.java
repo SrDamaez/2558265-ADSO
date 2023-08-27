@@ -2,13 +2,16 @@ package principal;
 
 import clases.DataBase;
 import clases.Productos;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
+import javax.swing.JScrollPane;
 
 public class Carrito extends javax.swing.JFrame {
     
@@ -33,12 +36,11 @@ public class Carrito extends javax.swing.JFrame {
         etq_usuario = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
         etq_total = new javax.swing.JLabel();
+        etq_valortotal = new javax.swing.JLabel();
         contentPrincipal = new javax.swing.JScrollPane();
         panelPrincipal = new javax.swing.JPanel();
-        etq_valortotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(389, 562));
         setResizable(false);
 
         etq_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -76,47 +78,51 @@ public class Carrito extends javax.swing.JFrame {
         etq_total.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etq_total.setText("Total:");
 
+        etq_valortotal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        etq_valortotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etq_valortotal.setText("---");
+
+        contentPrincipal.setPreferredSize(new java.awt.Dimension(100, 393));
+
         panelPrincipal.setPreferredSize(new java.awt.Dimension(320, 390));
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
+            .addGap(0, 399, Short.MAX_VALUE)
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
 
         contentPrincipal.setViewportView(panelPrincipal);
-
-        etq_valortotal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        etq_valortotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etq_valortotal.setText("---");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
-                        .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(contentPrincipal, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.CENTER)
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
-                        .addComponent(etq_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(etq_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(etq_total, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(etq_valortotal, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(contentPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                                .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                                .addComponent(etq_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(etq_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(etq_total, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                                .addComponent(etq_valortotal, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,9 +133,9 @@ public class Carrito extends javax.swing.JFrame {
                     .addComponent(etq_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contentPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(contentPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etq_total)
                     .addComponent(etq_valortotal))
@@ -137,15 +143,31 @@ public class Carrito extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void etq_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etq_usuarioMouseClicked
-        Info_usuario ventana = new Info_usuario(basedatos, cedula);
-        dispose();
+        String rol = "";
+        ResultSet respuesta = this.basedatos.buscarUsuario(cedula);
+        
+        try {
+            rol = (respuesta.getString("rol"));
+            System.out.println(rol);
+            System.out.println(cedula);
+
+            if (rol.equalsIgnoreCase("Usuario")) {
+                Info_usuario ventana = new Info_usuario(basedatos, cedula);
+                dispose();
+            }else{
+                Info_vendedor ventana = new Info_vendedor(basedatos, cedula);
+                dispose();  
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al procesar el resultado: " + ex.getMessage());
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_etq_usuarioMouseClicked
 
@@ -156,13 +178,12 @@ public class Carrito extends javax.swing.JFrame {
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
         String rol = "";
-        
         ResultSet respuesta = this.basedatos.buscarUsuario(cedula);
         
         try {
-            System.out.println("DATOS VÁLIDOS");
             rol = (respuesta.getString("rol"));
             System.out.println(rol);
+            System.out.println(cedula);
 
             if (rol.equalsIgnoreCase("Usuario")) {
                 Menu_usuario ventana = new Menu_usuario(basedatos, cedula);
@@ -180,30 +201,38 @@ public class Carrito extends javax.swing.JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
         setTitle("Carrito");
-        setIconImage( getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda2.png")) );
-        panelPrincipal.removeAll();
+        setIconImage(getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda2.png")));
         
-        JPanel contentVertical = new JPanel();
-        contentVertical.setSize( panelPrincipal.getSize() );
-        int cont = 0;
-        
-        Productos arregloCarrito[] = new Productos[cont];
-        
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
-        
-        panelPrincipal.add( contentVertical );
-        repaint();
-        revalidate();
-        
+        // Obtener la lista de productos del carrito
+        ArrayList<Productos> productosList = basedatos.obtenerCarrito();
+
+        // Agregar los productos al JPanel
+        for (Productos producto : productosList) {
+            contentItemscarrito contentTemporal = new contentItemscarrito(producto, basedatos, cedula);
+            contentPanel.add(contentTemporal);
+            contentPanel.add(Box.createVerticalStrut(0)); // Espacio entre productos
+        }
+
+        // Crear el JScrollPane y configurar el viewport preferido
+        JScrollPane scrollPane = new JScrollPane(contentPanel);
+        scrollPane.setPreferredSize(new Dimension(320, 390)); // Tamaño inicial del viewport
+
+        // Agregar el JScrollPane al contenido principal
+        contentPrincipal.setViewportView(scrollPane);
+
         Image img_zelda2 = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda2.png"));
         img_zelda2 = img_zelda2.getScaledInstance(50, 46, Image.SCALE_SMOOTH);
         etq_logo.setIcon(new ImageIcon(img_zelda2));
-                
+
         Image img_usuario = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/usuario.png"));
         img_usuario = img_usuario.getScaledInstance(50, 46, Image.SCALE_SMOOTH);
         etq_usuario.setIcon(new ImageIcon(img_usuario));
-        
     }
+        
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_pagar;

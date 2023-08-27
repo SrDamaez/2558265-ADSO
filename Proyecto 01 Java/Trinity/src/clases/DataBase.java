@@ -108,4 +108,97 @@ public class DataBase {
         return productosList;
     }
     
+    public ArrayList<Productos> obtenerCarrito() {
+        ArrayList<Productos> productosList = new ArrayList<>();
+        String consultaProductos = "SELECT * FROM Carrito";
+
+        try {
+            ResultSet productosResult = manipularDB.executeQuery(consultaProductos);
+            while (productosResult.next()) {
+                Productos producto = new Productos(
+                    productosResult.getString("Id_Carrito"),
+                    productosResult.getString("Nombre"),
+                    productosResult.getString("Descripcion"),
+                    productosResult.getString("Precio"),
+                    productosResult.getString("CantidadStock"),
+                    productosResult.getString("Url_img") 
+                );
+
+                productosList.add(producto);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al cargar los productos: " + ex.getMessage());
+        }
+
+        return productosList;
+    }
+    
+    public boolean agregarAlCarrito(Productos producto) {
+        boolean respuesta = false;
+        
+        try {
+            String consulta = "INSERT INTO Carrito (Nombre, Descripcion, Precio, CantidadStock, Url_img) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+            preparedStatement.setString(1, producto.getNombre());
+            preparedStatement.setString(2, producto.getDescripcion());
+            preparedStatement.setString(3, producto.getPrecio());
+            preparedStatement.setString(4, producto.getCantidadStock());
+            preparedStatement.setString(5, producto.getUrl_img());
+            
+            int resultado = preparedStatement.executeUpdate();
+            if (resultado == 1) {
+                respuesta = true;
+            }
+        } catch (SQLException ex) {
+            System.out.print("Error al agregar al carrito: " + ex.getMessage());
+        }
+        
+        return respuesta;
+    }
+    
+    public boolean eliminarDelCarrito(Productos producto) {
+    boolean respuesta = false;
+    
+        try {
+            String consulta = "DELETE FROM Carrito WHERE Id_Carrito = ?";
+            PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
+            preparedStatement.setString(1, producto.getId_Producto()); // Supongo que Id_Carrito es el identificador único del producto en el carrito
+            int resultado = preparedStatement.executeUpdate();
+
+            if (resultado == 1) {
+                respuesta = true;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar del carrito: " + ex.getMessage());
+        }
+
+        return respuesta;
+    }
+    
+    public void borrarDatosCarrito() {
+        try {
+            String consulta = "DELETE FROM Carrito";
+            manipularDB.executeUpdate(consulta);
+        } catch (SQLException ex) {
+            System.out.println("Error al borrar datos del carrito: " + ex.getMessage());
+        }
+    }
+    
+    public boolean insertarProducto(String nombre,String descripcion, String precio, String cantidad, String img_archivo ){
+
+        boolean respuesta = false;
+
+        try {
+            String consulta = "INSERT INTO productos (Nombre, Descripcion, Precio, CantidadStock, Url_img) VALUES('"+nombre+"','"+descripcion+"','"+precio+"','"+cantidad+"','"+img_archivo+"')";
+            int resultado = this.manipularDB.executeUpdate(consulta);
+            if (resultado==1){
+                respuesta = true;
+            }
+        } catch (SQLException ex) {
+            System.out.print("Error al insertar: " + ex.getMessage());
+        }
+
+        return respuesta;
+    }
+
 }
