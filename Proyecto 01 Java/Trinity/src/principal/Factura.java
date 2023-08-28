@@ -29,9 +29,9 @@ public class Factura extends javax.swing.JFrame {
         etq_tituloCantidadProductos = new javax.swing.JLabel();
         etq_cantidadTotal = new javax.swing.JLabel();
         etq_tituloListaproductos = new javax.swing.JLabel();
-        etq_tituloCantidad = new javax.swing.JLabel();
+        etq_tituloPrecio = new javax.swing.JLabel();
         etq_producto = new javax.swing.JLabel();
-        etq_cantidadProducto = new javax.swing.JLabel();
+        etq_precio = new javax.swing.JLabel();
         etq_titutloTotal = new javax.swing.JLabel();
         etq_valorTotal = new javax.swing.JLabel();
         btn_menu = new javax.swing.JButton();
@@ -39,7 +39,6 @@ public class Factura extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(414, 598));
-        setPreferredSize(new java.awt.Dimension(414, 598));
 
         etq_titulo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         etq_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -57,17 +56,17 @@ public class Factura extends javax.swing.JFrame {
         etq_tituloListaproductos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etq_tituloListaproductos.setText("Lista Productos");
 
-        etq_tituloCantidad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        etq_tituloCantidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etq_tituloCantidad.setText("Cantidad");
+        etq_tituloPrecio.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        etq_tituloPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etq_tituloPrecio.setText("Precio");
 
         etq_producto.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         etq_producto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etq_producto.setText("---");
 
-        etq_cantidadProducto.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        etq_cantidadProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etq_cantidadProducto.setText("---");
+        etq_precio.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        etq_precio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etq_precio.setText("---");
 
         etq_titutloTotal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         etq_titutloTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -86,24 +85,25 @@ public class Factura extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(etq_tituloCantidadProductos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(etq_cantidadTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(etq_titutloTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(etq_producto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(etq_tituloListaproductos, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
-                            .addComponent(etq_titutloTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
+                                .addComponent(etq_producto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(etq_tituloListaproductos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(etq_tituloCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 24, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(etq_valorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(etq_cantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(17, 17, 17))))))
+                            .addComponent(etq_tituloPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(etq_valorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap())
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(etq_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(17, 17, 17)))))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(etq_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,11 +121,11 @@ public class Factura extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etq_tituloListaproductos)
-                    .addComponent(etq_tituloCantidad))
+                    .addComponent(etq_tituloPrecio))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etq_producto)
-                    .addComponent(etq_cantidadProducto))
+                    .addComponent(etq_precio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etq_titutloTotal)
@@ -207,16 +207,21 @@ public class Factura extends javax.swing.JFrame {
         // Initialize variables to store product names and quantities
         StringBuilder productNames = new StringBuilder();
         StringBuilder productQuantities = new StringBuilder();
+        int cantidadProductos = productosList.size();
+        int totalpago = 0;
 
         for (Productos producto : productosList) {
             // Update product names and quantities
             productNames.append(producto.getNombre()).append("<br>");
-            productQuantities.append(producto.getCantidadStock()).append("<br>");
+            productQuantities.append(producto.getPrecio()).append("<br>");
+            totalpago += Integer.parseInt(producto.getPrecio());
         }
 
         // Update the labels with the product names and quantities
         etq_producto.setText("<html>" + productNames.toString() + "</html>");
-        etq_cantidadProducto.setText("<html>" + productQuantities.toString() + "</html>");
+        etq_precio.setText("<html>" + productQuantities.toString() + "</html>");
+        etq_cantidadTotal.setText(String.valueOf(cantidadProductos));
+        etq_valorTotal.setText(String.valueOf(totalpago));
 
         // Rest of your existing code...
 
@@ -233,14 +238,14 @@ public class Factura extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_menu;
-    private javax.swing.JLabel etq_cantidadProducto;
     private javax.swing.JLabel etq_cantidadTotal;
     private javax.swing.JLabel etq_logo;
+    private javax.swing.JLabel etq_precio;
     private javax.swing.JLabel etq_producto;
     private javax.swing.JLabel etq_titulo;
-    private javax.swing.JLabel etq_tituloCantidad;
     private javax.swing.JLabel etq_tituloCantidadProductos;
     private javax.swing.JLabel etq_tituloListaproductos;
+    private javax.swing.JLabel etq_tituloPrecio;
     private javax.swing.JLabel etq_titutloTotal;
     private javax.swing.JLabel etq_valorTotal;
     private javax.swing.JPanel jPanel1;

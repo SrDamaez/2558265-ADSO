@@ -62,28 +62,30 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="etq_tituloCantidadProductos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="59" max="32767" attributes="0"/>
                           <Component id="etq_cantidadTotal" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="etq_producto" max="32767" attributes="0"/>
-                                  <Component id="etq_tituloListaproductos" pref="152" max="32767" attributes="0"/>
-                              </Group>
                               <Component id="etq_titutloTotal" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="etq_producto" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="etq_tituloListaproductos" alignment="0" pref="131" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="etq_tituloCantidad" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="etq_valorTotal" min="-2" pref="123" max="-2" attributes="0"/>
-                                      <Component id="etq_cantidadProducto" min="-2" pref="123" max="-2" attributes="0"/>
+                              <Component id="etq_tituloPrecio" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="etq_valorTotal" min="-2" pref="75" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="etq_precio" min="-2" pref="75" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -109,12 +111,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="etq_tituloListaproductos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="etq_tituloCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="etq_tituloPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="etq_producto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="etq_cantidadProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="etq_precio" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="171" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -163,13 +165,13 @@
             <Property name="text" type="java.lang.String" value="Lista Productos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="etq_tituloCantidad">
+        <Component class="javax.swing.JLabel" name="etq_tituloPrecio">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Cantidad"/>
+            <Property name="text" type="java.lang.String" value="Precio"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="etq_producto">
@@ -181,7 +183,7 @@
             <Property name="text" type="java.lang.String" value="---"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="etq_cantidadProducto">
+        <Component class="javax.swing.JLabel" name="etq_precio">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>

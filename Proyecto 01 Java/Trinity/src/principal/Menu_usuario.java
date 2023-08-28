@@ -112,7 +112,8 @@ public class Menu_usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_etq_carritoMouseClicked
 
     
-    public void initComponentAltern(){      
+    public void initComponentAltern(){  
+        repaint();
         setVisible(true);
         setLocationRelativeTo(null);
         setTitle("Menú");

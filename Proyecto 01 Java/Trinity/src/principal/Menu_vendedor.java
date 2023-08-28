@@ -127,7 +127,8 @@ public class Menu_vendedor extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_etq_subirMouseClicked
 
-    public void initComponentAltern(){      
+    public void initComponentAltern(){             
+        repaint();
         setVisible(true);
         setLocationRelativeTo(null);
         setTitle("Menú");

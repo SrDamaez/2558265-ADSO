@@ -39,10 +39,10 @@ public class contentItems extends javax.swing.JPanel {
     public void initAlternComponents(){
         String nombreImagen = producto.getUrl_img();
         ClassLoader classLoader = getClass().getClassLoader();
-        java.net.URL imgURL = classLoader.getResource("imagenes/" + nombreImagen);
+        //java.net.URL imgURL = classLoader.getResource("imagenes/" + nombreImagen);
 
-        if (imgURL != null) {
-            java.awt.Image img = new javax.swing.ImageIcon(imgURL).getImage();
+        if (nombreImagen != null) {
+            java.awt.Image img = new javax.swing.ImageIcon(getToolkit().createImage("src/imagenes/" + nombreImagen)).getImage();
             img_item.setIcon(new javax.swing.ImageIcon(img.getScaledInstance(60, 80, java.awt.Image.SCALE_SMOOTH)));
         }
         

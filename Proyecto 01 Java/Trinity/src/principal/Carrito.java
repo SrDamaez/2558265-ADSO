@@ -208,17 +208,21 @@ public class Carrito extends javax.swing.JFrame {
 
         // Obtener la lista de productos del carrito
         ArrayList<Productos> productosList = basedatos.obtenerCarrito();
+        
+        int totalpago = 0;
 
         // Agregar los productos al JPanel
         for (Productos producto : productosList) {
             contentItemscarrito contentTemporal = new contentItemscarrito(producto, basedatos, cedula);
             contentPanel.add(contentTemporal);
-            contentPanel.add(Box.createVerticalStrut(0)); // Espacio entre productos
+            contentPanel.add(Box.createVerticalStrut(0));
+            totalpago += Integer.parseInt(producto.getPrecio());// Espacio entre productos
         }
 
         // Crear el JScrollPane y configurar el viewport preferido
         JScrollPane scrollPane = new JScrollPane(contentPanel);
-        scrollPane.setPreferredSize(new Dimension(320, 390)); // Tamaño inicial del viewport
+        scrollPane.setPreferredSize(new Dimension(320, 390));
+        etq_valortotal.setText(String.valueOf(totalpago));// Tamaño inicial del viewport
 
         // Agregar el JScrollPane al contenido principal
         contentPrincipal.setViewportView(scrollPane);
