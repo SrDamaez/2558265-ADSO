@@ -5,7 +5,8 @@ import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
-
+import java.util.ArrayList;
+import clases.Productos;
 
 public class Factura extends javax.swing.JFrame {
 
@@ -200,6 +201,26 @@ public class Factura extends javax.swing.JFrame {
         setTitle("Factura");
         setIconImage( getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda2.png")) );
         
+        // Fetch products from the Carrito table
+        ArrayList<Productos> productosList = basedatos.obtenerCarrito();
+
+        // Initialize variables to store product names and quantities
+        StringBuilder productNames = new StringBuilder();
+        StringBuilder productQuantities = new StringBuilder();
+
+        for (Productos producto : productosList) {
+            // Update product names and quantities
+            productNames.append(producto.getNombre()).append("<br>");
+            productQuantities.append(producto.getCantidadStock()).append("<br>");
+        }
+
+        // Update the labels with the product names and quantities
+        etq_producto.setText("<html>" + productNames.toString() + "</html>");
+        etq_cantidadProducto.setText("<html>" + productQuantities.toString() + "</html>");
+
+        // Rest of your existing code...
+
+      
        
         
         Image img_zelda2 = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/zelda.png"));
