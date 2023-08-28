@@ -10,11 +10,11 @@ public class DataBase {
     Statement manipularDB;
     
     public DataBase (){
-        String hostname = "localhost";
-        String user_name = "root";
-        String database_name = "trinity_bd";
+        String hostname = "3.16.83.65";
         String puerto = "3306";
-        String password = "";
+        String user_name = "root";
+        String password = "Adso2023!";
+        String database_name = "trinity_bd";
         
         String url = "jdbc:mysql://"+hostname+":"+puerto+"/"+database_name;
         
@@ -32,7 +32,7 @@ public class DataBase {
         boolean respuesta = false;
         
         try {
-            String consulta = "INSERT INTO usuarios (Cedula, Nombre, Contrasena, Rol) VALUES('"+cedula+"','"+nombre+"','"+contrasena+"','"+rol+"')";
+            String consulta = "INSERT INTO usuarios (cedula, nombre, contrasena, rol) VALUES('"+cedula+"','"+nombre+"','"+contrasena+"','"+rol+"')";
             int resultado = this.manipularDB.executeUpdate(consulta);
             if (resultado==1){
                 respuesta = true;
@@ -85,18 +85,18 @@ public class DataBase {
 
     public ArrayList<Productos> obtenerProductos() {
         ArrayList<Productos> productosList = new ArrayList<>();
-        String consultaProductos = "SELECT * FROM Productos";
+        String consultaProductos = "SELECT * FROM productos";
 
         try {
             ResultSet productosResult = manipularDB.executeQuery(consultaProductos);
             while (productosResult.next()) {
                 Productos producto = new Productos(
-                    productosResult.getString("Id_Producto"),
-                    productosResult.getString("Nombre"),
-                    productosResult.getString("Descripcion"),
-                    productosResult.getString("Precio"),
-                    productosResult.getString("CantidadStock"),
-                    productosResult.getString("Url_img") 
+                    productosResult.getString("id_producto"),
+                    productosResult.getString("nombre"),
+                    productosResult.getString("descripcion"),
+                    productosResult.getString("precio"),
+                    productosResult.getString("cantidadStock"),
+                    productosResult.getString("url_img") 
                 );
 
                 productosList.add(producto);
@@ -110,18 +110,18 @@ public class DataBase {
     
     public ArrayList<Productos> obtenerCarrito() {
         ArrayList<Productos> productosList = new ArrayList<>();
-        String consultaProductos = "SELECT * FROM Carrito";
+        String consultaProductos = "SELECT * FROM carrito";
 
         try {
             ResultSet productosResult = manipularDB.executeQuery(consultaProductos);
             while (productosResult.next()) {
                 Productos producto = new Productos(
-                    productosResult.getString("Id_Carrito"),
-                    productosResult.getString("Nombre"),
-                    productosResult.getString("Descripcion"),
-                    productosResult.getString("Precio"),
-                    productosResult.getString("CantidadStock"),
-                    productosResult.getString("Url_img") 
+                    productosResult.getString("id_carrito"),
+                    productosResult.getString("nombre"),
+                    productosResult.getString("descripcion"),
+                    productosResult.getString("precio"),
+                    productosResult.getString("cantidadStock"),
+                    productosResult.getString("url_img") 
                 );
 
                 productosList.add(producto);
@@ -137,7 +137,7 @@ public class DataBase {
         boolean respuesta = false;
         
         try {
-            String consulta = "INSERT INTO Carrito (Nombre, Descripcion, Precio, CantidadStock, Url_img) VALUES (?, ?, ?, ?, ?)";
+            String consulta = "INSERT INTO carrito (nombre, descripcion, precio, cantidadStock, url_img) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
             preparedStatement.setString(1, producto.getNombre());
             preparedStatement.setString(2, producto.getDescripcion());
@@ -160,7 +160,7 @@ public class DataBase {
     boolean respuesta = false;
     
         try {
-            String consulta = "DELETE FROM Carrito WHERE Id_Carrito = ?";
+            String consulta = "DELETE FROM carrito WHERE id_carrito = ?";
             PreparedStatement preparedStatement = conexion.prepareStatement(consulta);
             preparedStatement.setString(1, producto.getId_Producto()); // Supongo que Id_Carrito es el identificador único del producto en el carrito
             int resultado = preparedStatement.executeUpdate();
@@ -177,7 +177,7 @@ public class DataBase {
     
     public void borrarDatosCarrito() {
         try {
-            String consulta = "DELETE FROM Carrito";
+            String consulta = "DELETE FROM carrito";
             manipularDB.executeUpdate(consulta);
         } catch (SQLException ex) {
             System.out.println("Error al borrar datos del carrito: " + ex.getMessage());
@@ -189,7 +189,7 @@ public class DataBase {
         boolean respuesta = false;
 
         try {
-            String consulta = "INSERT INTO productos (Nombre, Descripcion, Precio, CantidadStock, Url_img) VALUES('"+nombre+"','"+descripcion+"','"+precio+"','"+cantidad+"','"+img_archivo+"')";
+            String consulta = "INSERT INTO productos (nombre, descripcion, precio, cantidadStock, url_img) VALUES('"+nombre+"','"+descripcion+"','"+precio+"','"+cantidad+"','"+img_archivo+"')";
             int resultado = this.manipularDB.executeUpdate(consulta);
             if (resultado==1){
                 respuesta = true;
