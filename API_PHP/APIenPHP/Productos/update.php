@@ -5,19 +5,17 @@
 
     include '../Conexion.php';
     
-if (!empty($_POST['cedula_v']) && !empty($_POST['nombres_v']) && !empty($_POST['apellidos_v']) && !empty($_POST['telefono_v'])) {
+if (!empty($_POST['id_producto']) && !empty($_POST['nombre_producto']) && !empty($_POST['precio_producto'])) {
     
-            $documento = $_POST['cedula_v'];
-            $nombres = $_POST['nombres_v'];
-            $apellidos = $_POST['apellidos_v'];
-            $telefono = $_POST['telefono_v'];
+            $id = $_POST['id_producto'];
+            $nombre = $_POST['nombre_producto'];
+            $precio = $_POST['precio_producto'];
 
         try {
-            $consulta = $base_de_datos->prepare("UPDATE vendedores SET nombres_vendedor = :nom, apellidos_vendedor = :ape, telefono_vendedor = :tel WHERE cedula_vendedor = :ced");
-            $consulta->bindParam(':ced', $documento);
-            $consulta->bindParam(':nom', $nombres);
-            $consulta->bindParam(':ape', $apellidos);
-            $consulta->bindParam(':tel', $telefono);
+            $consulta = $base_de_datos->prepare("UPDATE productos SET nombre_producto = :nom, precio_producto = :pre WHERE id_producto = :id");
+            $consulta->bindParam(':id', $id);
+            $consulta->bindParam(':nom', $nombre);
+            $consulta->bindParam(':pre', $precio);
 
             $proceso = $consulta->execute();
 
