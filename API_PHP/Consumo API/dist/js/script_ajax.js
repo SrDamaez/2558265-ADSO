@@ -1,9 +1,15 @@
 let contentClientes = null;
 let listaPersonas = null;
-let formInsertarUsuario = null;
-let formEditarUsuario = null;
-let modalCrearUsuario = null;
-let modalEditarUsuario = null;
+let listaProductos = null;
+let formInsertarCliente = null;
+let formEditarCliente = null;
+let formInsertarVendedor = null;
+let formEditarVendedor = null;
+let formEditarProducto = null;
+let modalCrearCliente = null;
+let modalEditarCliente = null;
+let modalCrearVendedor = null;
+let modalEditarVendedor = null;
 let modalCrearProducto = null;
 let modalEditarProducto = null;
 let modalCrearFactura = null;
@@ -14,21 +20,14 @@ window.onload = function(){
     contentClientes = document.getElementById("contentClientes");
     formInsertarCliente = document.getElementById("formInsertarCliente");
     formInsertarVendedor = document.getElementById("formInsertarVendedor");
+    formInsertarProducto = document.getElementById("formInsertarProducto");
     formEditarCliente = document.getElementById("formEditarCliente");
     formEditarVendedor = document.getElementById("formEditarVendedor");
+    formEditarProducto = document.getElementById("formEditarProducto");
     ver_clientes = document.getElementById("ver_clientes");
     ver_vendedores = document.getElementById("ver_vendedores");
     ver_productos = document.getElementById("ver_productos");
     ver_facturas = document.getElementById("ver_facturas");
-    
-
-    document.getElementById("btn_usuarios").addEventListener("click", function () {
-        window.location.href = "index.html";
-    });
-
-    document.getElementById("btn_facturas").addEventListener("click", function () {
-        window.location.href = "facturas.html";
-    });
 
 
     formInsertarCliente.addEventListener("submit",function(event){
@@ -48,6 +47,16 @@ window.onload = function(){
     formEditarVendedor.addEventListener("submit", function(event) {
         event.preventDefault();
     });
+
+    formInsertarProducto.addEventListener("submit",function(event){
+        event.preventDefault();
+        crearProducto();
+    });
+
+    formEditarProducto.addEventListener("submit", function(event) {
+        event.preventDefault();
+    });
+
 
     modalCrearCliente = new bootstrap.Modal(document.getElementById('modalCrearCliente'), {
         keyboard: false,
@@ -79,15 +88,15 @@ window.onload = function(){
         backdrop: false
     })
 
-    modalCrearFactura = new bootstrap.Modal(document.getElementById('modalCrearFactura'), {
-        keyboard: false,
-        backdrop: false
-    })
+    // modalCrearFactura = new bootstrap.Modal(document.getElementById('modalCrearFactura'), {
+    //     keyboard: false,
+    //     backdrop: false
+    // })
 
-    modalEditarFactura = new bootstrap.Modal(document.getElementById('modalEditarFactura'), {
-        keyboard: false,
-        backdrop: false
-    })
+    // modalEditarFactura = new bootstrap.Modal(document.getElementById('modalEditarFactura'), {
+    //     keyboard: false,
+    //     backdrop: false
+    // })
     
     ver_clientes.addEventListener("click", function(event) {
         event.preventDefault();
@@ -109,8 +118,8 @@ window.onload = function(){
         getFacturas("http://localhost/API_PHP/APIenPHP/Facturas/Obtener.php");
     });
 
-    //getClients("http://localhost/API_PHP/APIenPHP/Clientes/Obtener.php");
-
+    getVendedores("http://localhost/API_PHP/APIenPHP/Vendedores/Obtener.php");
+    getProductos("http://localhost/API_PHP/APIenPHP/Productos/Obtener.php");
 }
 
 function getClients(endpoint){
@@ -172,7 +181,7 @@ function getProductos(endpoint){
     .then( data => {
         console.log("se recibe");
         console.log(data);
-        listaPersonas = data.registros;
+        listaProductos = data.registros;
         contentProductos.innerHTML = "";
         for(let i = 0; i < data.registros.length; i ++){
             temp=   `
@@ -271,6 +280,51 @@ function abrirModalEditarVendedor(indice) {
                 })
 
                 getVendedores("http://localhost/API_PHP/APIenPHP/Vendedores/Obtener.php");
+            } else {
+                Swal.fire({
+                    title: 'ERROR',
+                    icon: 'error',
+                    html: 'Se presentó un error, quizá la cédula está repetida',
+                    confirmButtonText: 'ENTENDIDO'
+                })
+            }
+        });
+    };
+}
+
+function abrirModalEditarProducto(indice) {
+    document.getElementById('campo_editar_id_producto').value = listaProductos[indice].id_producto;
+    document.getElementById('campo_editar_nombre_producto').value = listaProductos[indice].nombre_producto;
+    document.getElementById('campo_editar_precio_producto').value = listaProductos[indice].precio_producto;
+
+    modalEditarProducto.show();
+
+    formEditarProducto.onsubmit = function (event) {
+        
+        let insertarDatos = new FormData(formEditarProducto);
+        let configurar = {
+            method: "POST",
+            headers: {
+                "Accept": "application/json"
+            },
+            body: insertarDatos,
+        }
+
+        fetch("http://localhost/API_PHP/APIenPHP/Productos/update.php", configurar)
+            .then(respuesta => respuesta.json())
+            .then(data => {
+            if (data.status) {
+                formEditarProducto.reset();
+                modalEditarProducto.hide();
+
+                Swal.fire({
+                    title: 'ÉXITO',
+                    icon: 'success',
+                    html: 'Actualizado con éxito',
+                    confirmButtonText:'ENTENDIDO'
+                })
+
+                getProductos("http://localhost/API_PHP/APIenPHP/Productos/Obtener.php");
             } else {
                 Swal.fire({
                     title: 'ERROR',
