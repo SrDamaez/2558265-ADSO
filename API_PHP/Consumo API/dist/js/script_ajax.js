@@ -26,8 +26,8 @@ window.onload = function(){
     formEditarProducto = document.getElementById("formEditarProducto");
     ver_clientes = document.getElementById("ver_clientes");
     ver_vendedores = document.getElementById("ver_vendedores");
-    ver_productos = document.getElementById("ver_productos");
-    ver_facturas = document.getElementById("ver_facturas");
+    // ver_productos = document.getElementById("ver_productos");
+    // ver_facturas = document.getElementById("ver_facturas");
 
 
     formInsertarCliente.addEventListener("submit",function(event){
@@ -108,15 +108,15 @@ window.onload = function(){
         getVendedores("http://localhost/API_PHP/APIenPHP/Vendedores/Obtener.php");
     });
 
-    ver_productos.addEventListener("click", function(event) {
-        event.preventDefault();
-        getProductos("http://localhost/API_PHP/APIenPHP/Productos/Obtener.php");
-    });
+    // ver_productos.addEventListener("click", function(event) {
+    //     event.preventDefault();
+    //     getProductos("http://localhost/API_PHP/APIenPHP/Productos/Obtener.php");
+    // });
 
-    ver_facturas.addEventListener("click", function(event) {
-        event.preventDefault();
-        getFacturas("http://localhost/API_PHP/APIenPHP/Facturas/Obtener.php");
-    });
+    // ver_facturas.addEventListener("click", function(event) {
+    //     event.preventDefault();
+    //     getFacturas("http://localhost/API_PHP/APIenPHP/Facturas/Obtener.php");
+    // });
 
     getVendedores("http://localhost/API_PHP/APIenPHP/Vendedores/Obtener.php");
     getProductos("http://localhost/API_PHP/APIenPHP/Productos/Obtener.php");
@@ -347,10 +347,10 @@ function confirmarEliminacionCliente(indice) {
         text: 'Eliminar datos para la cedula: ' + listaPersonas[indice].cedula_cliente,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'SI, Eliminar!',
-        cancelButtonText: 'Cancelar'
+        confirmButtonColor: '#3085d6',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'SI, Eliminar!'
     }).then((result) => {
         if (result.isConfirmed) {
             eliminarRegistroCliente(listaPersonas[indice].cedula_cliente);
@@ -407,8 +407,8 @@ function confirmarEliminacionVendedor(indice) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'SI, Eliminar!',
-        cancelButtonText: 'Cancelar'
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'SI, Eliminar!'
     }).then((result) => {
         if (result.isConfirmed) {
             eliminarRegistroVendedor(listaPersonas[indice].cedula_vendedor);
@@ -435,6 +435,64 @@ function eliminarRegistroVendedor(cedula) {
                 'success'
             );
             getVendedores("http://localhost/API_PHP/APIenPHP/Vendedores/Obtener.php");
+        } else {
+            // Error al eliminar
+            Swal.fire(
+                'ERROR',
+                'No se pudo eliminar el registro.',
+                'error'
+            );
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire(
+            'ERROR',
+            'Ocurrió un error al procesar la solicitud.',
+            'error'
+        );
+    });
+}
+
+function confirmarEliminacionProducto(indice) {
+    console.log("Eliminar para: ");
+    console.log(listaProductos[indice].id_producto);
+
+    Swal.fire({
+        title: 'ESTAS SEGURO?',
+        text: 'Eliminar datos para el id: ' + listaProductos[indice].id_producto,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'SI, Eliminar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            eliminarRegistroProducto(listaProductos[indice].id_producto);
+        }
+    });
+}
+
+function eliminarRegistroProducto(id_producto) {
+    // Crea un objeto FormData para enviar la cédula al servidor
+    let datos = new FormData();
+    datos.append('id_producto', id_producto);
+
+    fetch('http://localhost/API_PHP/APIenPHP/Productos/delete.php', {
+        method: 'POST',
+        body: datos
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status) {
+            // Éxito al eliminar
+            Swal.fire(
+                'ELIMINADO!',
+                'El registro ha sido eliminado.',
+                'success'
+            );
+            getProductos("http://localhost/API_PHP/APIenPHP/Productos/Obtener.php");
         } else {
             // Error al eliminar
             Swal.fire(
@@ -523,6 +581,43 @@ function crearVendedor(){
                 title: 'ERROR',
                 icon: 'error',
                 html: 'se presento un error, quiza la cedula esta repetida',
+                confirmButtonText:'ENTENDIDO'
+            })
+        }
+    });
+}
+
+function crearProducto(){
+    console.log("aca hacemos el codigo para consumir la api de insert");
+    let datos = new FormData(formInsertarProducto);
+    let configuracion = {
+                            method: "POST",
+                            headers: {
+                                "Accept": "application/json"
+                            },                            
+                            body: datos,
+                        }
+    
+    fetch("http://localhost/API_PHP/APIenPHP/Productos/Insert.php",configuracion)
+    .then(respuesta => respuesta.json())
+    .then(data => {
+        if(data.status){
+            formInsertarProducto.reset();
+            modalCrearProducto.hide();
+
+            Swal.fire({
+                title: 'EXITO',
+                icon: 'success',
+                html: 'Registro creado con exito',
+                confirmButtonText:'ENTENDIDO'
+            })
+
+            getProductos("http://localhost/API_PHP/APIenPHP/Productos/Obtener.php");
+        } else{
+            Swal.fire({
+                title: 'ERROR',
+                icon: 'error',
+                html: 'se presento un error, quiza el id esté repetido',
                 confirmButtonText:'ENTENDIDO'
             })
         }

@@ -48,10 +48,7 @@
 						<h1 class="text-center">PRODUCTOS</h1>
 					</div>
 					<div class="col-12 m-0 p-0 row justify-content-end">
-						<button id="ver_productos" class="col btn btn-secondary m-1"><b>VER PRODUCTOS</b></button>
-						<button id="ver_facturas" class="col btn btn-secondary m-1"><b>VER FACTURAS</b></button>
-						<button class="col btn btn-primary m-1"  data-bs-toggle="modal" data-bs-target="#modalCrearProducto"><b>CREAR PRODUCTO</b></button>
-						<button class="col btn btn-primary m-1"  data-bs-toggle="modal" data-bs-target="#modalCrearFactura"><b>CREAR FACTURA</b></button>
+						<button class="col-3 btn btn-primary m-1"  data-bs-toggle="modal" data-bs-target="#modalCrearProducto"><b>CREAR PRODUCTO</b></button>
 					</div>
 					<div class="col-12 m-0 mt-2 p-0">
 						<table class="table table-bordered">
@@ -64,6 +61,29 @@
 								</tr>
 							</thead>
 							<tbody id="contentProductos">
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="col-12 m-0 p-0">
+					<div class="col-12 m-0 p-3 row justify-content-end">
+						<h1 class="text-center">FACTURAS</h1>
+					</div>
+					<div class="col-12 m-0 p-0 row justify-content-end">
+						<button class="col-3 btn btn-primary m-1"  data-bs-toggle="modal" data-bs-target="#modalCrearFactura"><b>CREAR FACTURA</b></button>
+					</div>
+					<div class="col-12 m-0 mt-2 p-0">
+						<table class="table table-bordered">
+							<thead>
+								<tr class="bg-dark text-light">
+									<th class="text-center">ID FACTURA</th>
+									<th class="text-center">ID CLIENTE</th>
+									<th class="text-center">ID VENDEDOR</th>
+								</tr>
+							</thead>
+							<tbody id="contentFacturas">
 								
 							</tbody>
 						</table>
