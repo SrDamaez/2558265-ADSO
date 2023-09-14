@@ -81,6 +81,7 @@
 									<th class="text-center">ID FACTURA</th>
 									<th class="text-center">ID CLIENTE</th>
 									<th class="text-center">ID VENDEDOR</th>
+									<th class="text-center">OPCIONES</th>
 								</tr>
 							</thead>
 							<tbody id="contentFacturas">
@@ -244,19 +245,23 @@
 					<form id="formInsertarFactura" action="#" method="POST" accept-charset="utf-8">
 						<div class="modal-header">
 							<h5 class="modal-title" id="exampleModalLabel"><b>CREAR FACTURA</b></h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
 						</div>
 						<div class="modal-body">
 							<div class="col-12 m-0 p-0 row justify-content-center">
 								<div class="col-8">
 									<label for="campo_id_factura" class="form-label m-0"><b>ID FACTURA:</b></label>
 									<input id="campo_id_factura" type="number" name="id_factura" class="form-control" required>
-
+		
 									<label for="campo_cedula_cliente" class="form-label m-0 mt-2"><b>CEDULA CLIENTE:</b></label>
-									<input id="campo_cedula_cliente" type="text" name="cedula_cliente" class="form-control" required>
+									<select id="campo_cedula_cliente" name="cedula_cliente" class="form-select" required>
 
+									</select>
+		
 									<label for="campo_cedula_vendedor" class="form-label m-0 mt-2"><b>CEDULA VENDEDOR:</b></label>
-									<input id="campo_cedula_vendedor" type="text" name="cedula_vendedor" class="form-control" required>
+									<select id="campo_cedula_vendedor" name="cedula_vendedor" class="form-select" required>
+									
+									</select>
 								</div>
 							</div>
 						</div>
@@ -271,15 +276,16 @@
 						<div class="row h-100 justify-content-center">
 							<div class="col-12 m-0 p-0 text-center">
 								<div class="spinner-border m-0 text-primary" role="status">
-									<span class="visually-hidden font-3rem">Loading...</span>
+									<span class="visually-hidden font-3rem">Cargando...</span>
 								</div>
-								<h3 class="m-0 p-0 text-primary">CREANDO VENDEDOR</h3>
+								<h3 class="m-0 p-0 text-primary">CREANDO FACTURA</h3>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		
 
 		<div class="modal fade" id="modalEditarCliente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -392,6 +398,53 @@
 
 									<label for="campo_editar_precio_producto" class="form-label m-0 mt-2"><b>PRECIO:</b></label>
 									<input id="campo_editar_precio_producto" type="text" name="precio_producto" class="form-control" required>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<div class="col-12 m-0 p-0 row justify-content-end">
+								<button type="button" class="col-3 btn btn-secondary me-1" data-bs-dismiss="modal">CERRAR</button>
+								<button type="submit" class="col-3 btn btn-primary ms-1">GUARDAR</button>
+							</div>
+						</div>
+					</form>
+					<div id="waitContentEdit" class="waitContent" style="display: none;">
+						<div class="row h-100 justify-content-center">
+							<div class="col-12 m-0 p-0 text-center">
+								<div class="spinner-border m-0 text-primary" role="status">
+									<span class="visually-hidden font-3rem">Loading...</span>
+								</div>
+								<h3 class="m-0 p-0 text-primary">EDITANDO producto</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="modalEditarFactura" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form id="formEditarFactura" action="#" method="GET" accept-charset="utf-8">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel"><b>EDITAR PRODUCTO</b></h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="col-12 m-0 p-0 row justify-content-center">
+								<div class="col-8">
+									<label for="campo_editar_id_factura" class="form-label m-0"><b>ID FACTURA:</b></label>
+									<input id="campo_editar_id_factura" type="number" name="id_factura" class="form-control" required>
+		
+									<label for="campo_editar_cedula_cliente" class="form-label m-0 mt-2"><b>CEDULA CLIENTE:</b></label>
+									<select id="campo_editar_cedula_cliente" name="cedula_cliente" class="form-select" required>
+
+									</select>
+		
+									<label for="campo_editar_cedula_vendedor" class="form-label m-0 mt-2"><b>CEDULA VENDEDOR:</b></label>
+									<select id="campo_editar_cedula_vendedor" name="cedula_vendedor" class="form-select" required>
+									
+									</select>
 								</div>
 							</div>
 						</div>
