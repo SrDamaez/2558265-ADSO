@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".MainActivity1"
     android:padding="25dp"
     >
 
@@ -17,6 +17,14 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@color/black"
+    />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        android:gravity="center"
+        android:src="@drawable/html.jpg"
+        android:scaleType="centerCrop"
     />
 
     <TextView
