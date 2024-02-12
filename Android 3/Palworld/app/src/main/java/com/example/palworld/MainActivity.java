@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject pokemon = datos.getJSONObject(i);
                 String nombre = pokemon.getString("name");
                 String url = pokemon.getString("url");
-
+                
                 System.out.println("Nombre: " + nombre);
                 System.out.println("Url: " + url);
             }
