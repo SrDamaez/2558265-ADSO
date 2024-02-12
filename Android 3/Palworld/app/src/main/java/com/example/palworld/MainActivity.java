@@ -1,6 +1,7 @@
 package com.example.palworld;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -13,10 +14,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -77,18 +81,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cargarNombre(JSONArray datos) {
+        List<Pokemon> listaDePokemones = new ArrayList<>();
         try {
             for (int i = 0; i < datos.length(); i++) {
                 JSONObject pokemon = datos.getJSONObject(i);
                 String nombre = pokemon.getString("name");
-                String url = pokemon.getString("url");
-                
-                System.out.println("Nombre: " + nombre);
-                System.out.println("Url: " + url);
+                listaDePokemones.add(new Pokemon(String.valueOf(i+1),nombre));
+                configRecycler(listaDePokemones);
             }
         } catch (JSONException e) {
             Log.e("JSON Parsing Error", e.getMessage());
         }
+    }
+
+    public void configRecycler(List<Pokemon> listaPokemon){
+        recyclerPokemones = findViewById(R.id.recyclerPokemones);
+        AdaptadorPokemon adaptador = new AdaptadorPokemon(listaPokemon);
+        recyclerPokemones.setAdapter(adaptador);
+        recyclerPokemones.setLayoutManager(new LinearLayoutManager(this));
     }
 
 }

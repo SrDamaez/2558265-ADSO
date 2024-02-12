@@ -24,9 +24,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPokemones"
         android:layout_width="match_parent"
-        android:layout_height="553dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="601dp"></androidx.recyclerview.widget.RecyclerView>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -45,7 +43,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:paddingHorizontal="10dp"
-                android:text="ANTERIOR" />
+                android:text="ANTERIOR"
+                />
 
             <Button
                 android:id="@+id/btnNext"
@@ -54,7 +53,6 @@
                 android:layout_weight="1"
                 android:paddingHorizontal="10dp"
                 android:text="SIGUIENTE" />
-
         </LinearLayout>
     </RelativeLayout>
 
