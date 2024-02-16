@@ -42,10 +42,10 @@ CREATE TABLE `cuestionarios` (
 --
 
 INSERT INTO `cuestionarios` (`id`, `id_usuario`, `cant_preguntas`, `cant_ok`, `cant_error`, `fecha_inicio`, `fecha_fin`) VALUES
-(1, 1, 0, 0, 0, '2024-01-25 20:32:56', NULL),
-(2, 1, 0, 0, 0, '2024-01-25 23:41:44', '2024-01-25 23:47:44'),
-(38, 1, 0, 0, 0, '2024-01-26 12:18:46', NULL),
-(39, 1, 0, 0, 0, '2024-01-26 12:26:09', NULL);
+(1, 1, 0, 0, 0, '2024-02-16 11:32:56', NULL),
+(2, 1, 0, 0, 0, '2024-02-16 12:41:44', '2024-02-16 12:45:48'),
+(3, 1, 0, 0, 0, '2024-02-16 12:50:46', NULL),
+(4, 1, 0, 0, 0, '2024-02-16 13:10:09', NULL);
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ CREATE TABLE `opciones` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_pregunta` int(10) UNSIGNED DEFAULT NULL,
   `descripcion` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `opciones`
@@ -107,7 +107,7 @@ CREATE TABLE `preguntas` (
   `descripcion` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `id_correcta` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `url_imagen` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `preguntas`
@@ -138,7 +138,7 @@ CREATE TABLE `respuestas` (
   `respuesta` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `estado` enum('OK','ERROR') CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `fecha` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `respuestas`
@@ -176,7 +176,7 @@ CREATE TABLE `usuarios` (
   `nombres` varchar(80) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `correo` varchar(120) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
