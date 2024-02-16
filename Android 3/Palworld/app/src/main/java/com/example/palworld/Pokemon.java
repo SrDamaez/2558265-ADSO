@@ -1,18 +1,20 @@
 package com.example.palworld;
 
+import java.util.List;
+
 public class Pokemon {
     String contador;
     String nombre;
     String altura;
     String Peso;
-    String habilidades[];
+    List<String> habilidades;
 
     public Pokemon(String contador, String nombre) {
         this.contador = contador;
         this.nombre = nombre;
     }
 
-    public Pokemon(String contador, String nombre, String altura, String peso, String[] habilidades) {
+    public Pokemon(String contador, String nombre, String altura, String peso, List<String> habilidades) {
         this.nombre = nombre;
         this.altura = altura;
         Peso = peso;
@@ -42,10 +44,10 @@ public class Pokemon {
     public void setPeso(String peso) {
         Peso = peso;
     }
-    public String[] getHabilidades() {
+    public List<String> getHabilidades() {
         return habilidades;
     }
-    public void setHabilidades(String[] habilidades) {
+    public void setHabilidades(List<String> habilidades) {
         this.habilidades = habilidades;
     }
 }

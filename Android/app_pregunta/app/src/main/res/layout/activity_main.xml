@@ -12,20 +12,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="INICIAR SESION"
-        android:textSize="40dp"
-        android:gravity="center"
-        android:textStyle="bold"
         android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:text="INICIAR SESION"
         android:textColor="@color/black"
-        />
+        android:textSize="40dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@mipmap/ic_preguntas_round"
         android:layout_gravity="center"
-        />
+        android:src="@mipmap/ic_preguntas_round" />
 
     <TextView
         android:layout_width="match_parent"
@@ -64,13 +62,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="INICIAR"
-        android:textSize="25sp"
-        android:layout_marginTop="50sp"
         android:layout_gravity="center"
+        android:layout_marginTop="50sp"
         android:onClick="validarUsuario"
-        />
-
+        android:text="INICIAR"
+        android:textSize="25sp" />
 
 
 </LinearLayout>

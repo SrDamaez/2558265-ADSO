@@ -24,7 +24,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPokemones"
         android:layout_width="match_parent"
-        android:layout_height="601dp"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="601dp">
+    </androidx.recyclerview.widget.RecyclerView>
 
     <RelativeLayout
         android:layout_width="match_parent"
