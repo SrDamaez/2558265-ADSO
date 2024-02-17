@@ -155,7 +155,7 @@ INSERT INTO `respuestas` (`id_respuesta`, `id_cuestionario`, `id_pregunta`, `res
 (45, 38, 10, 'Un dispositivo de almacenamiento de datos', 'ERROR', '2024-01-26 07:18:55'),
 (46, 38, 8, 'InstrucciÃƒÂ³n de salida', 'ERROR', '2024-01-26 07:18:58'),
 (47, 38, 5, 'Almacenar grandes cantidades de datos', 'ERROR', '2024-01-26 07:19:01'),
-(48, 39, 6, 'MÃƒÂ¡quina Virtual de Control', 'ERROR', '2024-01-26 07:26:56'),
+(48, 39, 6, 'Máquina Virtual de Control', 'ERROR', '2024-01-26 07:26:56'),
 (49, 39, 10, 'Un dispositivo de almacenamiento de datos', 'ERROR', '2024-01-26 07:29:01'),
 (50, 39, 4, '==', 'ERROR', '2024-01-26 07:31:30'),
 (51, 39, 5, 'Almacenar grandes cantidades de datos', 'ERROR', '2024-01-26 07:32:29'),
@@ -163,7 +163,7 @@ INSERT INTO `respuestas` (`id_respuesta`, `id_cuestionario`, `id_pregunta`, `res
 (53, 39, 1, 'Hyperlink Text Markup Language', 'ERROR', '2024-01-26 07:32:33'),
 (54, 39, 9, 'Mercurial', 'ERROR', '2024-01-26 07:32:48'),
 (55, 39, 2, 'C++', 'ERROR', '2024-01-26 07:32:50'),
-(56, 39, 8, 'Estructura de selecciÃƒÂ³n', 'OK', '2024-01-26 07:32:52');
+(56, 39, 8, 'Estructura de selección', 'OK', '2024-01-26 07:32:52');
 
 -- --------------------------------------------------------
 
@@ -183,7 +183,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombres`, `correo`, `password`) VALUES
-(1, 'Oscar Andres Loaiza Pabon', 'andres@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b');
+(1, 'David Martínez', 'damaez@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b');
 
 --
 -- Índices para tablas volcadas

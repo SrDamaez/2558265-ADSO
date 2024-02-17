@@ -87,14 +87,14 @@ public class Cuestionario extends AppCompatActivity {
 
     public void cargarRespuestas(){
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String url = dataConfig.getEndPoint("/getRespuestas.php");
+        String url = dataConfig.getEndPoint("/ObtenerRespuestas.php");
 
         StringRequest solicitud =  new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 System.out.println("Response: "+response);
                 try {
-                    System.out.println("El servidor POST responde OK: "+response);
+                    System.out.println("Joa mani el servidor POST responde OK: "+response);
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray dataAll = jsonObject.getJSONArray("respuestas");
 
@@ -135,9 +135,8 @@ public class Cuestionario extends AppCompatActivity {
                             layoutPreguntas.addView(text_opciones);
                         }
                     }
-
                 } catch (JSONException e) {
-                    System.out.println("El servidor POST responde con un error:");
+                    System.out.println("Joa mani el servidor POST responde con un error:");
                     System.out.println(e.getMessage());
                     Toast.makeText(getApplicationContext(), "Error en Datos Servidor: "+e.getMessage(), Toast.LENGTH_LONG).show();
                 }
@@ -145,7 +144,7 @@ public class Cuestionario extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println("El servidor POST responde con un error:");
+                System.out.println("Joa mani el servidor POST responde con un error:");
                 System.out.println(error.getMessage());
                 Toast.makeText(getApplicationContext(), "Error en Servidor: "+error.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -156,8 +155,6 @@ public class Cuestionario extends AppCompatActivity {
                 return params;
             }
         };
-
         queue.add(solicitud);
     }
-
 }

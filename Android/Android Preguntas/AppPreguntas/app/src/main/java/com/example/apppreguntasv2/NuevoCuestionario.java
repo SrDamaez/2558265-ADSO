@@ -51,20 +51,16 @@ public class NuevoCuestionario extends AppCompatActivity {
     }
 
     public void setFechaACtual(){
-        // Obtiene la instancia de Calendar
         Calendar calendar = Calendar.getInstance();
 
-        // Obtiene la fecha
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH)+1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // Obtiene la hora
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
         int second = calendar.get(Calendar.SECOND);
 
-        // Construye la fecha y hora
         String dateTime = String.format("%04d-%02d-%02d \n %02d:%02d:%02d", year, month, day, hour, minute, second);
         fecha_inicio = String.format("%04d-%02d-%02d %02d:%02d:%02d", year, month, day, hour, minute, second);
         etq_new_fecha_inicio.setText(dateTime);
@@ -72,7 +68,7 @@ public class NuevoCuestionario extends AppCompatActivity {
 
     public void crearCuestionario(View vista){
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String url = dataConfig.getEndPoint("/createCuestionario.php");
+        String url = dataConfig.getEndPoint("/crearCuestionario.php");
 
         StringRequest solicitud =  new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -111,7 +107,6 @@ public class NuevoCuestionario extends AppCompatActivity {
                 return params;
             }
         };
-
         queue.add(solicitud);
     }
 }

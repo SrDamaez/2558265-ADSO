@@ -96,7 +96,7 @@ public class ResumenUsuario extends AppCompatActivity {
 
     public void obtenerCuestionarios(){
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String url = dataConfig.getEndPoint("/getCuestionarios.php");
+        String url = dataConfig.getEndPoint("/obtenerCuestionarios.php");
 
         StringRequest solicitud =  new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -150,8 +150,5 @@ public class ResumenUsuario extends AppCompatActivity {
     public void nuevoCuestionario(View vista) {
         Intent intencion = new Intent(getApplicationContext(), NuevoCuestionario.class);
         startActivity(intencion);
-    }
-
-    public void onBackPressed() {
     }
 }

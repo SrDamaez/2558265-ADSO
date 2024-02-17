@@ -89,9 +89,5 @@ public class ResumenAdapter extends RecyclerView.Adapter<ResumenAdapter.ViewHold
             });
 
         }
-
-        public void eliminarCuestionario(){
-
-        }
     }
 }

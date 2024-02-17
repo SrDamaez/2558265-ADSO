@@ -39,7 +39,7 @@
         android:id="@+id/campo_correo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="andres@gmail.com"
+        android:text="jp@gmail.com"
         android:inputType="textEmailAddress"
         android:textSize="25sp"
         />

@@ -71,7 +71,7 @@ public class Pregunta extends AppCompatActivity {
 
     public void cargarNuevaPregunta(){
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String url = dataConfig.getEndPoint("/getOtherPregunta.php");
+        String url = dataConfig.getEndPoint("/ObtenerPreguntas.php");
 
         StringRequest solicitud =  new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -163,7 +163,7 @@ public class Pregunta extends AppCompatActivity {
 
     public void registrarRespuesta(String post_id_cuestionario, String post_id_pregunta, String post_respuesta, String post_valido){
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String url = dataConfig.getEndPoint("/saveRespuesta.php");
+        String url = dataConfig.getEndPoint("/guardarRespuesta.php");
 
         StringRequest solicitud =  new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -222,9 +222,5 @@ public class Pregunta extends AppCompatActivity {
                 });
 
         queue.add(solicitud);
-    }
-
-    @Override
-    public void onBackPressed() {
     }
 }

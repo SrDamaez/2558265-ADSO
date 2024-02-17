@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dataConfig = new Config(getApplicationContext());
-
         campo_correo = findViewById(R.id.campo_correo);
         campo_password = findViewById(R.id.campo_password);
 
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println("El servidor POST responde con un error:");
+                System.out.println("Joa mani el servidor POST responde con un error:");
                 System.out.println(error.getMessage());
             }
         }){
@@ -108,11 +107,9 @@ public class MainActivity extends AppCompatActivity {
     public void validarSesion(){
         SharedPreferences sharedPreferences = getSharedPreferences("app_preguntas", Context.MODE_PRIVATE);
 
-        // Obtiene los datos del usuario
         String idUsuario = sharedPreferences.getString("id_usuario", null);
         String nombres = sharedPreferences.getString("nombres", null);
 
-        // Verifica si los datos existen
         if (idUsuario != null && nombres != null) {
             Intent intencion = new Intent(getApplicationContext(), ResumenUsuario.class);
             startActivity(intencion);
