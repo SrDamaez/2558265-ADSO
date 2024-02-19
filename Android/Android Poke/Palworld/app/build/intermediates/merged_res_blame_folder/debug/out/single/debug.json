@@ -1,0 +1,150 @@
+[
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/layout_item_pokemon.xml.flat",
+        "source": "com.example.palworld.app-main-33:/layout/item_pokemon.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.palworld.app-main-33:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-anydpi-v26_ic_launcher_pokebola_round.xml.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-anydpi-v26/ic_launcher_pokebola_round.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-anydpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-mdpi_ic_launcher_pokebola_round.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-mdpi/ic_launcher_pokebola_round.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-anydpi-v26_ic_launcher_pokebola.xml.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-anydpi-v26/ic_launcher_pokebola.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/layout_activity_main.xml.flat",
+        "source": "com.example.palworld.app-main-33:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/drawable_icono_pokeball.png.flat",
+        "source": "com.example.palworld.app-main-33:/drawable/icono_pokeball.png"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-mdpi_ic_launcher_pokebola.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-mdpi/ic_launcher_pokebola.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/layout_card_imagen.xml.flat",
+        "source": "com.example.palworld.app-main-33:/layout/card_imagen.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.palworld.app-main-33:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/layout_activity_descripcion.xml.flat",
+        "source": "com.example.palworld.app-main-33:/layout/activity_descripcion.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-hdpi_ic_launcher_pokebola_round.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-hdpi/ic_launcher_pokebola_round.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-anydpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/drawable_ic_launcher_pokebola_foreground.xml.flat",
+        "source": "com.example.palworld.app-main-33:/drawable/ic_launcher_pokebola_foreground.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/drawable_titulo_pokemon.png.flat",
+        "source": "com.example.palworld.app-main-33:/drawable/titulo_pokemon.png"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xhdpi_ic_launcher_pokebola_round.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xhdpi/ic_launcher_pokebola_round.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xxhdpi_ic_launcher_pokebola.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xxhdpi/ic_launcher_pokebola.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xxxhdpi_ic_launcher_pokebola_round.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xxxhdpi/ic_launcher_pokebola_round.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-hdpi_ic_launcher_pokebola.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-hdpi/ic_launcher_pokebola.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.palworld.app-main-33:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xxhdpi_ic_launcher_pokebola_round.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xxhdpi/ic_launcher_pokebola_round.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xxxhdpi_ic_launcher_pokebola.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xxxhdpi/ic_launcher_pokebola.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/mipmap-xhdpi_ic_launcher_pokebola.webp.flat",
+        "source": "com.example.palworld.app-main-33:/mipmap-xhdpi/ic_launcher_pokebola.webp"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/xml_backup_rules.xml.flat",
+        "source": "com.example.palworld.app-main-33:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/drawable_loading_pokeball.gif.flat",
+        "source": "com.example.palworld.app-main-33:/drawable/loading_pokeball.gif"
+    },
+    {
+        "merged": "com.example.palworld.app-merged_res-31:/drawable_ic_launcher_pokebola_background.xml.flat",
+        "source": "com.example.palworld.app-main-33:/drawable/ic_launcher_pokebola_background.xml"
+    }
+]

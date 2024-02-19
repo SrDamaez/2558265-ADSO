@@ -1,0 +1,35 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable ic_launcher_pokebola_background
+drawable ic_launcher_pokebola_foreground
+drawable icono_pokeball
+drawable loading_pokeball
+drawable titulo_pokemon
+id actionDetalle
+id btnBack
+id btnDetalle
+id btnNext
+id etqContador
+id etqNombres
+id etq_nombre
+id imgPersona
+id recyclerHabilidades
+id recyclerImagenes
+id recyclerPokemones
+layout activity_descripcion
+layout activity_main
+layout card_imagen
+layout item_pokemon
+mipmap ic_launcher
+mipmap ic_launcher_pokebola
+mipmap ic_launcher_pokebola_round
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.Palworld
+style Theme.Palworld
+xml backup_rules
+xml data_extraction_rules

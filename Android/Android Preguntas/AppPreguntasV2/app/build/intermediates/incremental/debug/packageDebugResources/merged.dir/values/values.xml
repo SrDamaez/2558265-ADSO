@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="blue">#186A8C</color>
+    <color name="blueLight">#E8FBF8</color>
+    <color name="ic_logout_background">#990303</color>
+    <color name="red">#FFA10000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">AppPreguntasV2</string>
+    <style name="Base.Theme.AppPreguntasV2" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.AppPreguntasV2" parent="Base.Theme.AppPreguntasV2"/>
+</resources>
