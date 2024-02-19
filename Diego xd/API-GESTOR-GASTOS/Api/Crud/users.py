@@ -2,7 +2,7 @@ import sys # Mandar mensajes de error al log
 
 from Api.Models.User import User
 from fastapi import HTTPException
-from Api.Schemas.users import UserCreate,UserRead #UserUpdate,UserUpdateAdmin,UserDelete,UserDeleteAdmin
+from Api.Schemas.users import UserCreate,UserRead, UserUpdateAdmin #,UserUpdateAdmin,UserDelete,UserDeleteAdmin
 from sqlalchemy.orm import Session
 from sqlalchemy import update
 from Core.security import get_hashed_password,verify_password
@@ -43,8 +43,18 @@ def get_user_by_email_verify(user_id : str,email:str,db:Session):
         else:
             return False
     return True
-    
-        
+
+def update_user_admin(user_id: str, user_update: UserUpdateAdmin, db: Session):
+    db_user = get_user_by_id(user_id, db)
+    if db_user:
+        for attr, value in user_update.dict().items():
+            if attr == "passhash" and value is not None:
+                value = get_hashed_password(value)
+            setattr(db_user, attr, value)
+        db.commit()
+        db.refresh(db_user)
+        return db_user
+    return None
 
 def get_user_by_id(id:str,db:Session):
     user = db.query(User).filter(User.user_id == id).first()
@@ -58,5 +68,3 @@ def authenticate_user(username:str,password:str,db:Session):
         return False
     
     return user
-
-

@@ -14,6 +14,10 @@ class UserCreate(UserBase):
     passhash:str
     user_status:bool = True
 
+class UserUpdateAdmin(UserBase):
+    passhash: str = None
+    user_status: bool = None
+    
 class UserCreateAdmin(UserBase):
     passhash:str
     user_role:UserRole
